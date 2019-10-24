@@ -17,7 +17,7 @@ const GameCreate = (props) => {
                 <div className={styles.gameBox}>
                     <div className={styles.form__group}><label className={styles.form__label} htmlFor="opponent">Choose the opponent</label><input
                         className={styles.form__input} id="opponent" type="text" required="required"
-                        value={value} onChange={e => onValueChange(id, e.target.value)}/>
+                        /*value={value} onChange={e => onValueChange(id, e.target.value)}*//>
                     </div>
                 </div>
             </Modal.Body>

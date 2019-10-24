@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import styles from './test.module.css';
-import {ReactComponent as Minus} from "../svg/minus-box-outline.svg";
+import styles from '../CreateTeam/test.module.css';
+import {ReactComponent as Minus} from "../../../svg/minus-box-outline.svg";
 
-const Test2 = () => {
+const ViewTeam = () => {
 
     return (
         <Modal.Dialog>
@@ -25,4 +25,4 @@ const Test2 = () => {
 
 };
 
-export default Test2;
+export default ViewTeam;

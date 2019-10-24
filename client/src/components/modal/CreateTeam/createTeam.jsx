@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import styles from './test.module.css';
 
-const Test = (props) => {
+const CreateTeam = (props) => {
 
     return (
         <Modal.Dialog {...props}
@@ -23,4 +23,4 @@ const Test = (props) => {
 
 };
 
-export default Test;
+export default CreateTeam;

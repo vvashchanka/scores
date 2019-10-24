@@ -13,8 +13,8 @@ import {
 import ApproveGames from "./components/modal/ApproveGames/ApproveGames";
 import './index.css';
 import GameCreate from "./components/modal/GameCreate/GameCreate";
-import Test from "./components/test";
-import Test2 from "./components/test2";
+import CreateTeam from "./components/modal/CreateTeam/createTeam";
+import ViewTeam from "./components/modal/ViewTeam/viewTeam";
 
 setToken(localStorage.jwt);
 
@@ -35,10 +35,8 @@ ReactDOM.render(
             <Register />
         </Route>
         <Route path="/test1">
-            <Test/>
-        </Route>
-        <Route path="/test2">
-            <Test2/>
+            <CreateTeam/>
+            <ViewTeam/>
         </Route>
         <Route path="/">
             <Home />
