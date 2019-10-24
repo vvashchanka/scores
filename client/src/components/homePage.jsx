@@ -17,7 +17,6 @@ export default class App extends React.Component {
     getGames = () => {
         axios.get(`${api}games`)
             .then(res => {
-                console.log(res);
                 this.setState({
                     games: res.data
                 })
