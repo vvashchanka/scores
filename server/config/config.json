@@ -4,7 +4,7 @@
     "password": "arancia",
     "database": "scores",
     "host": "127.0.0.1",
-    "dialect": "postgresql",
+    "dialect": "postgres",
     "operatorsAliases": false,
     "port": "54320"
   },

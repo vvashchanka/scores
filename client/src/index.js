@@ -10,6 +10,8 @@ import {
     Switch,
     Route
 } from "react-router-dom";
+import Test from "./components/test";
+import Test2 from "./components/test2";
 
 setToken(localStorage.jwt);
 
@@ -22,9 +24,16 @@ ReactDOM.render(
         <Route path="/register">
             <Register />
         </Route>
+        <Route path="/test1">
+            <Test/>
+        </Route>
+        <Route path="/test2">
+            <Test2/>
+        </Route>
         <Route path="/">
             <Home />
         </Route>
+
     </Switch>
 </Router>, document.getElementById('root'));
 

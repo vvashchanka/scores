@@ -1,0 +1,46 @@
+.buttonCreate {
+    background: #4C31B8;
+    box-shadow: 0 8px 20px rgba(97, 62, 234, 0.32);
+    border-radius: 6px;
+    color: white;
+    width: 74%;
+    height: 3.2em;
+    border: unset;
+    margin-top: 20px;
+}
+
+.minus {
+    fill: darkred;
+    margin-left: 10px;
+    margin-bottom: 7px;
+    width: 32px;
+    height: 32px;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonDelete {
+    background: darkred;
+    box-shadow: 0 8px 20px rgba(97, 62, 234, 0.32);
+    border-radius: 6px;
+    color: white;
+    width: 74%;
+    height: 3.2em;
+    border: unset;
+    margin-top: 20px;
+}
+
+.inputTeam {
+    width: 74%;
+    height: 3.2em;
+    border-radius: 6px;
+    border: 1px solid gray;
+}
+
+.textCenter {
+    text-align: center;
+}
