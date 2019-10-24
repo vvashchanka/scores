@@ -16,5 +16,6 @@
   },
   "author": "Vadzim Vashchanka",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/Vashchanka/auth#readme"
+  "homepage": "https://bitbucket.org/Vashchanka/auth#readme",
+  "dependencies": {}
 }
