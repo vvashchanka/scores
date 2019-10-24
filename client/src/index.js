@@ -13,6 +13,8 @@ import {
 import ApproveGames from "./components/modal/ApproveGames/ApproveGames";
 import './index.css';
 import GameCreate from "./components/modal/GameCreate/GameCreate";
+import Test from "./components/test";
+import Test2 from "./components/test2";
 
 setToken(localStorage.jwt);
 
@@ -31,6 +33,12 @@ ReactDOM.render(
         </Route>
         <Route path="/register">
             <Register />
+        </Route>
+        <Route path="/test1">
+            <Test/>
+        </Route>
+        <Route path="/test2">
+            <Test2/>
         </Route>
         <Route path="/">
             <Home />

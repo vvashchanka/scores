@@ -15,16 +15,9 @@ const GameCreate = (props) => {
 
             <Modal.Body>
                 <div className={styles.gameBox}>
-                    <div className={styles.game__item}>ОльгаВалентиновна</div>
-                    <div className={styles.game__item}>
-                        <span className={styles.game__scoreItem}>3</span>
-                        <span className={styles.game__scoreItem}>:</span>
-                        <span className={styles.game__scoreItem}>2</span>
-                    </div>
-                    <div className={styles.game__item}>Star Wars</div>
-                    <div className={styles.game__item}>
-                        <Approve className={styles.game__buttonSuccess}/>
-                        <Decline className={styles.game__buttonDelete}/>
+                    <div className={styles.form__group}><label className={styles.form__label} htmlFor="opponent">Choose the opponent</label><input
+                        className={styles.form__input} id="opponent" type="text" required="required"
+                        value={value} onChange={e => onValueChange(id, e.target.value)}/>
                     </div>
                 </div>
             </Modal.Body>
