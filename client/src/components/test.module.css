@@ -7,6 +7,15 @@
     height: 3.2em;
     border: unset;
     margin-top: 20px;
+    cursor: pointer;
+}
+
+.buttonCreate:focus {
+    outline: none;
+}
+
+.buttonDelete:focus {
+    outline: none;
 }
 
 .minus {
@@ -15,13 +24,12 @@
     margin-bottom: 7px;
     width: 32px;
     height: 32px;
+    cursor: pointer;
 }
 
 .player {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+     display: flex;
+ }
 
 .buttonDelete {
     background: darkred;
@@ -32,6 +40,7 @@
     height: 3.2em;
     border: unset;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .inputTeam {
@@ -39,8 +48,14 @@
     height: 3.2em;
     border-radius: 6px;
     border: 1px solid gray;
+    outline: none;
 }
 
-.textCenter {
+.inputTeam:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(0, 123, 255, .5);
+}
+
+.fuck {
     text-align: center;
 }
