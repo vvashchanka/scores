@@ -1,0 +1,99 @@
+body {
+    background-image: url("img/bg.png");
+}
+
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #198964, #40c5c4);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+    max-width: 700px;
+    border-radius: 15px 15px 0 0;
+}
+
+.content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+    max-width: 700px;
+    border-radius: 0 0 15px 15px;
+    background-color: #ced4da;
+    height: 600px;
+}
+
+.form-control{
+    border-radius:1.5rem;
+    max-width: 300px;
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #0062cc;
+    color: #fff;
+}
+
+.error{
+    float: right;
+    height: 40px;
+    line-height: 15px;
+    text-align: center;
+    max-width: 470px;
+}
+
+.container {
+    padding-top: 100px;
+    max-width: 700px;
+    margin: 0 auto
+}
+
+.home{
+    padding-top: 100px;
+    width: 700px;
+    margin: 0 auto
+}
+
+.block{
+    display: block;
+    margin-top: 60px
+}
+
+
+img {
+    margin: 10px;
+    width: 80px;
+    height: 80px;
+    transition: transform .5s ease;
+}
+
+img:hover {
+    -webkit-transform: rotate(360deg);
+}
+
+.icon_login{
+    margin-left: 150px;
+
+}
+
+.icon_signup{
+    margin-left: 100px;
+}
+
+.logout{
+    margin-top: 10px
+}
+
+.photo{
+    float: right;
+    width: 70px;
+    height: 70px;
+    margin-top: -90px;
+    margin-left: 10px
+}

@@ -1,0 +1,11 @@
+version: "3"
+services:
+  db:
+    image: "postgres"
+    container_name: "postrgres"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=arancia
+      - POSTGRES_DB=scores
+    ports:
+      - "54320:5432"

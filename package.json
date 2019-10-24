@@ -1,0 +1,20 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm run install_server && npm run install_client",
+    "install_server": "docker-compose docker-compose.yml up && cd server && npm install",
+    "install_client": "cd client && npm install",
+    "server": "cd server && npm start",
+    "client": "cd client && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Vashchanka@bitbucket.org/Vashchanka/auth.git"
+  },
+  "author": "Vadzim Vashchanka",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/Vashchanka/auth#readme"
+}
