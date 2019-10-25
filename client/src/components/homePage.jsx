@@ -61,9 +61,9 @@ export default class App extends React.Component {
                 <p>Welcome</p>
             </div>
             <div className="content">
-<Link className="icon_signup" to='/register'><img src={signup} alt="Sign up"/></Link>
+<Link className="icon_signup" to='/register'>Sign up</Link>
 
-<Link className="icon_login" to='/login'><img src={login} alt="Log in"/></Link>
+<Link className="icon_login" to='/login'>Log in</Link>
                 <ReactTable
                     minRows='3'
                     data={this.state.games}
