@@ -128,10 +128,9 @@
 }
 
 .navBarLogin:hover, .navBarRegister:hover, .submitButton:hover {
-    transform: scale(1.1,1.1);
-    transition: 0.2s;
+    transform: scale(1.05,1.05);
     box-shadow: 0 0.6em 0.6em gray;
-    background-color: #08bd9c;
+    cursor: pointer;
 }
 
 .navBarLogin:active, .navBarRegister:active {

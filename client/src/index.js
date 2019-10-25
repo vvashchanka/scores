@@ -16,13 +16,11 @@ import GameCreate from "./components/modal/GameCreate/GameCreate";
 import CreateTeam from "./components/modal/CreateTeam/createTeam";
 import ViewTeam from "./components/modal/ViewTeam/viewTeam";
 import Notification from "./components/notification/notification";
-import Header from "./components/header/Header";
+import ChoosePlayer from "./components/modal/ChoosePlayer/choosePlayer";
 
 setToken(localStorage.jwt);
 
 ReactDOM.render(
-    <>
-        <Header/>
     <Router history={history}>
     <Switch>
     <Route path="/modal">
@@ -42,11 +40,11 @@ ReactDOM.render(
         <Route path="/test1">
             <CreateTeam/>
             <ViewTeam/>
+            <ChoosePlayer/>
         </Route>
         <Route path="/">
             <Home />
         </Route>
     </Switch>
-</Router></>
-        , document.getElementById('root'));
+</Router>, document.getElementById('root'));
 

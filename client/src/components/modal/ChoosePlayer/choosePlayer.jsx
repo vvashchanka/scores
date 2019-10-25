@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, Table } from 'react-bootstrap';
 import styles from '../CreateTeam/test.module.css';
 
 const ChoosePlayer = (props) => {
@@ -14,13 +14,37 @@ const ChoosePlayer = (props) => {
             </Modal.Header>
             <Modal.Body closeButton>
                 <div className={styles}>
-                    <input className={styles.inputSearch} placeholder={'Search...'}/>
+                    <Table striped bordered hover>
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Username</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </Table>
                     <button className={styles.buttonCreate}>Submit</button>
                 </div>
             </Modal.Body>
         </Modal.Dialog>
     );
-
 };
 
 export default ChoosePlayer;
