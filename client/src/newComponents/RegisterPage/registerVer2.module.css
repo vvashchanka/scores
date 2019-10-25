@@ -15,7 +15,7 @@
     margin-top: 20px;
     padding: 2em 0 0 0;
     width: 25%;
-    height: 550px;
+    max-height: 550px;
     background-color: #eeeeee;
 }
 

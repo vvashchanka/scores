@@ -1,5 +1,4 @@
 import React from 'react';
-import history from '../history';
 import {api} from '../config';
 import RegisterPageVer2 from "../newComponents/RegisterPage/RegisterPageVer2";
 import {Redirect} from "react-router";
@@ -68,24 +67,10 @@ export default class Register extends React.Component {
         })
     };
 
-
-
-    redirect = () => {
-        setTimeout(() => {
-            history.push('/login')
-        }, 1500);
-    };
-
-
-
     render() {
-            if (this.state.success) {
-                this.redirect()
-            }
         return (
-
             <>
-  {/*              {this.state.success&& <Redirect to="/login"/>}*/}
+                {this.state.success && <Redirect to="/login"/>}
                 <RegisterPageVer2
                     data={this.state}
                     sendData={this.sendData}

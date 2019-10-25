@@ -1,49 +1,73 @@
 import React from 'react';
 import styles from './registerVer2.module.css';
-import { Container, Row, Col, } from 'react-bootstrap';
+
+import { Container, Row, Col } from 'react-bootstrap';
+
 
 const RegisterPageVer2 = (props) => {
+    const {
+        data,
+        login,
+        password,
+        confirmPassword,
+        userName,
+        sendData,
+        loginValue,
+        passwordValue,
+        confirmPasswordValue,
+        userNameValue
+    } = props;
 
+    const formFields = [
+        {
+            htmlFor: 'Login',
+            title: 'Login',
+            value: login,
+            type: 'text',
+            onChange: loginValue
+        },
+        {
+            htmlFor: 'Full Name',
+            title: 'Full Name',
+            value: userName,
+            type: 'text',
+            onChange: userNameValue
+        },
+        {
+            htmlFor: 'Password',
+            title: 'Password',
+            value: password,
+            type: 'password',
+            onChange: passwordValue
+        },
+        {
+            htmlFor: 'Password confirm',
+            title: 'Confirm password',
+            value: confirmPassword,
+            type: 'password',
+            onChange: confirmPasswordValue
+        }
 
-    const { data, login, password, confirmPassword, userName, sendData, loginValue, passwordValue, confirmPasswordValue, userNameValue } = props;
-    console.log(data);
+    ]
 
     return (
-
         <div className={styles.registerWrapper}>
             <Container>
                 <Row>
                     <Col>
                         <form>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Login</label>
-                                <input type="login" className="form-control" id="exampleInputEmail1"
-                                       aria-describedby="emailHelp" placeholder="Login"
-                                       value={login}
-                                       onChange={e => loginValue(e.target.value)}/>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputFullName">Full Name</label>
-                                <input type="password" className="form-control" id="exampleInputLogin"
-                                       placeholder="Full Name"
-                                       value={userName}
-                                       onChange={e => userNameValue(e.target.value)}/>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Password</label>
-                                <input type="password" className="form-control" id="exampleInputPass"
-                                       placeholder="Password"
-                                       value={password}
-                                       onChange={e => passwordValue(e.target.value)}/>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputConfPass">Confirm Password</label>
-                                <input type="password" className="form-control" id="exampleInputConfPass"
-                                       placeholder="Confirm Password"
-                                       value={confirmPassword}
-                                       onChange={e => confirmPasswordValue(e.target.value)}/>
-                            </div>
-                            <button  onClick={() => {sendData(data)}} type="button" className={styles.submitButton}>Register</button>
+                            {formFields.map(({htmlFor, title, value, type, onChange}) =>
+                                <Input
+                                    htmlFor={htmlFor}
+                                    title={title}
+                                    value={value}
+                                    type={type}
+                                    onChange={onChange}
+                                />)}
+                            <button onClick={() => {
+                                sendData(data)
+                            }} type="button" className={styles.submitButton}>Register
+                            </button>
                         </form>
                     </Col>
                 </Row>
@@ -52,3 +76,18 @@ const RegisterPageVer2 = (props) => {
     );
 };
 export default RegisterPageVer2;
+
+// TODO separate comp
+const Input = ({htmlFor, title, value, type, onChange}) => {
+    return (
+        <div className="form-group">
+            <label htmlFor={htmlFor}>{title}</label>
+            <input type={type}
+                   className="form-control"
+                   placeholder={title}
+                   id={htmlFor}
+                   value={value}
+                   onChange={e => onChange(e.target.value)}/>
+        </div>
+    )
+}
