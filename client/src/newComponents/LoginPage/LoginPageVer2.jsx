@@ -8,17 +8,6 @@ const LoginPageVer2 = (props) => {
     const { data, login, password, sendData, loginValue, passwordValue } = props;
     return (
         <div>
-            <div className={styles.header}>
-                <Container>
-                    <Row>
-                        <Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col>
-                        <Col className={styles.navButtons}>
-                            <button type="button" className={styles.navBarRegister}>Register</button>
-                            <button type="button" className={styles.navBarLogin}>Login</button>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
             <div className={styles.wrapper}>
                 <Container>
                     <Row>
