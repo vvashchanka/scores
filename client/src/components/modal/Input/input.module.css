@@ -1,0 +1,30 @@
+.form__input {
+    width: 74%;
+    height: 3.2em;
+    border-radius: 6px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.form__input:focus {
+    outline: none;
+    border-bottom: 3px solid #55c57a;
+    box-shadow: 0 0 0 1px rgba(0, 123, 255, .5);
+}
+.form__input:focus:invalid {
+    border-bottom: 3px solid #ff7730;
+}
+.form__input::-webkit-input-placeholder {
+    color: #bbb;
+}
+
+.form__group{
+    margin-bottom: 2rem;
+}
+
+.form__label {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
