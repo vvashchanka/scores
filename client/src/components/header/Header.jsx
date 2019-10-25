@@ -11,8 +11,8 @@ const Header = (props) => {
                 <Row>
                     <NavLink to='/'><Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col></NavLink>
                     <Col className={styles.navButtons}>
-                        <NavLink to='/login'><button type="button" className={styles.navBarRegister}>Register</button></NavLink>
-                        <NavLink to='/register'><button type="button" className={styles.navBarLogin}>Login</button></NavLink>
+                        <NavLink to='/register'><button type="button" className={styles.navBarRegister}>Register</button></NavLink>
+                        <NavLink to='/login'><button type="button" className={styles.navBarLogin}>Login</button></NavLink>
                     </Col>
                 </Row>
             </Container>
