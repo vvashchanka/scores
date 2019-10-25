@@ -1,8 +1,8 @@
 import React from 'react';
-import ErrorMsg from "./infoMsg";
-import {Link} from 'react-router-dom';
 import history from '../history';
 import {api} from '../config';
+import RegisterPageVer2 from "../newComponents/RegisterPage/RegisterPageVer2";
+import {Redirect} from "react-router";
 
 const axios = require('axios');
 
@@ -28,7 +28,7 @@ export default class Register extends React.Component {
             password: data.password,
             confirmedPassword: data.confirmedPassword
         })
-            .then(res => {
+            .then(() => {
                 this.setState({
                     success: true,
                     ok: 'Registration successful, redirecting',
@@ -44,40 +44,70 @@ export default class Register extends React.Component {
             })
     };
 
-    nameValue = (e) => {
+    nameValue = (value) => {
         this.setState({
-            name: e.target.value
+            name: value
         })
     };
 
-    loginValue = (e) => {
+    loginValue = (value) => {
         this.setState({
-            login: e.target.value
+            login: value
         })
     };
 
-    passwordValue = (e) => {
+    passwordValue = (value) => {
         this.setState({
-            password: e.target.value
+            password: value
         })
     };
 
-    confirmedPass = (e) => {
+    confirmedPass = (value) => {
         this.setState({
-            confirmedPassword: e.target.value
+            confirmedPassword: value
         })
     };
 
-    redir = () => {
+
+
+    redirect = () => {
         setTimeout(() => {
             history.push('/login')
         }, 1500);
     };
 
+
+
     render() {
+            if (this.state.success) {
+                this.redirect()
+            }
+        return (
+
+            <>
+  {/*              {this.state.success&& <Redirect to="/login"/>}*/}
+                <RegisterPageVer2
+                    data={this.state}
+                    sendData={this.sendData}
+                    loginValue={this.loginValue}
+                    passwordValue={this.passwordValue}
+                    confirmPasswordValue={this.confirmedPass}
+                    userNameValue={this.nameValue}
+                    login={this.state.login}
+                    password={this.state.password}
+                    userName={this.state.name}
+                    confirmPassword={this.state.confirmedPassword}
+                    redirect={this.redirect}
+                />
+            </>
+        )
+    }
+}
+    /*render() {
         if (this.state.success) {
             this.redir()
         }
+
         return (
                 <div className="container">
                     <form className="form" onSubmit={(e) => {
@@ -124,5 +154,6 @@ export default class Register extends React.Component {
                     </form>
                 </div>
         )
-    }
-}
+        }*/
+
+

@@ -67,6 +67,7 @@ export default class App extends React.Component {
     };
 
     Menu = () => {
+        console.log(this.state.games)
         const dates = this.state.games.map(game => game.date.slice(0,10));
         let uniqueDates = [];
         for (let str of dates) {

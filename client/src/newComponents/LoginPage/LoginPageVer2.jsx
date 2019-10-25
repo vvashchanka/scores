@@ -6,7 +6,6 @@ const LoginPageVer2 = (props) => {
 
 
     const { data, login, password, sendData, loginValue, passwordValue } = props;
-    console.log(data);
     return (
         <div>
             <div className={styles.header}>

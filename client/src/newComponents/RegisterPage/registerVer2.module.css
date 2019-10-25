@@ -1,0 +1,173 @@
+.header {
+    background-color: #eeeeee;
+    position: absolute;
+    width: 100%;
+    padding-top: 1em;
+    height: 80px;
+    top: 0;
+    left: 0;
+}
+
+.registerWrapper {
+    margin: auto;
+    position: relative;
+    top: 80px;
+    margin-top: 20px;
+    padding: 2em 0 0 0;
+    width: 25%;
+    height: 550px;
+    background-color: #eeeeee;
+}
+
+@media (max-width: 767px) {
+    .header {
+        height: 130px;
+    }
+}
+
+@media (max-width: 785px) {
+    .header {
+        height: 250px;
+    }
+}
+
+.wrapper {
+    margin: auto;
+    position: relative;
+    top: 80px;
+    margin-top: 20px;
+    padding: 2em 0 0 0;
+    width: 25%;
+    height: 300px;
+    background-color: #eeeeee;
+}
+
+
+@media (max-width: 767px) {
+    .wrapper {
+        top: 150px;
+    }
+}
+
+@media (max-width: 485px) {
+    .wrapper {
+        top: 250px;
+    }
+}
+
+.godel {
+    color: #613eea;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 47px;
+}
+
+@media (max-width: 767px) {
+    .godel {
+        margin: 0 0 1em 1em;
+    }
+}
+
+.football {
+    color: #4d6279;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 47px;
+}
+
+.navButtons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 0 32em;
+}
+
+.navBarLogin {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: white;
+    padding: 10px 40px 10px 40px;
+    background-color: #613eea;
+    border: 0;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+@media (max-width: 767px) {
+    .navBarLogin {
+        margin-top: 1em;
+    }
+}
+
+.navBarRegister {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: white;
+    padding: 10px 30px 10px 30px ;
+    background-color: #613eea;
+    border: 0;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.submitButton {
+    width: 100%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: white;
+    padding: 10px 30px 10px 30px ;
+    background-color: #613eea;
+    border: 0;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.navBarLogin:hover, .navBarRegister:hover, .submitButton:hover {
+    transform: scale(1.05,1.05);
+    box-shadow: 0 0.6em 0.6em gray;
+    cursor: pointer;
+}
+
+.navBarLogin:active, .navBarRegister:active {
+    background-color: #4d6279;
+}
+
+@media (max-width: 1200px) {
+    .navButtons {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 0 20em;
+    }
+}
+
+@media (max-width: 992px) {
+    .navButtons {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 0 5em;
+    }
+}
+
+@media (max-width: 767px) {
+    .navButtons {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+}
