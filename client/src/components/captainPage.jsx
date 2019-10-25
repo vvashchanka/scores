@@ -6,6 +6,9 @@ import axios from 'axios';
 import 'react-table/react-table.css'
 import ReactTable from "react-table";
 import {api} from '../config';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 export default class CaptainView extends React.Component {
     state = this.props.state;
@@ -48,8 +51,8 @@ export default class CaptainView extends React.Component {
 
     deleteGame = (row) => {
         axios.delete(`${api}game`, {params: {
-            id: row.id
-        }})
+                id: row.id
+            }})
             .then(res => {
                 this.setState({
                     ok: res.data
@@ -123,15 +126,15 @@ export default class CaptainView extends React.Component {
         if (this.state.data.isCaptain) {
             axios.get(`${api}teams`)
                 .then((res) => {
-                    const myTeamIdx = res.data.findIndex(team => {
-                        return +team.captainId === this.state.data.id
-                        }
-                    );
-                    const myTeam = res.data.splice(myTeamIdx,1)[0];
-                    this.setState({
-                        teams: res.data,
-                        myTeam
-                    })
+                        const myTeamIdx = res.data.findIndex(team => {
+                                return +team.captainId === this.state.data.id
+                            }
+                        );
+                        const myTeam = res.data.splice(myTeamIdx,1)[0];
+                        this.setState({
+                            teams: res.data,
+                            myTeam
+                        })
                     }
                 )
                 .then(() => {
@@ -175,13 +178,17 @@ export default class CaptainView extends React.Component {
         })
     };
 
+    setDate = (date) => {
+        this.setState({
+            date
+        })
+    };
+
     setScore2 = (e) => {
         this.setState({
             score2: e.target.value
         })
     };
-
-
 
     createGame = () => {
         axios.post(`${api}game`,
@@ -189,7 +196,8 @@ export default class CaptainView extends React.Component {
                 team1: this.state.myTeam.teamName,
                 team2: this.state.gameAddTeam || this.game,
                 score1: this.state.score1,
-                score2: this.state.score2
+                score2: this.state.score2,
+                date: this.state.date
             })
             .then(() => {
                 this.setState({
@@ -240,7 +248,7 @@ export default class CaptainView extends React.Component {
                     teamName: this.state.myTeam.teamName,
                     login: this.state.data.login
                 }}
-            )
+        )
             .then(res => {
                 this.props.captain()
             })
@@ -263,84 +271,88 @@ export default class CaptainView extends React.Component {
             .catch(err => console.log(err))
     };
 
-     render() {
-         const GamesToConfirm = () => {
-             const gameColumns = [{
-                 Header: 'Opponent Team',
-                 accessor: 'team1'
-             },
-                 {
-                     Header: 'Opponent Score',
-                     accessor: 'score1'
-                 },
-                 {
-                     Header: 'Your Score',
-                     accessor: 'score2'
-                 },
-                 {
-                     Header: '',
-                     Cell: row => (
-                         <div>
-                             <button onClick={() => this.confirmGame(row.original)}>Confirm game</button>
-                         </div>
-                     )
-                 },
-                 {
-                     Header: '',
-                     Cell: row => (
-                         <div>
-                             <button onClick={() => this.deleteGame(row.original)}>Decline</button>
-                         </div>
-                     )
-                 }
-             ];
-             return <ReactTable
-                 minRows='3'
-                 data={this.state.gamesToConfirm}
-                 columns={gameColumns}
-             />
-         };
+    render() {
+        const GamesToConfirm = () => {
+            const gameColumns = [{
+                Header: 'Opponent Team',
+                accessor: 'team1'
+            },
+                {
+                    Header: 'Opponent Score',
+                    accessor: 'score1'
+                },
+                {
+                    Header: 'Your Score',
+                    accessor: 'score2'
+                },
+                {
+                    Header: 'Game Date',
+                    accessor: 'date'
+                },
+                {
+                    Header: '',
+                    Cell: row => (
+                        <div>
+                            <button onClick={() => this.confirmGame(row.original)}>Confirm game</button>
+                        </div>
+                    )
+                },
+                {
+                    Header: '',
+                    Cell: row => (
+                        <div>
+                            <button onClick={() => this.deleteGame(row.original)}>Decline</button>
+                        </div>
+                    )
+                }
+            ];
+            return <ReactTable
+                minRows='3'
+                data={this.state.gamesToConfirm}
+                columns={gameColumns}
+            />
+        };
 
-         const HasPlayer = () => {
-             const approvement = () => {
-                     if (this.state.myTeam.captainApproved  && this.state.myTeam.playerApproved) {
-                         return <div>Your team is ready to play</div>
-                     } else if (this.state.myTeam.captainApproved) {
-                         return <div>Waiting for player to confirm invitation</div>
-                     } else if (this.state.myTeam.playerApproved) {
-                         return <div>The player is not confirmed to join.
-                             <button className="btn btn-outline-secondary mr-2" onClick={this.confirmPlayer}>Confirm player</button>
-                         </div>
-                     }
-             };
+        const HasPlayer = () => {
+            const approvement = () => {
+                if (this.state.myTeam.captainApproved  && this.state.myTeam.playerApproved) {
+                    return <div>Your team is ready to play</div>
+                } else if (this.state.myTeam.captainApproved) {
+                    return <div>Waiting for player to confirm invitation</div>
+                } else if (this.state.myTeam.playerApproved) {
+                    return <div>The player is not confirmed to join.
+                        <button className="btn btn-outline-secondary mr-2" onClick={this.confirmPlayer}>Confirm player</button>
+                    </div>
+                }
+            };
 
-             return <div>Your player is {this.state.playerName}. <button className="btn btn-outline-secondary mr-2" onClick={() => this.leaveTeam(this.state.myTeam.teamName)}>Remove player</button>
-                 {approvement()}
-             </div>
-         };
+            return <div>Your player is {this.state.playerName}. <button className="btn btn-outline-secondary mr-2" onClick={() => this.leaveTeam(this.state.myTeam.teamName)}>Remove player</button>
+                {approvement()}
+            </div>
+        };
 
-         const NoPlayer = () => {
-             return <div>You have no player yet. Invite: <form className="form" onSubmit={(e) => {
-                 e.preventDefault();
-                 this.sendInvite(this.state.chosenPlayer);
-             }}>
-                 <div className="form-group">
-                     <select value={this.state.chosenPlayer} onChange={e => this.choosePlayer(e.target.value)}>{
-                         this.state.freePlayers.map(
-                             (option, i) => {
-                                 if(!i) {
-                                     this.invite = option.userName
-                                 }
-                                 return <option key={i}>{option.userName}</option>}
-                         )
-                     }</select>
-                     <button className="btn btn-outline-secondary mr-2">Send invite
-                     </button>
-                     <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
-                 </div>
-             </form>
-             </div>
-         };
+        const NoPlayer = () => {
+            return <div>You have no player yet. Invite: <form className="form" onSubmit={(e) => {
+                e.preventDefault();
+                this.sendInvite(this.state.chosenPlayer);
+            }}>
+                <div className="form-group">
+                    <select value={this.state.chosenPlayer} onChange={e => this.choosePlayer(e.target.value)}>{
+                        this.state.freePlayers.map(
+                            (option, i) => {
+                                if(!i) {
+                                    this.invite = option.userName
+                                }
+                                return <option key={i}>{option.userName}</option>}
+                        )
+                    }</select>
+                    <button className="btn btn-outline-secondary mr-2">Send invite
+                    </button>
+                    <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
+                </div>
+            </form>
+            </div>
+        };
 
         const {logged} = this.props;
         return <div className="container">
@@ -354,7 +366,7 @@ export default class CaptainView extends React.Component {
                 <div>
                     Your team: {this.state.myTeam.teamName} <button className="btn btn-outline-secondary mr-2" onClick={this.removeTeam}>Delete team</button>
                     {this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>
-                        }
+                    }
 
                 </div>
                 <form className="form" onSubmit={(e) => {
@@ -368,14 +380,19 @@ export default class CaptainView extends React.Component {
                         <input type="text" className="form-control" placeholder="Enter opponent`s score"
                                onChange={(e) => this.setScore2(e)}
                         />
+                        <DatePicker
+                            onChange={(date) => this.setDate(date)}
+                            selected={this.state.date}
+                        />
+                        <div>Date: {this.state.date ? this.state.date.toString().slice(0, -41) : 'Select a date'}</div>
                         Select opponent team: <select onChange={e => this.selectTeam(e.target.value)}>{
-                            this.state.teams.map((option, i) => {
-                                if(!i) {
-                                    this.game = option.teamName
-                                }
-                               return <option key={i}>{option.teamName}</option>
-                            })
-                        }</select>
+                        this.state.teams.map((option, i) => {
+                            if(!i) {
+                                this.game = option.teamName
+                            }
+                            return <option key={i}>{option.teamName}</option>
+                        })
+                    }</select>
 
                         <button className="btn btn-outline-secondary mr-2">Save game results
                         </button>

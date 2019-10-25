@@ -256,11 +256,9 @@ router.get('/games', async (req,res) => {
 });
 
 router.post('/game', (req, res) => {
+    const {team1, team2, score1, score2, date} = req.body;
     Games.create({
-        team1: req.body.team1,
-        team2: req.body.team2,
-        score1: req.body.score1,
-        score2: req.body.score2,
+        team1, team2, score1, score2, date,
         approved: false
     })
         .then(game => res.send(game))

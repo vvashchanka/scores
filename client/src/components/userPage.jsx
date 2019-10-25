@@ -26,7 +26,8 @@ export default class UserPage extends React.Component {
         freePlayers: [],
         hasInvites: false,
         gamesToConfirm: [],
-        playerName: ''
+        playerName: '',
+        date: new Date()
     };
 
     componentWillMount() {
