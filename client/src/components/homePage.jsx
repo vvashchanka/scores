@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import UserPage from './userPage';
 import axios from 'axios';
 import {api} from '../config';

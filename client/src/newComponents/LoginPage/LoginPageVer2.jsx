@@ -28,6 +28,7 @@ const LoginPageVer2 = (props) => {
                                            onChange={e => passwordValue(e.target.value)}/>
                                 </div>
                                 <button onClick={() => {sendData(data)}} type="button" className={styles.submitButton}>Submit</button>
+                                <p>{data.msg}</p>
                             </form>
                         </Col>
                     </Row>
