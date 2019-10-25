@@ -1,40 +1,53 @@
-.gameBox {
-    background: #F9FAFB;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-}
-
-.game__item:nth-child(odd){
+.form__input {
+    width: 20%;
+    height: 1.5em;
+    border-radius: 6px;
+    border: 1px solid gray;
+    outline: none;
     font-size: 24px;
 }
 
-.game__scoreItem:nth-child(odd){
-    font-weight: 700;
-    font-size: 32px;
+.form__input:focus {
+    outline: none;
+    border-bottom: 3px solid #55c57a;
+    box-shadow: 0 0 0 1px rgba(0, 123, 255, .5);
+}
+.form__input:focus:invalid {
+    border-bottom: 3px solid #ff7730;
+}
+.form__input::-webkit-input-placeholder {
+    color: #bbb;
 }
 
-.game__scoreItem:nth-child(2){
-    color: #777;
-    font-weight: 700;
-    font-size: 32px;
+.form__group{
+    margin: 1rem 0;
 }
 
-.game__buttonSuccess {
-    width: 32px;
-    height: 32px;
-    fill: green;
+.form__label {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.scoreItem {
+    margin: 0 10px;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.buttonCreate {
+    background: #4C31B8;
+    box-shadow: 0 8px 20px rgba(97, 62, 234, 0.32);
+    border-radius: 6px;
+    color: white;
+    width: 55%;
+    height: 2.8em;
+    border: unset;
+    margin-top: 10px;
     cursor: pointer;
 }
 
-.game__buttonDelete {
-    width: 32px;
-    height: 32px;
-    fill: red;
-    cursor: pointer;
-}
-
-.game__item:nth-child(4) {
-    align-self: flex-end;
+.buttonCreate:focus {
+    outline: none;
 }

@@ -1,11 +1,15 @@
 import React from "react";
-import {Modal} from "react-bootstrap";
+import {Modal, Dropdown} from "react-bootstrap";
 import styles from "./gameCreate.module.css";
+import Input from "../Input/Input";
 
 const GameCreate = (props) => {
+
+    const {opponent, score1, score2, datePick} = props;
     return (
         <Modal.Dialog
             {...props}
+            size="sm"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
@@ -14,12 +18,26 @@ const GameCreate = (props) => {
             </Modal.Header>
 
             <Modal.Body>
-                <div className={styles.gameBox}>
-                    <div className={styles.form__group}><label className={styles.form__label} htmlFor="opponent">Choose the opponent</label><input
-                        className={styles.form__input} id="opponent" type="text" required="required"
-                        /*value={value} onChange={e => onValueChange(id, e.target.value)}*//>
-                    </div>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Choose the opponent
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1">Team</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <div className={styles.form__group}><label className={styles.form__label}
+                                                           htmlFor="Enter the score">Enter the score</label>
+                    <input
+                        className={styles.form__input} id="Enter the score" type="text" required="required"
+                        value={score1}/>
+                    <span className={styles.scoreItem}>:</span>
+                    <input
+                        className={styles.form__input} id="Enter the score2" type="text" required="required"
+                        value={score2}/>
                 </div>
+                <button className={styles.buttonCreate}>CREATE</button>
             </Modal.Body>
         </Modal.Dialog>
     )

@@ -11,10 +11,11 @@ import {
     Route
 } from "react-router-dom";
 import ApproveGames from "./components/modal/ApproveGames/ApproveGames";
+import './index.css';
 import GameCreate from "./components/modal/GameCreate/GameCreate";
 import CreateTeam from "./components/modal/CreateTeam/createTeam";
 import ViewTeam from "./components/modal/ViewTeam/viewTeam";
-import ChoosePlayer from "./components/modal/ChoosePlayer/choosePlayer";
+import Notification from "./components/notification/notification";
 
 setToken(localStorage.jwt);
 
@@ -25,7 +26,9 @@ ReactDOM.render(
         <div>
             <ApproveGames />
             <GameCreate />
+            <Notification/>
         </div>
+
     </Route>
         <Route path="/login">
             <Login />
@@ -36,7 +39,6 @@ ReactDOM.render(
         <Route path="/test1">
             <CreateTeam/>
             <ViewTeam/>
-            <ChoosePlayer/>
         </Route>
         <Route path="/">
             <Home />

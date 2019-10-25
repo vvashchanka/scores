@@ -1,0 +1,20 @@
+.bellBox {
+    background-color: #ced4da;
+    width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.bell {
+    width: 24px;
+    height: 28px;
+    fill: red;
+}
+
+.btnWrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
