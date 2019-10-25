@@ -57,18 +57,7 @@ router.post('/teams', async (req,res) => {
     });
 });
 
-router.get('/games', async (req,res) => {
-    if (Object.keys(req.query).length) {
-        await Games.findAll({ where: {team2: req.query.team, approved: false}})
-            .then(games => res.send(games)
-             )
-            .catch(err => console.log(err))
-    } else {
-        await Games.findAll({where: {approved: true}})
-            .then(games => res.send(games))
-            .catch(err => console.log(err));
-    }
-});
+
 
 router.get('/teams', async (req,res) => {
         await Team.findAll()
@@ -251,6 +240,19 @@ router.put('/team/leave', async (req,res) => {
             teamName: null
         }))
         .catch(err => console.log(err));
+});
+
+router.get('/games', async (req,res) => {
+    if (Object.keys(req.query).length) {
+        await Games.findAll({ where: {team2: req.query.team, approved: false}})
+            .then(games => res.send(games)
+            )
+            .catch(err => console.log(err))
+    } else {
+        await Games.findAll()
+            .then(games => res.send(games))
+            .catch(err => console.log(err));
+    }
 });
 
 router.post('/game', (req, res) => {
