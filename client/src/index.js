@@ -23,8 +23,8 @@ setToken(localStorage.jwt);
 
 ReactDOM.render(
     <>
-        <Header/>
         <Router history={history}>
+            <Header/>
             <Switch>
                 <Route path="/modal">
                     <div>

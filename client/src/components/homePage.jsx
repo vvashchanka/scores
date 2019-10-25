@@ -123,9 +123,6 @@ export default class App extends React.Component {
                 <p>Welcome</p>
             </div>
             <div className="content">
-<Link className="icon_signup" to='/register'>Sign up</Link>
-
-<Link className="icon_login" to='/login'>Log in</Link>
                 <h2>Game results:</h2>
                 <ScrollMenu
                     data={menu}
@@ -135,7 +132,6 @@ export default class App extends React.Component {
                     onSelect={this.onSelect}/>
                 {this.state.gamesList.data ? <div>{this.showGames()}</div> : null}
                 </div>
-
             </div>
     }
 }}
