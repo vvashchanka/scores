@@ -11,7 +11,7 @@ export default class Register extends React.Component {
         login: '',
         password: '',
         confirmedPassword: '',
-        msg: '',
+        msg: ' ',
         success: false,
         ok: false,
         disabled: false,

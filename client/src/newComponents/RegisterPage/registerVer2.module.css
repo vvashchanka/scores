@@ -12,11 +12,10 @@
     margin: auto;
     position: relative;
     top: 80px;
-    margin-top: 20px;
-    padding: 2em 0 0 0;
-    width: 25%;
-    height: 450px;
+    width: 330px;
+    height: 440px;
     background-color: #eeeeee;
+    padding: 1em 1em 1em 1em;
 }
 
 @media (max-width: 767px) {

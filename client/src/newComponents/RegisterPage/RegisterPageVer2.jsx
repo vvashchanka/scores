@@ -68,6 +68,7 @@ const RegisterPageVer2 = (props) => {
                                 sendData(data)
                             }} type="button" className={styles.submitButton}>Register
                             </button>
+                            <p>{data.msg}</p>
                         </form>
                     </Col>
                 </Row>

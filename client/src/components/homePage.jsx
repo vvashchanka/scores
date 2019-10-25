@@ -116,10 +116,8 @@ export default class App extends React.Component {
     } else {
         return <div className="container">
             <div className="note">
-                <p>Welcome</p>
             </div>
             <div className="content">
-                <h2>Game results:</h2>
                 <ScrollMenu
                     data={menu}
                     arrowLeft={ArrowLeft}

@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './styleVer2.module.css';
 import { Container, Row, Col, } from 'react-bootstrap';
 
-const LoginPageVer2 = (props) => {
 
+const LoginPageVer2 = (props) => {
 
     const { data, login, password, sendData, loginValue, passwordValue } = props;
     return (
