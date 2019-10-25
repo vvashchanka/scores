@@ -34,8 +34,11 @@ export default class App extends React.Component {
     getGames = () => {
         axios.get(`${api}games`)
             .then(res => {
+                console.log(res.data);
+                const sorted = res.data.sort((a,b) => new Date(a.date) - new Date(b.date)
+                );
                 this.setState({
-                    games: res.data
+                    games: sorted
                 })
             })
             .catch(err => {
@@ -49,12 +52,12 @@ export default class App extends React.Component {
 
     showGames = () => {
         return this.state.gamesList.data.map((game)=> {
-            return <div className={game.approved ? "fadeIn" : "fadeIn unapproved"} key={game.id+1}>
-                <div key={game.id+2} className="score">{game.team1}</div>
-                <div key={game.id+3} className="score">{game.score1} </div>
+            return <div className="fadeIn" key={game.id+1}>
+                <div key={game.id+2} className="team">{game.team1}</div>
+                <div key={game.id+3} className={game.approved ? "score" : "unapproved"}>{game.score1} </div>
                 <div key={game.id+4} className="score"> : </div>
-                <div key={game.id+5} className="score"> {game.score2}</div>
-                <div key={game.id+6} className="score">{game.team2}</div>
+                <div key={game.id+5} className={game.approved ? "score" : "unapproved"}> {game.score2}</div>
+                <div key={game.id+6} className="team">{game.team2}</div>
             </div>
         });
 

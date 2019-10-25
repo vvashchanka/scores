@@ -16,11 +16,18 @@
     font-size: 40px;
 }
 
-
+.team{
+    display: inline-block;
+    font-size: 40px;
+    color: #777777;
+    margin: 10px;
+}
 
 .score{
     display: inline-block;
-    font-size: 40px;
+    font-size: 45px;
+    font-weight: bold;
+    color: #4d6279;
     margin: 10px;
 }
 
@@ -74,5 +81,9 @@
 }
 
 .unapproved {
-    color: red
+    display: inline-block;
+    font-size: 45px;
+    font-weight: bold;
+    color: #ff7730;
+    margin: 10px;
 }
