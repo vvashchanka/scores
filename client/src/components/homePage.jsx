@@ -13,7 +13,6 @@ const Arrow = ({ text, className }) => {
     );
 };
 
-
 const ArrowLeft = Arrow({ text: '◄', className: 'arrow-prev' });
 const ArrowRight = Arrow({ text: '►', className: 'arrow-next' });
 
@@ -33,7 +32,6 @@ export default class App extends React.Component {
     getGames = () => {
         axios.get(`${api}games`)
             .then(res => {
-                console.log(res.data);
                 const sorted = res.data.sort((a,b) => new Date(a.date) - new Date(b.date)
                 );
                 this.setState({
@@ -69,7 +67,6 @@ export default class App extends React.Component {
     };
 
     Menu = () => {
-        console.log(this.state.games)
         const dates = this.state.games.map(game => game.date.slice(0,10));
         let uniqueDates = [];
         for (let str of dates) {

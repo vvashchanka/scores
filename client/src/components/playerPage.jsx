@@ -6,9 +6,19 @@ import axios from 'axios';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import {api} from '../config';
+import { Modal } from 'react-bootstrap';
+import CreateTeam from './modal/CreateTeam/createTeam'
 
 export default class PlayerView extends React.Component {
-    state = this.props.state;
+    state = {
+        showCreateTeam: false,
+        ...this.props.state};
+
+    toggleShowCreateTeam = () => {
+        this.setState({
+            showCreateTeam: !this.state.showCreateTeam
+        })
+    };
 
     joinTeam = (row) => {
         axios.put(`${api}team/join`, {
@@ -149,20 +159,17 @@ export default class PlayerView extends React.Component {
             this.getUserData();
         }
     }
-/*
-    componentWillMount() {
-        this.getUserData();
-    }
-*/
+
     teamName = (e) => {
         this.setState({
             team: e.target.value
         })
     };
 
-    createTeam = () => {
+    createTeam = (t) => {
+        console.log('create');
         axios.post(`${api}team`, {
-            name: this.state.team,
+            name: t,
             id: this.state.data.id
         })
             .then(() => {
@@ -206,21 +213,13 @@ export default class PlayerView extends React.Component {
                     data={this.state.teamsToJoin}
                     columns={joinColumns}
                 />
-                <form className="form" onSubmit={(e) => {
-                    e.preventDefault();
-                    this.createTeam({
-                        team: this.state.team
-                    })
-                }}>
-                    <div className="form-group">
-                        <input type="text" className="form-control" value={this.state.team} placeholder="Enter team name"
-                               onChange={e => this.teamName(e)}
-                        />
-                        <button disabled={this.state.disabled} className="btn btn-outline-secondary mr-2">Create team
-                        </button>
-                        <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
-                    </div>
-                </form>
+                <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowCreateTeam}>
+                    Create team
+                </button>
+                <Modal show={this.state.showCreateTeam} onHide={this.toggleShowCreateTeam}>
+                <CreateTeam team={this.createTeam}/>
+                </Modal>
+                <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
             </div>
         };
 
