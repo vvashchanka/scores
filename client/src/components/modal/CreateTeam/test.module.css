@@ -56,10 +56,12 @@
     box-shadow: 0 0 0 1px rgba(0, 123, 255, .5);
 }
 
-.fuck {
-    text-align: center;
-}
-
 .inputSearch {
     cursor: pointer;
 }
+
+.approve {
+    cursor: pointer;
+
+}
+

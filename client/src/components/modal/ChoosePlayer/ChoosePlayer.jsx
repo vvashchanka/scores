@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Table } from 'react-bootstrap';
 import styles from '../CreateTeam/test.module.css';
+import {ReactComponent as Approve} from "../../img/svg/approve.svg";
 
 const ChoosePlayer = (props) => {
 
@@ -13,34 +14,30 @@ const ChoosePlayer = (props) => {
                 <h1>Choose player</h1>
             </Modal.Header>
             <Modal.Body closeButton>
-                <div className={styles}>
+                <div className={styles.wrapper}>
                     <Table striped bordered hover>
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Username</th>
+                            <th>User Name</th>
+                            <th>Invite</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
                             <td>Mark</td>
-                            <td>@mdo</td>
+                            <td><Approve className={styles.approve}/></td>
                         </tr>
                         <tr>
-                            <td>2</td>
                             <td>Jacob</td>
-                            <td>@fat</td>
+                            <td><Approve className={styles.approve}/></td>
                         </tr>
                         <tr>
-                            <td>3</td>
                             <td>Larry the Bird</td>
-                            <td>@twitter</td>
+                            <td><Approve className={styles.approve}/></td>
                         </tr>
                         </tbody>
                     </Table>
-                    <button className={styles.buttonCreate}>Submit</button>
+                    <p>{props.message}</p>
                 </div>
             </Modal.Body>
         </Modal.Dialog>

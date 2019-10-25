@@ -16,35 +16,39 @@ import GameCreate from "./components/modal/GameCreate/GameCreate";
 import CreateTeam from "./components/modal/CreateTeam/createTeam";
 import ViewTeam from "./components/modal/ViewTeam/viewTeam";
 import Notification from "./components/notification/notification";
-import ChoosePlayer from "./components/modal/ChoosePlayer/choosePlayer";
+import Header from "./components/header/Header";
+import ChoosePlayer from "./components/modal/ChoosePlayer/ChoosePlayer";
 
 setToken(localStorage.jwt);
 
 ReactDOM.render(
-    <Router history={history}>
-    <Switch>
-    <Route path="/modal">
-        <div>
-            <ApproveGames />
-            <GameCreate />
-            <Notification/>
-        </div>
+    <>
+        <Header/>
+        <Router history={history}>
+            <Switch>
+                <Route path="/modal">
+                    <div>
+                        <ApproveGames />
+                        <GameCreate />
+                        <Notification/>
+                    </div>
 
-    </Route>
-        <Route path="/login">
-            <Login />
-        </Route>
-        <Route path="/register">
-            <Register />
-        </Route>
-        <Route path="/test1">
-            <CreateTeam/>
-            <ViewTeam/>
-            <ChoosePlayer/>
-        </Route>
-        <Route path="/">
-            <Home />
-        </Route>
-    </Switch>
-</Router>, document.getElementById('root'));
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <Route path="/register">
+                    <Register />
+                </Route>
+                <Route path="/test1">
+                    <CreateTeam/>
+                    <ViewTeam/>
+                    <ChoosePlayer/>
+                </Route>
+                <Route path="/">
+                    <Home />
+                </Route>
+            </Switch>
+        </Router></>
+    , document.getElementById('root'));
 
