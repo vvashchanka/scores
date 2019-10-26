@@ -7,7 +7,8 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import {api} from '../config';
 import { Modal } from 'react-bootstrap';
-import CreateTeam from './modal/CreateTeam/createTeam'
+import CreateTeam from './modal/CreateTeam/createTeam';
+const fs = require('fs');
 
 export default class PlayerView extends React.Component {
     state = {
@@ -166,10 +167,10 @@ export default class PlayerView extends React.Component {
         })
     };
 
-    createTeam = (t) => {
-        console.log('create');
+    createTeam = (team, image) => {
         axios.post(`${api}team`, {
-            name: t,
+            image,
+            teamName: team,
             id: this.state.data.id
         })
             .then(() => {

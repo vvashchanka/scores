@@ -67,17 +67,19 @@ router.get('/teams', async (req,res) => {
 
 
 router.post('/team', async (req, res) => {
-    await Team.findOne({ where: { teamName: req.body.name } })
-        .then(team => {
+    const {teamName, id, image} = req.body;
+    await Team.findOne({ where: { teamName } })
+        .then(async team => {
             if (!team) {
-                User.findOne({ where: { id: req.body.id } })
+                await User.findOne({ where: { id } })
                     .then(user => user.update({
                         isCaptain: true,
-                        teamName: req.body.name
+                        teamName
                     }));
-                Team.create({
-                    teamName: req.body.name,
-                    captainId: req.body.id
+                await Team.create({
+                    teamName,
+                    captainId: id,
+                    image
                 })
                     .then(team => {
                         res.send(team.dataValues);
@@ -280,6 +282,10 @@ router.delete('/game', (req, res) => {
     Games.destroy({ where: {id: req.query.id}})
         .then(() => res.send('Score deleted'))
         .catch(err => console.log(err))
+});
+
+router.post('/image', async (req,res) => {
+
 });
 
 module.exports = router;

@@ -4,6 +4,19 @@ import styles from './test.module.css';
 
 const CreateTeam = (props) => {
     const [team, setTeam] = useState('');
+    const [img, setImg] = useState('');
+
+    const getBase64 = (e) => {
+        const file = e.target.files[0];
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            setImg(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        }
+    };
     return (
         <Modal.Dialog {...props}
                       size="s"
@@ -15,7 +28,8 @@ const CreateTeam = (props) => {
             <Modal.Body closeButton>
                 <div className={styles.textCenter}>
                     <input type="text" className={styles.inputTeam} onChange={e => setTeam(e.target.value)} placeholder={'Team Name'}/>
-                    <button className={styles.buttonCreate} onClick={() => props.team(team)}>CREATE</button>
+                    <input type="file" onChange={(e) => getBase64(e)}/>
+                    <button className={styles.buttonCreate} onClick={() => props.team(team, img)}>CREATE</button>
                 </div>
             </Modal.Body>
         </Modal.Dialog>

@@ -1,30 +1,30 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Games', {
+    return queryInterface.createTable('Teams', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      team1: {
+      captainId: {
         type: Sequelize.STRING
       },
-      team2: {
+      teamName: {
         type: Sequelize.STRING
       },
-      score1: {
+      player: {
         type: Sequelize.STRING
       },
-      score2: {
-        type: Sequelize.STRING
-      },
-      approved: {
+      captainApproved: {
         type: Sequelize.BOOLEAN
       },
-      date: {
-        type: Sequelize.DATE
+      playerApproved: {
+        type: Sequelize.BOOLEAN
+      },
+      image: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Games');
+    return queryInterface.dropTable('Teams');
   }
 };

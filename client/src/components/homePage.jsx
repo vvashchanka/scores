@@ -6,8 +6,7 @@ import ScrollMenu from 'react-horizontal-scrolling-menu';
 import './homePage.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-
-
+import save from "./img/save.png"
 
 const Arrow = ({ text, className }) => {
     return (
@@ -26,7 +25,8 @@ export default class App extends React.Component {
         loggedOut: false,
         gamesList: 'Nothing to show',
         games: [],
-        gamesByDate: []
+        gamesByDate: [],
+        teams: []
     };
 
     exportPDF = () => {
@@ -74,6 +74,13 @@ export default class App extends React.Component {
         this.setState({ selected: key });
     };
 
+getTeams = () => {
+    axios.get(`${api}teams`)
+        .then(res => this.setState({
+            teams: res.data
+        }))
+        .catch(err => console.log(err))
+};
 
     getGames = () => {
         axios.get(`${api}games`)
@@ -90,18 +97,22 @@ export default class App extends React.Component {
     };
 
     componentWillMount() {
-        this.getGames()
+        this.getGames();
+        this.getTeams();
     }
 
     showGames = () => {
         return this.state.gamesList.data.map((game)=> {
-
-            return <div className="fadeIn" key={game.id+1}>
+        const imgTeam1 = this.state.teams.find(team => team.teamName === game.team1).image;
+            const imgTeam2 = this.state.teams.find(team => team.teamName === game.team2).image;
+            return <div className="fadeIn" key={game.id}>
+                <div key={game.id+1} className="team"><img className="avatar" src={imgTeam1} alt=""/></div>
                 <div key={game.id+2} className="team">{game.team1}</div>
                 <div key={game.id+3} className={game.approved ? "score" : "unapproved"}>{game.score1} </div>
                 <div key={game.id+4} className="score"> : </div>
                 <div key={game.id+5} className={game.approved ? "score" : "unapproved"}> {game.score2}</div>
                 <div key={game.id+6} className="team">{game.team2}</div>
+                <div key={game.id+7} className="team"><img className="avatar" src={imgTeam2} alt=""/></div>
             </div>
         });
 
@@ -183,7 +194,7 @@ export default class App extends React.Component {
                     onSelect={this.onSelect}/>
                 {this.state.gamesList.data ? <div>{this.showGames()}</div> : null}
                 </div>
-            <button onClick={() => this.exportPDF()}>Save game results to PDF</button>
+            <img onClick={() => this.exportPDF()} src={save} alt="Save game results in pdf"/>
             </div>
     }
 }}

@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     teamName: DataTypes.STRING,
     player: DataTypes.STRING,
     captainApproved: DataTypes.BOOLEAN,
-    playerApproved: DataTypes.BOOLEAN
+    playerApproved: DataTypes.BOOLEAN,
+    image: DataTypes.TEXT
   }, {});
   Team.associate = function(models) {
     // associations can be defined here
