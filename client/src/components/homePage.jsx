@@ -4,6 +4,10 @@ import axios from 'axios';
 import {api} from '../config';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import './homePage.css';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+
 
 const Arrow = ({ text, className }) => {
     return (
@@ -21,7 +25,49 @@ export default class App extends React.Component {
         selected: 0,
         loggedOut: false,
         gamesList: 'Nothing to show',
-        games: []
+        games: [],
+        gamesByDate: []
+    };
+
+    exportPDF = () => {
+        const unit = "pt";
+        const size = "A4"; // Use A1, A2, A3 or A4
+        const orientation = "portrait"; // portrait or landscape
+
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+
+        doc.setFontSize(15);
+
+        const title = "Games";
+        const headers = [["Date", "Winner", "", "", "Opponent"]];
+        const data = this.state.games.map(el => {
+            const {team1, team2, score1, score2, date} = el;
+            let winner, looser, winScore, looseScore;
+            if (score1 > score2) {
+                winner = team1;
+                winScore = score1;
+                looseScore = score2;
+                looser = team2;
+            } else {
+                winner = team2;
+                looser = team1;
+                winScore = score2;
+                looseScore = score1;
+            }
+                return [date.slice(0, -14), winner, winScore, looseScore, looser]
+        }
+        );
+
+        let content = {
+            startY: 50,
+            head: headers,
+            body: data
+        };
+
+        doc.text(title, marginLeft, 40);
+        doc.autoTable(content);
+        doc.save("scores.pdf")
     };
 
     onSelect = key => {
@@ -67,7 +113,7 @@ export default class App extends React.Component {
         })
     };
 
-    Menu = () => {
+    gamesByDate = () => {
         const dates = this.state.games.map(game => game.date.slice(0,10));
         let uniqueDates = [];
         for (let str of dates) {
@@ -75,7 +121,7 @@ export default class App extends React.Component {
                 uniqueDates.push(str);
             }
         }
-        const newArr = uniqueDates.map(date => {
+        return uniqueDates.map(date => {
             const filtered = this.state.games.filter(game => game.date.slice(0, 10) === date);
             const newDate = new Date(date).toUTCString();
             return {
@@ -83,8 +129,11 @@ export default class App extends React.Component {
                 data: filtered
             }
         });
+    };
 
-        return newArr.map(el => {
+    Menu = () => {
+
+        return this.gamesByDate().map(el => {
             const { name } = el;
             const MenuItem = ({ text }) => {
                 const dateNow = new Date().toUTCString().slice(0, -13);
@@ -134,6 +183,7 @@ export default class App extends React.Component {
                     onSelect={this.onSelect}/>
                 {this.state.gamesList.data ? <div>{this.showGames()}</div> : null}
                 </div>
+            <button onClick={() => this.exportPDF()}>Save game results to PDF</button>
             </div>
     }
 }}
