@@ -6,6 +6,7 @@
     cursor: pointer;
     border: none;
 }
+
 .menu-item-wrapper.active {
     font-size: 25px;
 }
@@ -86,4 +87,9 @@
     font-weight: bold;
     color: #ff7730;
     margin: 10px;
+}
+
+.today {
+    border: 4px solid #613eea;
+    border-radius: 5px;
 }

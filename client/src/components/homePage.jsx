@@ -49,6 +49,7 @@ export default class App extends React.Component {
 
     showGames = () => {
         return this.state.gamesList.data.map((game)=> {
+
             return <div className="fadeIn" key={game.id+1}>
                 <div key={game.id+2} className="team">{game.team1}</div>
                 <div key={game.id+3} className={game.approved ? "score" : "unapproved"}>{game.score1} </div>
@@ -85,10 +86,17 @@ export default class App extends React.Component {
 
         return newArr.map(el => {
             const { name } = el;
-            const MenuItem = ({ text, selected }) => {
+            const MenuItem = ({ text }) => {
+                const dateNow = new Date().toUTCString().slice(0, -13);
+                const gameDate = el.name;
+
+                let cl = "menu-item";
+                if (dateNow === gameDate) {
+                    cl += " today"
+                }
                 return (
                     <div
-                        className="menu-item"
+                        className={cl}
                         onClick={() => this.setState({
                             gamesList: el
                         })}
