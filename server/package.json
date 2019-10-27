@@ -21,6 +21,10 @@
     "sequelize-cli": "^5.5.1"
   },
   "scripts": {
+    "createuser": "npx sequelize-cli model:generate --name User --attributes userName:string,login:string,password:string,teamName:string,isCaptain:boolean --force",
+    "createteam": "npx sequelize-cli model:generate --name Team --attributes captainId:string,teamName:string,player:string,captainApproved:boolean,playerApproved:boolean,image:text --force",
+    "creategame": "npx sequelize-cli model:generate --name Games --attributes team1:string,team2:string,score1:string,score2:string,approved:boolean,date:date --force",
+    "migrate": "npx sequelize-cli db:migrate",
     "start": "nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",

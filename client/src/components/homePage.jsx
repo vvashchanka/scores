@@ -41,7 +41,7 @@ export default class App extends React.Component {
 
         const title = "Games";
         const headers = [["Date", "Winner", "", "", "Opponent"]];
-        const data = this.state.games.map(el => {
+        const data = this.state.games.filter(game => game.approved).map(el => {
             const {team1, team2, score1, score2, date} = el;
             let winner, looser, winScore, looseScore;
             if (score1 > score2) {
@@ -84,8 +84,8 @@ getTeams = () => {
 
     getGames = () => {
         axios.get(`${api}games`)
-            .then(res => {
-                const sorted = res.data.sort((a,b) => new Date(a.date) - new Date(b.date)
+            .then(games => {
+                const sorted = games.data.sort((a,b) => new Date(a.date) - new Date(b.date)
                 );
                 this.setState({
                     games: sorted

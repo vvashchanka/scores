@@ -22,7 +22,7 @@ export default class Register extends React.Component {
 
     sendData = (data) => {
         axios.post(`${api}register`, {
-            name: data.name,
+            userName: data.name,
             login: data.login,
             password: data.password,
             confirmedPassword: data.confirmedPassword

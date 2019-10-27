@@ -7,7 +7,6 @@ import 'react-table/react-table.css'
 import ReactTable from "react-table";
 import {api} from '../config';
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class CaptainView extends React.Component {
@@ -15,6 +14,28 @@ export default class CaptainView extends React.Component {
 
     game = '';
     invite = '';
+
+    createGame = () => {
+        axios.post(`${api}games`,
+            {
+                team1: this.state.myTeam.teamName,
+                team2: this.state.gameAddTeam || this.game,
+                score1: this.state.score1,
+                score2: this.state.score2,
+                date: this.state.date
+            })
+            .then(() => {
+                this.setState({
+                    ok: 'Score sent to opponent'
+                });
+            })
+            .then(() => {
+                this.getUserData()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    };
 
     getGames = () => {
         axios.get(`${api}games`, {
@@ -33,7 +54,7 @@ export default class CaptainView extends React.Component {
     };
 
     confirmGame = (row) => {
-        axios.put(`${api}game`, {
+        axios.put(`${api}games`, {
             id: row.id
         })
             .then((res) => {
@@ -50,7 +71,7 @@ export default class CaptainView extends React.Component {
     };
 
     deleteGame = (row) => {
-        axios.delete(`${api}game`, {params: {
+        axios.delete(`${api}games`, {params: {
                 id: row.id
             }})
             .then(res => {
@@ -65,7 +86,7 @@ export default class CaptainView extends React.Component {
     };
 
     getFreePlayers = () => {
-        axios.get(`${api}players`)
+        axios.get(`${api}users/free`)
             .then(res => {
                 this.setState({
                     freePlayers: res.data
@@ -74,9 +95,9 @@ export default class CaptainView extends React.Component {
     };
 
     sendInvite = (player) => {
-        axios.post(`${api}invite`, {
-            player: player || this.invite,
-            team: this.state.myTeam.teamName
+        axios.post(`${api}users/invite`, {
+            userName: player || this.invite,
+            teamName: this.state.myTeam.teamName
         })
             .then(() => {
                 this.setState({
@@ -94,9 +115,9 @@ export default class CaptainView extends React.Component {
         });
     };
 
-    leaveTeam = (team) => {
-        axios.put(`${api}team/leave`, {
-            team, login: this.state.myTeam.player
+    leaveTeam = (teamName) => {
+        axios.put(`${api}teams/leave`, {
+            teamName, login: this.state.myTeam.player
         })
             .then(res => {
                 this.setState({
@@ -110,7 +131,7 @@ export default class CaptainView extends React.Component {
     };
 
     confirmPlayer = () => {
-        axios.put(`${api}player/confirm`,
+        axios.put(`${api}users/confirm`,
             {
                 team: this.state.myTeam.teamName
             })
@@ -190,32 +211,11 @@ export default class CaptainView extends React.Component {
         })
     };
 
-    createGame = () => {
-        axios.post(`${api}game`,
-            {
-                team1: this.state.myTeam.teamName,
-                team2: this.state.gameAddTeam || this.game,
-                score1: this.state.score1,
-                score2: this.state.score2,
-                date: this.state.date
-            })
-            .then(() => {
-                this.setState({
-                    ok: 'Score sent to opponent'
-                });
-            })
-            .then(() => {
-                this.getUserData()
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    };
+
 
     getUserData = () => {
         const login = jwt.decode(localStorage.jwt).login;
-
-        axios.get(`${api}user`, {
+        axios.get(`${api}users`, {
             params: {
                 login
             }
@@ -241,7 +241,7 @@ export default class CaptainView extends React.Component {
     }
 
     removeTeam = () => {
-        axios.delete(`${api}team`, {
+        axios.delete(`${api}teams`, {
             params:
                 {
                     player: this.state.myTeam.player,
@@ -258,7 +258,7 @@ export default class CaptainView extends React.Component {
     };
 
     getPlayerName = () => {
-        axios.get(`${api}player`, {
+        axios.get(`${api}users/player`, {
             params: {
                 login: this.state.myTeam.player
             }
@@ -365,6 +365,7 @@ export default class CaptainView extends React.Component {
                 You are captain
                 <div>
                     Your team: {this.state.myTeam.teamName} <button className="btn btn-outline-secondary mr-2" onClick={this.removeTeam}>Delete team</button>
+                    <img src={this.state.myTeam.image} alt="Team logo"/>
                     {this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>
                     }
 

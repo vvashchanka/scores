@@ -22,9 +22,9 @@ export default class PlayerView extends React.Component {
     };
 
     joinTeam = (row) => {
-        axios.put(`${api}team/join`, {
+        axios.put(`${api}teams/join`, {
             player: this.state.data.login,
-            team: row.teamName
+            teamName: row.teamName
         })
             .then(res => {
                 this.setState({
@@ -40,7 +40,7 @@ export default class PlayerView extends React.Component {
     acceptTeam = (row) => {
         axios.put(`${api}teams/accept`, {
             player: this.state.data.login,
-            team: row.teamName
+            teamName: row.teamName
         })
             .then(res => {
                 this.setState({
@@ -59,7 +59,7 @@ export default class PlayerView extends React.Component {
     declineTeam = (row) => {
         axios.put(`${api}teams/decline`, {
             player: this.state.data.login,
-            team: row.teamName
+            teamName: row.teamName
         })
             .then(res => {
                 this.setState({
@@ -68,16 +68,16 @@ export default class PlayerView extends React.Component {
                 });
             })
             .then(() =>
-                this.getTeams()
+                this.getUserData()
             )
             .catch(err => {
                 console.log(err)
             });
     };
 
-    leaveTeam = (team) => {
-        axios.put(`${api}team/leave`, {
-            team, login: this.state.data.login
+    leaveTeam = (teamName) => {
+        axios.put(`${api}teams/leave`, {
+            teamName, login: this.state.data.login
         })
             .then(res => {
                 this.setState({
@@ -94,7 +94,7 @@ export default class PlayerView extends React.Component {
         if (this.state.data.isCaptain) {
             axios.get(`${api}teams`,{
                     query: {
-                        id: this.state.data.id
+                        userId: this.state.data.id
                     }
                 }
                 )
@@ -138,7 +138,7 @@ export default class PlayerView extends React.Component {
         const data = {
             login: jwt.decode(localStorage.jwt).login
         };
-        axios.get(`${api}user`, {
+        axios.get(`${api}users`, {
             params: {
                 login: data.login
             }
@@ -168,7 +168,7 @@ export default class PlayerView extends React.Component {
     };
 
     createTeam = (team, image) => {
-        axios.post(`${api}team`, {
+        axios.post(`${api}teams`, {
             image,
             teamName: team,
             id: this.state.data.id

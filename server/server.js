@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
-const authRoute = require('./routes/routes');
-const loggedInRoute = require('./logged');
+const authRoute = require('./routes/auth');
+const usersRoute = require('./routes/users');
+const teamsRoute = require('./routes/teams');
+const gamesRoute = require('./routes/games');
+const loggedInRoute = require('./routes/logged');
 const cors = require('cors');
 const db = require('./models/');
 const config = require('config');
@@ -27,3 +30,6 @@ app.use(cors({
 }));
 app.use('/api/', authRoute);
 app.use('/api/', loggedInRoute);
+app.use('/api/users/', usersRoute);
+app.use('/api/games/', gamesRoute);
+app.use('/api/teams/', teamsRoute);

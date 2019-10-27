@@ -38,7 +38,7 @@ export default class UserPage extends React.Component {
         console.log('checking user status');
         const login = jwt.decode(localStorage.jwt).login;
 
-        axios.get(`${api}user`, {
+        axios.get(`${api}users`, {
             params: {
                 login
             }

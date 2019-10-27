@@ -6,7 +6,7 @@
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false,
-    "port": "5432"
+    "port": "54320"
   },
   "test": {
     "username": "root",
