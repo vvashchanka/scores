@@ -381,6 +381,11 @@ export default class CaptainView extends React.Component {
             <Header state={this.state} isHome={logged}
                     gamesToConfirm={this.state.gamesToConfirm}
                     confirmGame={this.confirmGame} deleteGame={this.deleteGame}
+                    team={this.state.myTeam.teamName}
+                    removeTeam={this.removeTeam}
+                    logo={this.state.myTeam.image}
+                    player={this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>}
+                    captain={this.state.data.login}
             />
             <div className="container">
                 <div className="note">
@@ -393,7 +398,7 @@ export default class CaptainView extends React.Component {
                     <div>
 
                         {/*MODAL VIEW TEAM*/}
-                        <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowViewTeam}>
+                        {/*<button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowViewTeam}>
                             View Team
                         </button>
                         <Modal show={this.state.showViewTeam} onHide={this.toggleShowViewTeam}>
@@ -403,7 +408,7 @@ export default class CaptainView extends React.Component {
                                       player={this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>}
                                       captain={this.state.data.login}
                             />
-                        </Modal>
+                        </Modal>*/}
 
                     </div>
 
