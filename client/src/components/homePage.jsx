@@ -9,7 +9,6 @@ import 'jspdf-autotable';
 import save from "./img/save.png"
 import Header from "./header/Header";
 
-
 //Arrows to move slider with games dates
 const Arrow = ({ text, className }) => {
     return (
@@ -105,10 +104,11 @@ getTeams = () => {
         this.getTeams();
     }
 //Games list by selected date
-    showGames = () => {
-        return this.state.gamesList.data.map((game)=> {
-        const imgTeam1 = this.state.teams.find(team => team.teamName === game.team1).image;
-            const imgTeam2 = this.state.teams.find(team => team.teamName === game.team2).image;
+    showGames =  () => {
+        return  this.state.gamesList.data.map( (game)=> {
+            console.log(this.state.teams);
+        const imgTeam1 =  this.state.teams.find(team => team.teamName === game.team1).image;
+            const imgTeam2 =  this.state.teams.find(team => team.teamName === game.team2).image;
             return <div className="fadeIn" key={game.id}>
                 <div key={game.id+1} className="team"><img className="avatar" src={imgTeam1} alt=""/></div>
                 <div key={game.id+2} className="team">{game.team1}</div>

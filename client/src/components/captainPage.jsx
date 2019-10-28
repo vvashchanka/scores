@@ -11,9 +11,13 @@ import Header from "./header/Header";
 import ViewTeam from "./modal/ViewTeam/ViewTeam";
 import Modal from "react-bootstrap/Modal";
 import GameCreate from "./modal/GameCreate/GameCreate";
+import CreateTeam from "./modal/CreateTeam/createTeam";
 
 export default class CaptainView extends React.Component {
-    state = this.props.state;
+    state = {
+        showCreateGame: false,
+        ...this.props.state
+    };
 
     game = '';
     invite = '';
@@ -24,6 +28,13 @@ export default class CaptainView extends React.Component {
             showViewTeam: !this.state.showViewTeam
         })
     };
+    //Open create team modal
+    toggleShowCreateGame = () => {
+        this.setState({
+            showCreateGame: !this.state.showCreateGame
+        })
+    };
+
 //Create new game result
     createGame = () => {
         axios.post(`${api}games`,
@@ -374,42 +385,21 @@ export default class CaptainView extends React.Component {
                         </Modal>
 
                     </div>
-                    <form className="form" onSubmit={(e) => {
-                        e.preventDefault();
-                        this.createGame()
-                    }}>
-                        <div className="form-group">
-                            <input type="text" className="form-control" placeholder="Enter your team score"
-                                   onChange={(e) => this.setScore1(e)}
-                            />
-                            <input type="text" className="form-control" placeholder="Enter opponent`s score"
-                                   onChange={(e) => this.setScore2(e)}
-                            />
-                            <DatePicker
-                                onChange={(date) => this.setDate(date)}
-                                selected={this.state.date}
-                            />
-                            <div>Date: {this.state.date ? this.state.date.toString().slice(0, -41) : 'Select a date'}</div>
-                            Select opponent team: <select onChange={e => this.selectTeam(e.target.value)}>{
-                            this.state.teams.map((option, i) => {
-                                if(!i) {
-                                    this.game = option.teamName
-                                }
-                                return <option key={i}>{option.teamName}</option>
-                            })
-                        }</select>
 
-                            <button className="btn btn-outline-secondary mr-2">Save game results
+                            <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowCreateGame}>
+                                Create score
                             </button>
-
+                            <Modal show={this.state.showCreateGame} onHide={this.toggleShowCreateGame}>
+                                <GameCreate game={this.setGame} teams={this.state.teams} score1={this.state.score1} score2={this.state.score2}
+                                            date={this.state.date} ok={this.state.ok} msg={this.state.msg} selectTeam={this.selectTeam}
+                                            setDate={this.setDate} setScore1={this.setScore1}
+                                            setScore2={this.setScore2} createGame={this.createGame}
+                                />
+                            </Modal>
                             <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
-                        </div>
-                    </form>
-                    <GameCreate game={this.setGame} teams={this.state.teams} score1={this.state.score1} score2={this.state.score2}
-                                date={this.state.date} ok={this.state.ok} msg={this.state.msg} selectTeam={this.selectTeam}
-                                setDate={this.setDate} setScore1={this.setScore1}
-                                setScore2={this.setScore2} createGame={this.createGame}
-                    />
+
+
+
                     {this.state.gamesToConfirm.length ? <GamesToConfirm/> : null}
                 </div>
             </div>
