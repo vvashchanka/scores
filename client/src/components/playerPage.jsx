@@ -256,7 +256,6 @@ export default class PlayerView extends React.Component {
                     Your Login is {this.state.data.login}.
                     You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''
                 }.
-                    <LogoutBtn isHome={logged}/>
                 </div>
             </div>
         </div>}}

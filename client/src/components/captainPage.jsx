@@ -397,9 +397,6 @@ export default class CaptainView extends React.Component {
                                 />
                             </Modal>
                             <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
-
-
-
                     {this.state.gamesToConfirm.length ? <GamesToConfirm/> : null}
                 </div>
             </div>
