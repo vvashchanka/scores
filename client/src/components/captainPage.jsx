@@ -381,6 +381,11 @@ export default class CaptainView extends React.Component {
             <Header state={this.state} isHome={logged}
                     gamesToConfirm={this.state.gamesToConfirm}
                     confirmGame={this.confirmGame} deleteGame={this.deleteGame}
+                    team={this.state.myTeam.teamName}
+                    removeTeam={this.removeTeam}
+                    logo={this.state.myTeam.image}
+                    player={this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>}
+                    captain={this.state.data.login}
             />
             <div className="container">
                 <div className="note">
@@ -390,9 +395,9 @@ export default class CaptainView extends React.Component {
                     Your Login is {this.state.data.login}.
                     You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''}.
                     You are captain
-                    <div>
+                    {/*<div>
 
-                        {/*MODAL VIEW TEAM*/}
+                        //MODAL VIEW TEAM
                         <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowViewTeam}>
                             View Team
                         </button>
@@ -405,7 +410,7 @@ export default class CaptainView extends React.Component {
                             />
                         </Modal>
 
-                    </div>
+                    </div>*/}
 
                             <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowCreateGame}>
                                 Create score
