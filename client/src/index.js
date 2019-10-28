@@ -16,7 +16,6 @@ import GameCreate from "./components/modal/GameCreate/GameCreate";
 import CreateTeam from "./components/modal/CreateTeam/createTeam";
 import ViewTeam from "./components/modal/ViewTeam/viewTeam";
 import Notification from "./components/notification/notification";
-import Header from "./components/header/Header";
 import ChoosePlayer from "./components/modal/ChoosePlayer/ChoosePlayer";
 
 
@@ -26,7 +25,6 @@ setToken(localStorage.jwt);
 ReactDOM.render(
     <>
         <Router history={history}>
-            <Header/>
             <Switch>
                 <Route path="/modal">
                     <div>

@@ -67,7 +67,7 @@ router.put('/join', async (req,res) => {
 //Delete team
 router.delete('/', async (req,res) => {
     const { teamName, login } = req.query;
-    await User.findOne({ where: { login: req.body.player } })
+    await User.findOne({ where: { login: req.query.player } })
         .then(user => user.update({
             teamName: null
         }))

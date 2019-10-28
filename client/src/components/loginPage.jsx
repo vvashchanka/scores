@@ -3,6 +3,7 @@ import setToken from '../setToken';
 import {api} from '../config';
 import LoginPageVer2 from "../newComponents/LoginPage/LoginPageVer2";
 import {Redirect} from "react-router";
+import Header from "./header/Header";
 const axios = require('axios');
 
 export default class Login extends React.Component {
@@ -54,6 +55,7 @@ export default class Login extends React.Component {
         return (
             <>
                 {this.state.loggedIn && <Redirect to="/"/>}
+                <Header/>
                 <LoginPageVer2
                     data={this.state}
                     sendData={this.sendData}

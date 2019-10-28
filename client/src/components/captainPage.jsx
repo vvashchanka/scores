@@ -8,6 +8,7 @@ import ReactTable from "react-table";
 import {api} from '../config';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Header from "./header/Header";
 
 export default class CaptainView extends React.Component {
     state = this.props.state;
@@ -336,54 +337,57 @@ export default class CaptainView extends React.Component {
         };
 
         const {logged} = this.props;
-        return <div className="container">
-            <div className="note">
-                <p>Welcome, {this.state.data.userName}</p>
-            </div>
-            <div className="content">
-                Your Login is {this.state.data.login}.
-                You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''}.
-                You are captain
-                <div>
-                    Your team: {this.state.myTeam.teamName} <button className="btn btn-outline-secondary mr-2" onClick={this.removeTeam}>Delete team</button>
-                    <img src={this.state.myTeam.image} alt="Team logo"/>
-                    {this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>
-                    }
-
+        return        <div>
+            <Header state={this.state} isHome={logged}/>
+            <div className="container">
+                <div className="note">
+                    <p>Welcome, {this.state.data.userName}</p>
                 </div>
-                <form className="form" onSubmit={(e) => {
-                    e.preventDefault();
-                    this.createGame()
-                }}>
-                    <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Enter your team score"
-                               onChange={(e) => this.setScore1(e)}
-                        />
-                        <input type="text" className="form-control" placeholder="Enter opponent`s score"
-                               onChange={(e) => this.setScore2(e)}
-                        />
-                        <DatePicker
-                            onChange={(date) => this.setDate(date)}
-                            selected={this.state.date}
-                        />
-                        <div>Date: {this.state.date ? this.state.date.toString().slice(0, -41) : 'Select a date'}</div>
-                        Select opponent team: <select onChange={e => this.selectTeam(e.target.value)}>{
-                        this.state.teams.map((option, i) => {
-                            if(!i) {
-                                this.game = option.teamName
-                            }
-                            return <option key={i}>{option.teamName}</option>
-                        })
-                    }</select>
+                <div className="content">
+                    Your Login is {this.state.data.login}.
+                    You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''}.
+                    You are captain
+                    <div>
+                        Your team: {this.state.myTeam.teamName} <button className="btn btn-outline-secondary mr-2" onClick={this.removeTeam}>Delete team</button>
+                        <img src={this.state.myTeam.image} alt="Team logo"/>
+                        {this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>
+                        }
 
-                        <button className="btn btn-outline-secondary mr-2">Save game results
-                        </button>
-
-                        <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
                     </div>
-                </form>
-                {this.state.gamesToConfirm.length ? <GamesToConfirm/> : null}
-                <LogoutBtn isHome={logged}/>
+                    <form className="form" onSubmit={(e) => {
+                        e.preventDefault();
+                        this.createGame()
+                    }}>
+                        <div className="form-group">
+                            <input type="text" className="form-control" placeholder="Enter your team score"
+                                   onChange={(e) => this.setScore1(e)}
+                            />
+                            <input type="text" className="form-control" placeholder="Enter opponent`s score"
+                                   onChange={(e) => this.setScore2(e)}
+                            />
+                            <DatePicker
+                                onChange={(date) => this.setDate(date)}
+                                selected={this.state.date}
+                            />
+                            <div>Date: {this.state.date ? this.state.date.toString().slice(0, -41) : 'Select a date'}</div>
+                            Select opponent team: <select onChange={e => this.selectTeam(e.target.value)}>{
+                            this.state.teams.map((option, i) => {
+                                if(!i) {
+                                    this.game = option.teamName
+                                }
+                                return <option key={i}>{option.teamName}</option>
+                            })
+                        }</select>
+
+                            <button className="btn btn-outline-secondary mr-2">Save game results
+                            </button>
+
+                            <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
+                        </div>
+                    </form>
+                    {this.state.gamesToConfirm.length ? <GamesToConfirm/> : null}
+                </div>
             </div>
         </div>
+
     }}

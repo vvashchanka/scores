@@ -4,7 +4,14 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-
+    const logOut = () => {
+            localStorage.removeItem('jwt');
+    };
+    let loggedIn;
+    if(props.state) {
+        loggedIn = props.state.loggedIn;
+    }
+if (!loggedIn){
     return (
         <div className={styles.header}>
             <Container>
@@ -17,6 +24,33 @@ const Header = (props) => {
                 </Row>
             </Container>
         </div>
-    )
+    )} else {
+    if (props.state.data.isCaptain) {
+        return (
+            <div className={styles.header}>
+                <Container>
+                    <Row>
+                        <NavLink to='/'><Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col></NavLink>
+                        <Col className={styles.navButtons}>
+                            <NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out, captain</button></NavLink>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>)
+    } else {
+        return (
+            <div className={styles.header}>
+                <Container>
+                    <Row>
+                        <NavLink to='/'><Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col></NavLink>
+                        <Col className={styles.navButtons}>
+                            <NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out, player</button></NavLink>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>)
+    }
+
+}
 };
 export default Header

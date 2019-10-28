@@ -9,7 +9,7 @@ export default class UserPage extends React.Component {
     state = {
         data: {},
         team: '',
-        loggedOut: false,
+        loggedIn: true,
         msg: '',
         ok: '',
         myTeam: [],

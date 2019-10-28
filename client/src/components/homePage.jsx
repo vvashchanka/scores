@@ -7,6 +7,7 @@ import './homePage.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import save from "./img/save.png"
+import Header from "./header/Header";
 
 
 //Arrows to move slider with games dates
@@ -184,19 +185,22 @@ getTeams = () => {
         if(localStorage.jwt) {
         return <UserPage logged={this.logOutRedirect}/>
     } else {
-        return <div className="container">
-            <div className="note">
-            </div>
-            <div className="content">
-                <ScrollMenu
-                    data={menu}
-                    arrowLeft={ArrowLeft}
-                    arrowRight={ArrowRight}
-                    selected={selected}
-                    onSelect={this.onSelect}/>
-                {this.state.gamesList.data ? <div>{this.showGames()}</div> : null}
+        return <div>
+            <Header/>
+            <div className="container">
+                <div className="note">
                 </div>
-            <img onClick={() => this.exportPDF()} src={save} alt="Save game results in pdf"/>
+                <div className="content">
+                    <ScrollMenu
+                        data={menu}
+                        arrowLeft={ArrowLeft}
+                        arrowRight={ArrowRight}
+                        selected={selected}
+                        onSelect={this.onSelect}/>
+                    {this.state.gamesList.data ? <div>{this.showGames()}</div> : null}
+                </div>
+                <img onClick={() => this.exportPDF()} src={save} alt="Save game results in pdf"/>
             </div>
+        </div>
     }
 }}

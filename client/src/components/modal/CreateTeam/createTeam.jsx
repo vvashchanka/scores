@@ -26,14 +26,14 @@ const CreateTeam = (props) => {
         }
     };
     return (
-        <Modal.Dialog {...props}
+        <Modal.Dialog
                       size="s"
                       aria-labelledby="contained-modal-title-vcenter"
                       centered>
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <h1>Create Team</h1>
             </Modal.Header>
-            <Modal.Body closeButton>
+            <Modal.Body>
                 <div className={styles.textCenter}>
                     <input type="text" className={styles.inputTeam} onChange={e => setTeam(e.target.value)} placeholder={'Team Name'}/>
                     <input type="file" onChange={(e) => getBase64(e)}/>

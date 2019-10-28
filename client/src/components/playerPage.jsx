@@ -8,6 +8,7 @@ import 'react-table/react-table.css';
 import {api} from '../config';
 import { Modal } from 'react-bootstrap';
 import CreateTeam from './modal/CreateTeam/createTeam';
+import Header from "./header/Header";
 const fs = require('fs');
 
 export default class PlayerView extends React.Component {
@@ -242,17 +243,20 @@ export default class PlayerView extends React.Component {
             }
         ];
         const {logged} = this.props;
-        return        <div className="container">
-            <div className="note">
-                <p>Welcome, {this.state.data.userName}</p>
-            </div>
-            <div className="content">
-                {this.state.hasInvites ? <Invites/>
-                : this.state.isInTeam ? <IsInTeam/>
-                : IsNotInTeam() }
-                Your Login is {this.state.data.login}.
-                You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''
-            }.
-                <LogoutBtn isHome={logged}/>
+        return <div>
+        <Header state={this.state}/>
+            <div className="container">
+                <div className="note">
+                    <p>Welcome, {this.state.data.userName}</p>
+                </div>
+                <div className="content">
+                    {this.state.hasInvites ? <Invites/>
+                        : this.state.isInTeam ? <IsInTeam/>
+                            : IsNotInTeam() }
+                    Your Login is {this.state.data.login}.
+                    You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''
+                }.
+                    <LogoutBtn isHome={logged}/>
+                </div>
             </div>
         </div>}}
