@@ -66,10 +66,8 @@ const Header = (props) => {
                                         <li className={styles.navItem}>View Team</li>
                                     </ul>
                                 </div>}
-                                <button className={styles.btnLogout}><Logout className={styles.btnLogoutIcon}/></button>
+                                <NavLink to='/login'><button className={styles.btnLogout}><Logout className={styles.btnLogoutIcon}/></button></NavLink>
                             </div>
-
-                            {/*<NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out</button></NavLink>*/}
                         </div>
                     </Row>
                 </Container>
