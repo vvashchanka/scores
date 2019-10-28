@@ -33,7 +33,7 @@ export default class UserPage extends React.Component {
     componentWillMount() {
         this.getCaptain();
     }
-
+//Check user`s captain status
     getCaptain = () => {
         console.log('checking user status');
         const login = jwt.decode(localStorage.jwt).login;

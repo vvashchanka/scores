@@ -19,6 +19,8 @@ import Notification from "./components/notification/notification";
 import Header from "./components/header/Header";
 import ChoosePlayer from "./components/modal/ChoosePlayer/ChoosePlayer";
 
+
+//Add token to every request header
 setToken(localStorage.jwt);
 
 ReactDOM.render(

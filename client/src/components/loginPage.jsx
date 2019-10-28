@@ -13,7 +13,7 @@ export default class Login extends React.Component {
         loggedIn: false,
         disabled: false
     };
-
+//Send login data
     sendData = (data) => {
         const userData = {
             login: data.login,
@@ -37,13 +37,13 @@ export default class Login extends React.Component {
                 })
             })
     };
-
+//Handle login input value
     loginValue = (value) => {
         this.setState({
             login: value
         })
     };
-
+//Handle password input value
     passwordValue = (value) => {
         this.setState({
             password: value

@@ -14,13 +14,13 @@ export default class PlayerView extends React.Component {
     state = {
         showCreateTeam: false,
         ...this.props.state};
-
+//Open create team modal
     toggleShowCreateTeam = () => {
         this.setState({
             showCreateTeam: !this.state.showCreateTeam
         })
     };
-
+//Join team
     joinTeam = (row) => {
         axios.put(`${api}teams/join`, {
             player: this.state.data.login,
@@ -36,7 +36,7 @@ export default class PlayerView extends React.Component {
                 console.log(err)
             });
     };
-
+//Accept invite
     acceptTeam = (row) => {
         axios.put(`${api}teams/accept`, {
             player: this.state.data.login,
@@ -55,7 +55,7 @@ export default class PlayerView extends React.Component {
                 console.log(err)
             });
     };
-
+//Decline invite
     declineTeam = (row) => {
         axios.put(`${api}teams/decline`, {
             player: this.state.data.login,
@@ -74,7 +74,7 @@ export default class PlayerView extends React.Component {
                 console.log(err)
             });
     };
-
+//Leave a team
     leaveTeam = (teamName) => {
         axios.put(`${api}teams/leave`, {
             teamName, login: this.state.data.login
@@ -89,25 +89,8 @@ export default class PlayerView extends React.Component {
                 console.log(err)
             });
     };
-
+//Get teams list to join and invites
     getTeams = () => {
-        if (this.state.data.isCaptain) {
-            axios.get(`${api}teams`,{
-                    query: {
-                        userId: this.state.data.id
-                    }
-                }
-                )
-                .then(res => {
-                    this.setState({
-                        myTeam: res.data
-                    })
-                })
-                .catch(err => {
-                    console.log(err)
-                });
-        }
-
         axios.get(`${api}teams`)
             .then(res => {
                 const idx = res.data.findIndex(val => val.player === this.state.data.login);
@@ -133,7 +116,7 @@ export default class PlayerView extends React.Component {
                 })
             })
     };
-
+//Decode login by token and get user`s data
     getUserData = () => {
         const data = {
             login: jwt.decode(localStorage.jwt).login
@@ -160,13 +143,13 @@ export default class PlayerView extends React.Component {
             this.getUserData();
         }
     }
-
+//Handle team name input to create a team
     teamName = (e) => {
         this.setState({
             team: e.target.value
         })
     };
-
+//Create a new team and become a captain
     createTeam = (team, image) => {
         axios.post(`${api}teams`, {
             image,

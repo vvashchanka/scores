@@ -3,7 +3,14 @@ const {User} = require ('../models/index');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {registerSchema, loginSchema} = require('../helpers/validation');
+const verify = require('../helpers/verifyToken');
 
+//Check if user token is correct
+router.get('/', verify, (req, res) => {
+    res.send(req.user);
+});
+
+//Register new user
 router.post('/register', async (req, res) => {
     const {error} = registerSchema.validate(req.body);
     const {login, userName} = req.body;
@@ -28,6 +35,7 @@ router.post('/register', async (req, res) => {
         .catch(err => console.log(err))
 });
 
+//User login
 router.post('/login', async (req, res) => {
     const {error} = loginSchema.validate(req.body);
     if(error) {

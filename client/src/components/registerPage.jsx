@@ -19,7 +19,7 @@ export default class Register extends React.Component {
         connectionError: '',
         isLoading: false
     };
-
+//Send new user`s data
     sendData = (data) => {
         axios.post(`${api}register`, {
             userName: data.name,
@@ -42,25 +42,25 @@ export default class Register extends React.Component {
                 });
             })
     };
-
+//Handle user name input
     nameValue = (value) => {
         this.setState({
             name: value
         })
     };
-
+//Handle user login input
     loginValue = (value) => {
         this.setState({
             login: value
         })
     };
-
+//Handle user password input
     passwordValue = (value) => {
         this.setState({
             password: value
         })
     };
-
+//Handle user confirm password input
     confirmedPass = (value) => {
         this.setState({
             confirmedPassword: value

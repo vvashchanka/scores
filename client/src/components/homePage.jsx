@@ -8,6 +8,8 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import save from "./img/save.png"
 
+
+//Arrows to move slider with games dates
 const Arrow = ({ text, className }) => {
     return (
         <div
@@ -28,7 +30,7 @@ export default class App extends React.Component {
         gamesByDate: [],
         teams: []
     };
-
+//Save games results in pdf
     exportPDF = () => {
         const unit = "pt";
         const size = "A4"; // Use A1, A2, A3 or A4
@@ -74,6 +76,7 @@ export default class App extends React.Component {
         this.setState({ selected: key });
     };
 
+    //Get list of all teams
 getTeams = () => {
     axios.get(`${api}teams`)
         .then(res => this.setState({
@@ -81,7 +84,7 @@ getTeams = () => {
         }))
         .catch(err => console.log(err))
 };
-
+//Get list of all games and sort it by date
     getGames = () => {
         axios.get(`${api}games`)
             .then(games => {
@@ -100,7 +103,7 @@ getTeams = () => {
         this.getGames();
         this.getTeams();
     }
-
+//Games list by selected date
     showGames = () => {
         return this.state.gamesList.data.map((game)=> {
         const imgTeam1 = this.state.teams.find(team => team.teamName === game.team1).image;
@@ -123,7 +126,7 @@ getTeams = () => {
             loggedOut: true
         })
     };
-
+//Create an array of dates and games attached to date
     gamesByDate = () => {
         const dates = this.state.games.map(game => game.date.slice(0,10));
         let uniqueDates = [];
@@ -141,9 +144,8 @@ getTeams = () => {
             }
         });
     };
-
+//Horizontal slider, date and games
     Menu = () => {
-
         return this.gamesByDate().map(el => {
             const { name } = el;
             const MenuItem = ({ text }) => {

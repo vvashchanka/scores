@@ -14,7 +14,7 @@ export default class CaptainView extends React.Component {
 
     game = '';
     invite = '';
-
+//Create new game result
     createGame = () => {
         axios.post(`${api}games`,
             {
@@ -36,7 +36,7 @@ export default class CaptainView extends React.Component {
                 console.log(err)
             })
     };
-
+//Get all games with my team
     getGames = () => {
         axios.get(`${api}games`, {
             params: {
@@ -52,7 +52,7 @@ export default class CaptainView extends React.Component {
                 console.log(err)
             });
     };
-
+//Confirm game results
     confirmGame = (row) => {
         axios.put(`${api}games`, {
             id: row.id
@@ -69,7 +69,7 @@ export default class CaptainView extends React.Component {
                 console.log(err)
             });
     };
-
+//Decline and delete game result
     deleteGame = (row) => {
         axios.delete(`${api}games`, {params: {
                 id: row.id
@@ -84,7 +84,7 @@ export default class CaptainView extends React.Component {
                 console.log(err)
             });
     };
-
+//Get all players without a team
     getFreePlayers = () => {
         axios.get(`${api}users/free`)
             .then(res => {
@@ -93,7 +93,7 @@ export default class CaptainView extends React.Component {
                 })
             })
     };
-
+//Send invite to player
     sendInvite = (player) => {
         axios.post(`${api}users/invite`, {
             userName: player || this.invite,
@@ -108,13 +108,13 @@ export default class CaptainView extends React.Component {
                 console.log(err)
             });
     };
-
+//Handle player login to send invite
     choosePlayer = (player) => {
         this.setState({
             chosenPlayer: player
         });
     };
-
+//Remove a player from team
     leaveTeam = (teamName) => {
         axios.put(`${api}teams/leave`, {
             teamName, login: this.state.myTeam.player
@@ -129,7 +129,7 @@ export default class CaptainView extends React.Component {
                 console.log(err)
             });
     };
-
+//Confirm player`s request to join a team
     confirmPlayer = () => {
         axios.put(`${api}users/confirm`,
             {
@@ -142,9 +142,9 @@ export default class CaptainView extends React.Component {
                 console.log(err)
             });
     };
-
+//Get captain`s team and all other teams list
     getTeams = () => {
-        if (this.state.data.isCaptain) {
+
             axios.get(`${api}teams`)
                 .then((res) => {
                         const myTeamIdx = res.data.findIndex(team => {
@@ -165,46 +165,26 @@ export default class CaptainView extends React.Component {
                 .catch(err => {
                     console.log(err)
                 });
-        } else {
-            axios.get(`${api}teams`)
-                .then(res => {
-                    const idx = res.data.findIndex(val => val.player === this.state.data.login);
-                    if(idx !== -1) {
-                        this.setState({
-                            isInTeam: res.data[idx].teamName
-                        });
-
-                        if(res.data[idx].captainApproved) {
-                            this.setState({
-                                captainApproved: true
-                            })
-                        }
-                    }
-
-                })
-        }
-
-
     };
-
+//Handle team choice to create game result
     selectTeam = (team) => {
         this.setState({
             gameAddTeam: team
         })
     };
-
+//Handle team1 score choice to create game result
     setScore1 = (e) => {
         this.setState({
             score1: e.target.value
         })
     };
-
+//Handle game date choice to create game result
     setDate = (date) => {
         this.setState({
             date
         })
     };
-
+//Handle team2 score choice to create game result
     setScore2 = (e) => {
         this.setState({
             score2: e.target.value
@@ -212,7 +192,7 @@ export default class CaptainView extends React.Component {
     };
 
 
-
+//Get user data by login decoded from token
     getUserData = () => {
         const login = jwt.decode(localStorage.jwt).login;
         axios.get(`${api}users`, {
@@ -239,7 +219,7 @@ export default class CaptainView extends React.Component {
             this.getUserData();
         }
     }
-
+//Delete team
     removeTeam = () => {
         axios.delete(`${api}teams`, {
             params:
@@ -257,6 +237,7 @@ export default class CaptainView extends React.Component {
             })
     };
 
+    //Get player`s name by login to display on page
     getPlayerName = () => {
         axios.get(`${api}users/player`, {
             params: {

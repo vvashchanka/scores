@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const {User, Team} = require ('../models/index');
 
+//Create a new team
 router.post('/', async (req, res) => {
     const {teamName, id, image} = req.body;
     await Team.findOne({ where: { teamName } })
@@ -28,6 +29,7 @@ router.post('/', async (req, res) => {
 
 });
 
+//Get team by Captain Id or get all games
 router.get('/', async (req,res) => {
     if (req.query.id) {
         const {userId} = req.query;
@@ -43,6 +45,7 @@ router.get('/', async (req,res) => {
 
 });
 
+//Join existing team
 router.put('/join', async (req,res) => {
     const {player, teamName} = req.body;
     await Team.findOne({ where: { teamName } })
@@ -61,6 +64,7 @@ router.put('/join', async (req,res) => {
         .catch(err => console.log(err));
 });
 
+//Delete team
 router.delete('/', async (req,res) => {
     const { teamName, login } = req.query;
     await User.findOne({ where: { login: req.body.player } })
@@ -81,6 +85,7 @@ router.delete('/', async (req,res) => {
         .catch(err => console.log(err));
 });
 
+//Leave team or remove player
 router.put('/leave', async (req,res) => {
     const{teamName, login} = req.body;
     await Team.findOne({ where: { teamName } })
@@ -100,6 +105,7 @@ router.put('/leave', async (req,res) => {
         .catch(err => console.log(err));
 });
 
+//Accept team invitation and decline all other invites
 router.put('/accept', async (req,res) => {
     const {player, teamName} = req.body;
     await Team.findOne({ where: { teamName } })
@@ -125,6 +131,7 @@ router.put('/accept', async (req,res) => {
 
 });
 
+//Decline invite
 router.put('/decline', async (req,res) => {
     const {player, teamName} = req.body;
     await User.findOne({ where: { login: player } })
