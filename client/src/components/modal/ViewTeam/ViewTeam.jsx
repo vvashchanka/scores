@@ -6,11 +6,11 @@ const ViewTeam = (props) => {
     const {team, removeTeam, logo, player, captain} = props;
     return (
         <>
-            <Modal.Header closeButton centered>
+            <Modal.Header closeButton>
                 <img src={logo} alt="Team logo"/>
                 <h1 className={styles.teamName}>{team}</h1>
             </Modal.Header>
-            <Modal.Body centered>
+            <Modal.Body>
                 <div>
                     <p>Captain: {captain}</p>
                     {player}
