@@ -25,32 +25,17 @@ if (!loggedIn){
             </Container>
         </div>
     )} else {
-    if (props.state.data.isCaptain) {
         return (
             <div className={styles.header}>
                 <Container>
                     <Row>
                         <NavLink to='/'><Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col></NavLink>
                         <Col className={styles.navButtons}>
-                            <NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out, captain</button></NavLink>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>)
-    } else {
-        return (
-            <div className={styles.header}>
-                <Container>
-                    <Row>
-                        <NavLink to='/'><Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col></NavLink>
-                        <Col className={styles.navButtons}>
-                            <NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out, player</button></NavLink>
+                            <NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out</button></NavLink>
                         </Col>
                     </Row>
                 </Container>
             </div>)
     }
-
-}
 };
 export default Header
