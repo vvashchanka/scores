@@ -169,6 +169,7 @@
     font-size: 1.5rem;
     line-height: 31px;
     text-align: center;
+    color: #4d6279;
 }
 
 .formControl {
@@ -178,31 +179,13 @@
     border-radius: 6px;
 }
 
-.plusImg {
-    fill: #fff;
-    margin-right: 15px;
+.formControl:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(97, 62, 234, .5);
+    padding-left: 10px;
 }
 
-.btnCreateWrapper {
-    display: flex;
-    justify-content: center;
-}
-
-.btnCreateWrapper > span{
-    font-weight: 400;
-    font-size: 20px;
-}
-
-.navBarCreate {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0.1px;
-    color: white;
-    padding: 15px 19px;
-    background-color: #4C31B8;
-    border: 0;
-    border-radius: 5px;
-    transition: 0.5s;
+.submitButton:focus{
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(97, 62, 234, .5);
 }
