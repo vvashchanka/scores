@@ -54,7 +54,10 @@ export default class CaptainView extends React.Component {
                 this.getUserData()
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
+                this.setState({
+                    msg: err.response.data
+                });
             })
     };
 //Get all games with my team
@@ -396,7 +399,6 @@ export default class CaptainView extends React.Component {
                                             setScore2={this.setScore2} createGame={this.createGame}
                                 />
                             </Modal>
-                            <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
                     {this.state.gamesToConfirm.length ? <GamesToConfirm/> : null}
                 </div>
             </div>

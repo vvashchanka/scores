@@ -9,6 +9,7 @@ import {api} from '../config';
 import { Modal } from 'react-bootstrap';
 import CreateTeam from './modal/CreateTeam/createTeam';
 import Header from "./header/Header";
+import GameCreate from "./modal/GameCreate/GameCreate";
 const fs = require('fs');
 
 export default class PlayerView extends React.Component {
@@ -202,9 +203,8 @@ export default class PlayerView extends React.Component {
                     Create team
                 </button>
                 <Modal show={this.state.showCreateTeam} onHide={this.toggleShowCreateTeam}>
-                <CreateTeam team={this.createTeam}/>
+                <CreateTeam ok={this.state.ok} msg={this.state.msg} team={this.createTeam}/>
                 </Modal>
-                <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
             </div>
         };
 

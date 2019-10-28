@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import { Modal } from 'react-bootstrap';
 import styles from './test.module.css';
 import defaultImage from './defaultImage'
+import InfoMsg from "../../infoMsg";
 
 const CreateTeam = (props) => {
+    const {ok, msg} = props;
     const [team, setTeam] = useState('');
     const [img, setImg] = useState('');
 //Add default image if no image selected
@@ -39,6 +41,7 @@ const CreateTeam = (props) => {
                     <input type="file" onChange={(e) => getBase64(e)}/>
                     <button className={styles.buttonCreate} onClick={() => create(team, img)}>CREATE</button>
                 </div>
+                <InfoMsg ok={ok} msg={msg}/>
             </Modal.Body>
         </Modal.Dialog>
     );

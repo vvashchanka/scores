@@ -14,4 +14,19 @@ const loginSchema = Joi.object({
         .error(new Error('Wrong password'))
 });
 
-module.exports = {loginSchema, registerSchema};
+const teamSchema = Joi.object({
+    teamName: Joi.string().min(1).max(15).required()
+        .error(new Error('Team name must be 1-15 characters')),
+    image: Joi.string(),
+    id: Joi.number().required()
+});
+
+const gameSchema = Joi.object({
+    team1: Joi.string().required(),
+    team2: Joi.string().required(),
+    score1: Joi.number().required(),
+    score2: Joi.number().required(),
+    date: Joi.string().required()
+});
+
+module.exports = {loginSchema, registerSchema, teamSchema, gameSchema};
