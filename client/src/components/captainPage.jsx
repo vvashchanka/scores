@@ -411,9 +411,9 @@ export default class CaptainView extends React.Component {
                         <ApproveGames gamesToConfirm={this.state.gamesToConfirm}
                         confirmGame={this.confirmGame} deleteGame={this.deleteGame}/>
                     </Modal>
-                    {this.state.gamesToConfirm.length && <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowApproveGames}>
+                    {this.state.gamesToConfirm.length ? <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowApproveGames}>
                         Show games to confirm
-                    </button>}
+                    </button> : null}
                     <ScrollGames/>
                 </div>
             </div>
