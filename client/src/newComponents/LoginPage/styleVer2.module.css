@@ -6,6 +6,10 @@
     top: 0;
     left: 0;
 }
+.headerBox {
+    display: flex;
+    justify-content: space-between;
+}
 
 @media (max-width: 767px) {
     .header {
@@ -68,8 +72,6 @@
 
 .navButtons {
     display: flex;
-    justify-content: space-between;
-    margin: 0 0 0 35em;
 }
 
 .navBarLogin {
@@ -259,6 +261,7 @@
     border: 0;
     border-radius: 5px;
     transition: 0.3s;
+    margin-right: 12px;
 }
 
 .navBarCreate:hover {
@@ -278,7 +281,7 @@
 
 .toggleDiv {
     position:absolute;
-    top:120px;
+    top:72px;
     background-color: #fff;
     width: 150px;
     border: 1px solid #4C31B8;

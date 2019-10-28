@@ -15,7 +15,7 @@ const Header = (props) => {
 
     const [modalApprove, setModalApprove] = useState(false);
     const [toggle, setToggle] = useState(false);
-    console.log(modalApprove);
+    console.log(props);
     /*const ModalApproveGames = () => {
 
         return (
@@ -96,24 +96,23 @@ const Header = (props) => {
         return (
             <div className={styles.header}>
                 <Container>
-                    <Row>
-                        <NavLink to='/'><Col className={styles.godel}>Godel<span
-                            className={styles.football}>Football</span></Col></NavLink>
+                    <div className={styles.headerBox}>
+                        <NavLink to='/'><div className={styles.godel}>Godel<span
+                            className={styles.football}>Football</span></div></NavLink>
                         <div className={styles.navButtons}>
                             <Notification/>
-                            <div className={styles.btnCreateTeamWrapper}>
+                            {!props.state.data.teamName &&<div>
                                 <button onClick={() => {
                                 }} className={styles.navBarCreate}>
                                     <span className={styles.btnCreateWrapper}><Plus className={styles.plusImg}/><span
                                         className={styles.btnCreateText}>Create Team</span></span>
                                 </button>
-                            </div>
+                            </div>}
 
                             <div className={styles.btnUserActionsWrapper}>
-
                                 <button onClick={() => {setToggle(!toggle)
                                 }} className={styles.userNameBtn}>
-                                    UserName
+                                    {props.state.data.userName}
                                 </button>
                                 {toggle && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
@@ -126,7 +125,7 @@ const Header = (props) => {
                                 <NavLink to='/login'><button className={styles.btnLogout}><Logout className={styles.btnLogoutIcon}/></button></NavLink>
                             </div>
                         </div>
-                    </Row>
+                    </div>
                 </Container>
             </div>)
     }
