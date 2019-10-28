@@ -190,26 +190,86 @@
     box-shadow: 0 0 0 1px rgba(97, 62, 234, .5);
 }
 
+.plusImg {
+    fill: #fff;
+    margin-right: 15px;
+}
+
 .btnCreateWrapper {
     display: flex;
     justify-content: center;
 }
 
-.btnCreateWrapper > span{
+.btnUserWrapper {
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.btnCreateText{
     font-weight: 400;
-    font-size: 20px;
+    font-size: 21px;
+}
+
+.userNameBtn{
+    padding: 15px 15px;
+    background-color: #4C31B8;
+    line-height: 0;
+    border: 0;
+    border-radius: 5px 0 0 5px;
+    transition: 0.3s;
+    color: white;
+    cursor: pointer;
+    font-size: 21px;
+}
+
+.userNameBtn:hover{
+    background-color: #613EEA;
+}
+
+.btnLogout {
+    padding: 15px 15px;
+    background-color: #2C1782;
+    line-height: 0;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    transition: 0.3s;
+    /*position: absolute;*/
+    /*right: 0;*/
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    cursor: pointer;
+}
+
+.btnLogout:hover {
+    background-color: #613EEA;
+}
+
+.btnLogoutIcon {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
 }
 
 .navBarCreate {
+    width: 204px;
     font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.1px;
     color: white;
-    padding: 15px 19px;
+    padding: 15px 20px;
     background-color: #4C31B8;
     border: 0;
     border-radius: 5px;
-    transition: 0.5s;
+    transition: 0.3s;
+}
+
+.navBarCreate:hover {
+    background-color: #613EEA;
+    cursor: pointer;
+}
+
+.btnUserActionsWrapper {
+    display:flex;
+    max-height: 54px;
 }

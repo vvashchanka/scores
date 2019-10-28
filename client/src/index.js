@@ -15,7 +15,7 @@ import './index.css';
 import GameCreate from "./components/modal/GameCreate/GameCreate";
 import CreateTeam from "./components/modal/CreateTeam/createTeam";
 import ViewTeam from "./components/modal/ViewTeam/ViewTeam";
-import Notification from "./components/notification/notification";
+import Notification from "./components/notification/Notification";
 import ChoosePlayer from "./components/modal/ChoosePlayer/ChoosePlayer";
 
 

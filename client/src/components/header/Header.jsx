@@ -3,6 +3,8 @@ import {Col, Container, Row} from "react-bootstrap";
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {ReactComponent as Plus} from "../img/svg/plus-box.svg";
+import {ReactComponent as Logout} from "../img/svg/logout.svg";
+import Notification from "../notification/Notification";
 
 const Header = (props) => {
     const logOut = () => {
@@ -32,7 +34,19 @@ if (!loggedIn){
                     <Row>
                         <NavLink to='/'><Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col></NavLink>
                         <div className={styles.navButtons}>
-                            <button onClick={() => {}} className={styles.navBarCreate}><span className={styles.btnCreateWrapper}><Plus className={styles.plusImg}/><span>Create Team</span></span></button>
+                            <Notification/>
+                            <div className={styles.btnCreateTeamWrapper}>
+                                <button onClick={() => {}} className={styles.navBarCreate}>
+                                     <span className={styles.btnCreateWrapper}><Plus className={styles.plusImg}/><span className={styles.btnCreateText}>Create Team</span></span>
+                                 </button>
+                            </div>
+                            <div className={styles.btnUserActionsWrapper}>
+                                <button onClick={() => {}} className={styles.userNameBtn}>
+                                        UserNameHere
+                                </button>
+                                <button className={styles.btnLogout}><Logout className={styles.btnLogoutIcon}/></button>
+                            </div>
+
                             <NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out</button></NavLink>
                         </div>
                     </Row>

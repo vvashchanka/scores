@@ -3,7 +3,7 @@ import {Route, Router, Switch} from "react-router";
 import history from "./history";
 import ApproveGames from "./components/modal/ApproveGames/ApproveGames";
 import GameCreate from "./components/modal/GameCreate/GameCreate";
-import Notification from "./components/notification/notification";
+import Notification from "./components/notification/Notification";
 import Login from "./components/loginPage";
 import Register from "./components/registerPage";
 import CreateTeam from "./components/modal/CreateTeam/createTeam";
