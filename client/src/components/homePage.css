@@ -6,20 +6,25 @@
     color: white;
 }
 
+
 .active, .menu-item-wrapper {
     outline: none;
 }
 
 .avatar {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
 .menu-item-wrapper.active {
     font-size: 24px;
-    border: none;
 }
+
+.menu-item.menu-item-wrapper {
+    color: #2C1782;
+}
+
 
 .scroll-menu-arrow {
     padding: 12px;
@@ -39,14 +44,14 @@
 
 .team{
     display: inline-block;
-    font-size: 40px;
+    font-size: 32px;
     color: #777777;
     margin: 10px;
 }
 
 .score{
     display: inline-block;
-    font-size: 45px;
+    font-size: 32px;
     font-weight: bold;
     color: #4d6279;
     margin: 10px;
