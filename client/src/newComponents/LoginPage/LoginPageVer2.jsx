@@ -14,16 +14,15 @@ const LoginPageVer2 = (props) => {
                         <Col>
                             <form>
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Login</label>
-                                    <input type="login" className="form-control" id="exampleInputEmail1"
-                                           aria-describedby="emailHelp" placeholder="Login"
+                                    <label className={styles.labelLogin} htmlFor="exampleInputEmail1">Login</label>
+                                    <input type="login" className={styles.formControl} id="exampleInputEmail1"
+                                           aria-describedby="emailHelp" placeholder="    Login"
                                            value={login}
                                     onChange={e => loginValue(e.target.value)}/>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputPassword1">Password</label>
-                                    <input type="password" className="form-control" id="exampleInputPassword1"
-                                           placeholder="Password"
+                                    <input type="password" className={styles.formControl} id="exampleInputPassword1"
+                                           placeholder="    Password"
                                            value={password}
                                            onChange={e => passwordValue(e.target.value)}/>
                                 </div>
