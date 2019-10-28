@@ -25,19 +25,25 @@ export default class CaptainView extends React.Component {
     //open modal View Team
     toggleShowViewTeam = () => {
         this.setState({
-            showViewTeam: !this.state.showViewTeam
+            showViewTeam: !this.state.showViewTeam,
+            msg: null,
+            ok: null
         })
     };
     //Open create team modal
     toggleShowCreateGame = () => {
         this.setState({
-            showCreateGame: !this.state.showCreateGame
+            showCreateGame: !this.state.showCreateGame,
+            msg: null,
+            ok: null
         })
     };
     //Open ApproveGames modal
     toggleShowApproveGames = () => {
         this.setState({
-            showApproveGames: !this.state.showApproveGames
+            showApproveGames: !this.state.showApproveGames,
+            msg: null,
+            ok: null
         })
     };
 
@@ -53,7 +59,8 @@ export default class CaptainView extends React.Component {
             })
             .then(() => {
                 this.setState({
-                    ok: 'Score sent to opponent'
+                    ok: 'Score sent to opponent',
+                    msg: null
                 });
             })
             .then(() => {
@@ -62,7 +69,8 @@ export default class CaptainView extends React.Component {
             .catch(err => {
                 console.log(err);
                 this.setState({
-                    msg: err.response.data
+                    msg: err.response.data,
+                    ok: null
                 });
             })
     };

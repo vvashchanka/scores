@@ -17,7 +17,9 @@ export default class PlayerView extends React.Component {
 //Open create team modal
     toggleShowCreateTeam = () => {
         this.setState({
-            showCreateTeam: !this.state.showCreateTeam
+            showCreateTeam: !this.state.showCreateTeam,
+            msg: null,
+            ok: null
         })
     };
 //Join team
@@ -162,7 +164,8 @@ export default class PlayerView extends React.Component {
             .catch(err => {
                 console.log(err);
                 this.setState({
-                    msg: err.response.data
+                    msg: err.response.data,
+                    ok: null
                 });
             })
     };

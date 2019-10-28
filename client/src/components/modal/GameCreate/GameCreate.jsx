@@ -43,7 +43,7 @@ const GameCreate = (props) => {
                                     selected={date}/>
                         <div>Date: {date ? date.toString().slice(0, -41) : 'Select a date'}</div>
                     </div>
-                    <button className={styles.buttonCreate} onClick={createGame}>CREATE</button>
+                    <button className={styles.buttonCreate} disabled={!!ok} onClick={createGame}>CREATE</button>
 
                     <InfoMsg ok={ok} msg={msg}/>
                 </div>

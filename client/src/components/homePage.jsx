@@ -2,7 +2,6 @@ import React from 'react';
 import UserPage from './userPage';
 import axios from 'axios';
 import {api} from '../config';
-import ScrollMenu from 'react-horizontal-scrolling-menu';
 import './homePage.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
