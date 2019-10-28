@@ -8,10 +8,7 @@ const GameCreate = (props) => {
 
     const {game, teams, score1, score2, date, ok, msg, selectTeam, setDate, setScore1, setScore2, createGame} = props;
     return (
-        <Modal.Dialog
-            {...props}
-            size="sm"
-            aria-labelledby="contained-modal-title-vcenter">
+        <>
             <Modal.Header closeButton>
                 <Modal.Title>Create New Game</Modal.Title>
             </Modal.Header>
@@ -51,7 +48,7 @@ const GameCreate = (props) => {
                     <InfoMsg ok={ok} msg={msg}/>
                 </div>
             </Modal.Body>
-        </Modal.Dialog>
+        </>
     );
 };
 
