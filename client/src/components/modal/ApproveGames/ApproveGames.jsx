@@ -3,6 +3,8 @@ import {Modal} from "react-bootstrap";
 import styles from "./approveGames.module.css";
 import {ReactComponent as Approve} from "../../img/svg/approve.svg";
 import {ReactComponent as Decline} from "../../img/svg/decline.svg";
+import DatePicker from "react-datepicker";
+import InfoMsg from "../../infoMsg";
 
 const ApproveGames = (props) => {
     return (
@@ -36,3 +38,5 @@ const ApproveGames = (props) => {
 };
 
 export default ApproveGames;
+
+

@@ -6,7 +6,7 @@ import InfoMsg from "../../infoMsg";
 
 const GameCreate = (props) => {
 
-    const {teams, score1, score2, date, ok, msg, selectTeam, setDate, setScore1, setScore2, createGame} = props;
+    const {game, teams, score1, score2, date, ok, msg, selectTeam, setDate, setScore1, setScore2, createGame} = props;
     return (
         <Modal.Dialog
             {...props}
@@ -21,7 +21,11 @@ const GameCreate = (props) => {
                     <div>
                         Select opponent team: <br/>
                         <select onChange={e => selectTeam(e.target.value)}>{
-                        teams.map((option, i) => <option key={i}>{option.teamName}</option>)
+                        teams.map((option, i) => {
+                            if(!i) {
+                                game(option.teamName)
+                            }
+                            return <option key={i}>{option.teamName}</option>})
                     }</select>
                     </div>
                     <div className={styles.form__group}><label className={styles.form__label}

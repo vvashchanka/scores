@@ -153,11 +153,7 @@ export default class CaptainView extends React.Component {
             });
     };
 
-    setGame = (game) => {
-        this.setState({
-            game
-        })
-    };
+    setGame = (game) => this.game = game;
 //Get captain`s team and all other teams list
     getTeams = () => {
 
