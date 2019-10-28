@@ -1,10 +1,13 @@
 .menu-item {
-    padding: 0 40px;
+    padding: 10px;
     margin: 5px 10px;
     user-select: none;
     cursor: pointer;
-    border: 1px solid white;
     color: white;
+}
+
+.active, .menu-item-wrapper {
+    outline: none;
 }
 
 .avatar {
@@ -14,20 +17,24 @@
 }
 
 .menu-item-wrapper.active {
-    font-size: 25px;
+    font-size: 24px;
     border: none;
 }
 
 .scroll-menu-arrow {
-    padding: 20px;
+    padding: 12px;
     cursor: pointer;
-    font-size: 40px;
+    font-size: 32px;
     background-color: #613eea;
     color: white;
+    height: 72px;
+    border-radius: 6px 6px 0 0;
 }
 
 .horizontal-menu {
     background-color: #613eea;
+    height: 72px;
+    border-radius: 6px 6px 0 0;
 }
 
 .team{
@@ -106,8 +113,8 @@
 }
 
 .today {
-    border: 4px solid white;
-    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.3em;
 }
 
 img {

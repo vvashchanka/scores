@@ -15,8 +15,8 @@ const Arrow = ({ text, className }) => {
     );
 };
 
-const ArrowLeft = Arrow({ text: '◄', className: 'arrow-prev' });
-const ArrowRight = Arrow({ text: '►', className: 'arrow-next' });
+const ArrowLeft = Arrow({ text: '‹', className: 'arrow-prev' });
+const ArrowRight = Arrow({ text: '›', className: 'arrow-next' });
 
 export default class ScrollGames extends React.Component {
     state = {
