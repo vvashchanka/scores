@@ -378,7 +378,10 @@ export default class CaptainView extends React.Component {
 
         const {logged} = this.props;
         return        <div>
-            <Header state={this.state} isHome={logged}/>
+            <Header state={this.state} isHome={logged}
+                    gamesToConfirm={this.state.gamesToConfirm}
+                    confirmGame={this.confirmGame} deleteGame={this.deleteGame}
+            />
             <div className="container">
                 <div className="note">
                     <p>Welcome, {this.state.data.userName}</p>
@@ -415,10 +418,10 @@ export default class CaptainView extends React.Component {
                                 />
                             </Modal>
 
-                    <Modal show={this.state.showApproveGames} onHide={this.toggleShowApproveGames}>
+                    {/*<Modal show={this.state.showApproveGames} onHide={this.toggleShowApproveGames}>
                         <ApproveGames gamesToConfirm={this.state.gamesToConfirm}
                         confirmGame={this.confirmGame} deleteGame={this.deleteGame}/>
-                    </Modal>
+                    </Modal>*/}
                     {this.state.gamesToConfirm.length ? <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowApproveGames}>
                         Show games to confirm
                     </button> : null}
