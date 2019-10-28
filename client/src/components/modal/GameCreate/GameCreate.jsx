@@ -14,7 +14,7 @@ const GameCreate = (props) => {
             </Modal.Header>
 
             <Modal.Body>
-               {/* <div className={styles.modalWrapper}>
+                <div className={styles.modalWrapper}>
                     <div>
                         Select opponent team: <br/>
                         <select onChange={e => selectTeam(e.target.value)}>{
@@ -46,7 +46,7 @@ const GameCreate = (props) => {
                     <button className={styles.buttonCreate} onClick={createGame}>CREATE</button>
 
                     <InfoMsg ok={ok} msg={msg}/>
-                </div>*/}
+                </div>
             </Modal.Body>
         </>
     );
