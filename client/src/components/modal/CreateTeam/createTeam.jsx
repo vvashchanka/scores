@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Modal } from 'react-bootstrap';
 import styles from './test.module.css';
-import defaultImage from './defaultImage'
+import defaultImage from '../../img/defaultImage'
 import InfoMsg from "../../infoMsg";
 import {ReactComponent as Download} from  "../../img/svg/download.svg"
 

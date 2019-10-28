@@ -4,6 +4,7 @@ import {api} from '../config';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import './homePage.css';
 import 'jspdf-autotable';
+import defaultImage from './img/defaultImage'
 
 //Arrows to move slider with games dates
 const Arrow = ({ text, className }) => {
@@ -60,9 +61,10 @@ export default class ScrollGames extends React.Component {
 //Games list by selected date
     showGames =  () => {
         return  this.state.gamesList.data.map(game => {
-            console.log(this.state.teams);
-            const imgTeam1 = this.state.teams.find(team => team.teamName === game.team1).image;
-            const imgTeam2 = this.state.teams.find(team => team.teamName === game.team2).image;
+            const teamOne = this.state.teams.find(team => team.teamName === game.team1);
+            const imgTeam1 = teamOne ? teamOne.image : defaultImage;
+            const teamTwo = this.state.teams.find(team => team.teamName === game.team2);
+            const imgTeam2 = teamTwo ? teamTwo.image : defaultImage;
             return <div className="fadeIn" key={game.id}>
                 <div key={game.id+1} className="team"><img className="avatar" src={imgTeam1} alt=""/></div>
                 <div key={game.id+2} className="team">{game.team1}</div>
