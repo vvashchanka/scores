@@ -11,7 +11,7 @@ const ViewTeam = (props) => {
                 <h1 className={styles.teamName}>{team}</h1>
             </Modal.Header>
             <Modal.Body>
-                <div>
+                <div className={styles.modalBody}>
                     <p>Captain: {captain}</p>
                     {player}
                     <button className={styles.buttonDelete} onClick={removeTeam}>DELETE TEAM</button>

@@ -38,7 +38,7 @@ const CreateTeam = (props) => {
                     <input type="text" className={styles.inputTeam} onChange={e => setTeam(e.target.value)} placeholder={'Team Name'}/>
                     <input name="file" id="file" className={styles.inputfile} type="file" onChange={(e) => getBase64(e)} />
                     <label className={styles.download} htmlFor="file">
-                            <span>Download team logo</span>
+                            <span>Upload team logo</span>
                             <Download/>
                     </label>
                     <button className={styles.buttonCreate} onClick={() => create(team, img)}>CREATE</button>
