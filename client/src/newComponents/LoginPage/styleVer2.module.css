@@ -234,10 +234,6 @@
     border: 0;
     border-radius: 0 5px 5px 0;
     transition: 0.3s;
-    /*position: absolute;*/
-    /*right: 0;*/
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
     cursor: pointer;
 }
 
@@ -272,4 +268,26 @@
 .btnUserActionsWrapper {
     display:flex;
     max-height: 54px;
+}
+
+.btnUserActionsWrapperBox {
+    padding: 0;
+    border: none;
+}
+
+.toggleDiv {
+    position:absolute;
+    top:110px;
+    background-color: #fff;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+}
+
+.navItem {
+    padding: 10px 15px;
+    background-color: #F9FAFB;
+
 }
