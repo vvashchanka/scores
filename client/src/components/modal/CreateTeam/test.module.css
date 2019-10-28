@@ -49,6 +49,7 @@
     border-radius: 6px;
     border: 1px solid gray;
     outline: none;
+    padding: 10px;
 }
 
 .inputTeam:focus {
@@ -93,8 +94,13 @@
 }
 
 .download {
+    margin: auto;
     fill: white;
-    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    padding: 5px;
+    border-radius: 6px;
 }
 
 .downloadButton {
