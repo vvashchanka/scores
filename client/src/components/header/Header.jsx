@@ -67,7 +67,6 @@ const Header = (props) => {
                                 <ApproveGames gamesToConfirm={gamesToConfirm}
                                               confirmGame={confirmGame} deleteGame={deleteGame}/>
                             </Modal>
-
                             <div className={styles.btnUserActionsWrapper}>
 
                                 <button onClick={() => {setToggle(!toggle)
