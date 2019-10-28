@@ -51,3 +51,7 @@
 .buttonCreate:focus {
     outline: none;
 }
+
+.modalWrapper {
+    padding: 0 15px;
+}
