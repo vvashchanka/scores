@@ -169,6 +169,7 @@
     font-size: 1.5rem;
     line-height: 31px;
     text-align: center;
+    color: #4d6279;
 }
 
 .formControl {
@@ -176,4 +177,16 @@
     width: 16.6em;
     border: 1px solid #b1b4be;
     border-radius: 6px;
+}
+
+.formControl:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(97, 62, 234, .5);
+    padding-left: 10px;
+}
+
+.submitButton:focus{
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(97, 62, 234, .5);
+
 }
