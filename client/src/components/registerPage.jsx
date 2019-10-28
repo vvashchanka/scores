@@ -2,6 +2,7 @@ import React from 'react';
 import {api} from '../config';
 import RegisterPageVer2 from "../newComponents/RegisterPage/RegisterPageVer2";
 import {Redirect} from "react-router";
+import Header from "./header/Header";
 
 const axios = require('axios');
 
@@ -71,6 +72,7 @@ export default class Register extends React.Component {
         return (
             <>
                 {this.state.success && <Redirect to="/login"/>}
+                <Header/>
                 <RegisterPageVer2
                     data={this.state}
                     sendData={this.sendData}
