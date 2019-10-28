@@ -14,7 +14,7 @@
     top: 80px;
     width: 330px;
     height: 440px;
-    background-color: #eeeeee;
+    background-color: white;
     padding: 1em 1em 1em 1em;
 }
 
@@ -130,6 +130,7 @@
     text-align: center;
     letter-spacing: 0.1px;
     color: white;
+    margin-top: 1.5em;
     padding: 10px 30px 10px 30px ;
     background-color: #613eea;
     border: 0;
@@ -169,4 +170,20 @@
         flex-direction: column;
         margin: 0 auto;
     }
+}
+
+.labelLogin {
+    padding: 0.5em 0 0.5em 3.8em;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 31px;
+    text-align: center;
+}
+
+.formControl {
+    height: 3em;
+    width: 16.6em;
+    border: 1px solid #b1b4be;
+    border-radius: 6px;
 }

@@ -25,8 +25,8 @@
     top: 80px;
     padding: 1em 1em 1em 1em;
     width: 330px;
-    height: 270px;
-    background-color: #eeeeee;
+    height: 310px;
+    background-color: white;
 }
 
 
@@ -67,7 +67,7 @@
 .navButtons {
     display: flex;
     justify-content: space-between;
-    margin: 0 0 0 32em;
+    margin: 0 0 0 35em;
 }
 
 .navBarLogin {
@@ -118,7 +118,8 @@
     text-align: center;
     letter-spacing: 0.1px;
     color: white;
-    padding: 10px 30px 10px 30px ;
+    margin-top: 1em;
+    padding: 15px 30px 10px 30px ;
     background-color: #613eea;
     border: 0;
     border-radius: 5px;
@@ -159,18 +160,18 @@
     }
 }
 
-.btnPrimary {
+.labelLogin {
+    padding: 0.5em 0 0.5em 4.2em;
     font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    align-items: center;
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 31px;
     text-align: center;
-    letter-spacing: 0.1px;
-    color: white;
-    padding: 10px 40px 10px 40px;
-    background-color: #613eea;
-    border: 0;
-    border-radius: 5px;
-    transition: 0.5s;
+}
+
+.formControl {
+    height: 3em;
+    width: 16.6em;
+    border: 1px solid #b1b4be;
+    border-radius: 6px;
 }

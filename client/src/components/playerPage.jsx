@@ -191,7 +191,7 @@ export default class PlayerView extends React.Component {
                     data={this.state.teamsToJoin}
                     columns={joinColumns}
                 />
-                <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowCreateTeam}>
+                <button className="buttonCreateTeam" onClick={this.toggleShowCreateTeam}>
                     Create team
                 </button>
                 <Modal show={this.state.showCreateTeam} onHide={this.toggleShowCreateTeam}>

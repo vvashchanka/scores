@@ -21,28 +21,28 @@ const RegisterPageVer2 = (props) => {
     const formFields = [
         {
             htmlFor: 'Login',
-            title: 'Login',
+            title: '    Login',
             value: login,
             type: 'text',
             onChange: loginValue
         },
         {
             htmlFor: 'Full Name',
-            title: 'Full Name',
+            title: '    Full Name',
             value: userName,
             type: 'text',
             onChange: userNameValue
         },
         {
             htmlFor: 'Password',
-            title: 'Password',
+            title: '    Password',
             value: password,
             type: 'password',
             onChange: passwordValue
         },
         {
             htmlFor: 'Password confirm',
-            title: 'Confirm password',
+            title: '    Confirm password',
             value: confirmPassword,
             type: 'password',
             onChange: confirmPasswordValue
@@ -56,6 +56,7 @@ const RegisterPageVer2 = (props) => {
                 <Row>
                     <Col>
                         <form>
+                            <label className={styles.labelLogin}>Register</label>
                             {formFields.map(({htmlFor, title, value, type, onChange}) =>
                                 <Input
                                     htmlFor={htmlFor}
@@ -82,9 +83,8 @@ export default RegisterPageVer2;
 const Input = ({htmlFor, title, value, type, onChange}) => {
     return (
         <div className="form-group">
-            <label htmlFor={htmlFor}>{title}</label>
             <input type={type}
-                   className="form-control"
+                   className={styles.formControl}
                    placeholder={title}
                    id={htmlFor}
                    value={value}

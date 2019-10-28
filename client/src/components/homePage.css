@@ -1,4 +1,3 @@
-
 .menu-item {
     padding: 0 40px;
     margin: 5px 10px;
@@ -103,4 +102,12 @@
 img {
     width: 50px;
     height: 50px;
+}
+
+.note p {
+    margin: 50px auto;
+}
+
+.buttonCreateTeam {
+    margin: 50px auto;
 }
