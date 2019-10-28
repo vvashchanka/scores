@@ -53,9 +53,10 @@ const Header = (props) => {
 
                             <div className={styles.btnUserActionsWrapper}>
 
-                                        <button onClick={() => {setToggle(!toggle)
+                                        <button onBlur={() => {setToggle(!toggle)
+                                        }}onClick={() => {setToggle(!toggle)
                                         }} className={styles.userNameBtn}>
-                                            UserNameHere
+                                            UserName
                                         </button>
                                 {toggle && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
@@ -67,7 +68,6 @@ const Header = (props) => {
                                 </div>}
                                 <button className={styles.btnLogout}><Logout className={styles.btnLogoutIcon}/></button>
                             </div>
-
 
                             {/*<NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out</button></NavLink>*/}
                         </div>

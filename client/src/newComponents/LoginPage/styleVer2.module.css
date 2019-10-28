@@ -221,6 +221,7 @@
     color: white;
     cursor: pointer;
     font-size: 21px;
+    min-width: 150px;
 }
 
 .userNameBtn:hover{
@@ -277,17 +278,25 @@
 
 .toggleDiv {
     position:absolute;
-    top:110px;
+    top:120px;
     background-color: #fff;
+    width: 150px;
+    border: 1px solid #4C31B8;
 }
 
 .navList {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .navItem {
-    padding: 10px 15px;
+    padding: 16px;
     background-color: #F9FAFB;
+    cursor: pointer;
+}
 
+.navItem:hover {
+    background-color: #4C31B8;
+    color: #fff;
 }
