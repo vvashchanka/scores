@@ -1,7 +1,5 @@
 import React from 'react';
 import jwt from "jsonwebtoken";
-import LogoutBtn from "./logoutBtn";
-import InfoMsg from "./infoMsg";
 import axios from 'axios';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
@@ -9,7 +7,7 @@ import {api} from '../config';
 import { Modal } from 'react-bootstrap';
 import CreateTeam from './modal/CreateTeam/createTeam';
 import Header from "./header/Header";
-import GameCreate from "./modal/GameCreate/GameCreate";
+import ScrollGames from "./scrollMenu";
 const fs = require('fs');
 
 export default class PlayerView extends React.Component {
@@ -159,12 +157,6 @@ export default class PlayerView extends React.Component {
             id: this.state.data.id
         })
             .then(() => {
-                this.setState({
-                    ok: 'Team created',
-                    disabled: true
-                });
-            })
-            .then(() => {
                 this.props.captain()
             })
             .catch(err => {
@@ -257,5 +249,6 @@ export default class PlayerView extends React.Component {
                     You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''
                 }.
                 </div>
+                <ScrollGames/>
             </div>
         </div>}}

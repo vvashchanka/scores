@@ -5,6 +5,7 @@ const {User, Team} = require ('../models/index');
 router.get('/', async (req, res) => {
     const {login} = req.query;
     const userData = await User.findOne({where: {login}});
+    userData.dataValues.password = null;
     res.send(userData.dataValues);
 });
 

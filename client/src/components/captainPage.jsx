@@ -5,13 +5,12 @@ import axios from 'axios';
 import 'react-table/react-table.css'
 import ReactTable from "react-table";
 import {api} from '../config';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Header from "./header/Header";
-import ViewTeam from "./modal/ViewTeam/ViewTeam";
+import ScrollGames from "./scrollMenu";
 import Modal from "react-bootstrap/Modal";
 import GameCreate from "./modal/GameCreate/GameCreate";
-import CreateTeam from "./modal/CreateTeam/createTeam";
+import Header from "./header/Header";
+import ViewTeam from "./modal/ViewTeam/ViewTeam";
 
 export default class CaptainView extends React.Component {
     state = {
@@ -400,6 +399,7 @@ export default class CaptainView extends React.Component {
                                 />
                             </Modal>
                     {this.state.gamesToConfirm.length ? <GamesToConfirm/> : null}
+                    <ScrollGames/>
                 </div>
             </div>
         </div>
