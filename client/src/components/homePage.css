@@ -15,6 +15,7 @@
 
 .menu-item-wrapper.active {
     font-size: 25px;
+    border: none;
 }
 
 .scroll-menu-arrow {
