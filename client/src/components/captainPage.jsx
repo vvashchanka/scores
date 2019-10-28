@@ -10,6 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Header from "./header/Header";
 import ViewTeam from "./modal/ViewTeam/ViewTeam";
 import Modal from "react-bootstrap/Modal";
+import GameCreate from "./modal/GameCreate/GameCreate";
 
 export default class CaptainView extends React.Component {
     state = this.props.state;
@@ -150,6 +151,12 @@ export default class CaptainView extends React.Component {
             .catch(err => {
                 console.log(err)
             });
+    };
+
+    setGame = (game) => {
+        this.setState({
+            game
+        })
     };
 //Get captain`s team and all other teams list
     getTeams = () => {
@@ -402,6 +409,11 @@ export default class CaptainView extends React.Component {
                             <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
                         </div>
                     </form>
+                    <GameCreate game={this.setGame} teams={this.state.teams} score1={this.state.score1} score2={this.state.score2}
+                                date={this.state.date} ok={this.state.ok} msg={this.state.msg} selectTeam={this.selectTeam}
+                                setDate={this.setDate} setScore1={this.setScore1}
+                                setScore2={this.setScore2} createGame={this.createGame}
+                    />
                     {this.state.gamesToConfirm.length ? <GamesToConfirm/> : null}
                 </div>
             </div>
