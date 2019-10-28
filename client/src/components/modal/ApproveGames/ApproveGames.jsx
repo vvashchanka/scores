@@ -5,33 +5,27 @@ import {ReactComponent as Approve} from "../../img/svg/approve.svg";
 import {ReactComponent as Decline} from "../../img/svg/decline.svg";
 import DatePicker from "react-datepicker";
 import InfoMsg from "../../infoMsg";
+import GameItem from "./GameItem/GameItem";
 
 const ApproveGames = (props) => {
+    let { gamesToConfirm, confirmGame, deleteGame } = props;
+    gamesToConfirm = [{
+        id: '2',
+        score1: '11',
+        score2: '12',
+        team1: '12345',
+        team2: 'test11'}];
     return (
         <Modal.Dialog
             {...props}
             size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
+            aria-labelledby="contained-modal-title-vcenter">
             <Modal.Header closeButton>
                 <Modal.Title>Games for Approve</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <div className={styles.gameBox}>
-                    <div className={styles.game__item}>ОльгаВалентиновна</div>
-                    <div className={styles.game__item}>
-                        <span className={styles.game__scoreItem}>3</span>
-                        <span className={styles.game__scoreItem}>:</span>
-                        <span className={styles.game__scoreItem}>2</span>
-                    </div>
-                    <div className={styles.game__item}>Star Wars</div>
-                    <div className={styles.game__item}>
-                        <Approve className={styles.game__buttonSuccess}/>
-                        <Decline className={styles.game__buttonDelete}/>
-                    </div>
-                </div>
+                {gamesToConfirm.map(game => <GameItem {...game} confirm={confirmGame} decline={deleteGame} />)}
             </Modal.Body>
         </Modal.Dialog>
     )

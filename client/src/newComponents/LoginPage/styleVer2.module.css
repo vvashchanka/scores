@@ -158,3 +158,19 @@
         margin: 0 auto;
     }
 }
+
+.btnPrimary {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: white;
+    padding: 10px 40px 10px 40px;
+    background-color: #613eea;
+    border: 0;
+    border-radius: 5px;
+    transition: 0.5s;
+}
