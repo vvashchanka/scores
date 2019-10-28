@@ -3,6 +3,7 @@ import { Modal } from 'react-bootstrap';
 import styles from './test.module.css';
 import defaultImage from './defaultImage'
 import InfoMsg from "../../infoMsg";
+import {ReactComponent as Download} from  "../../img/svg/download.svg"
 
 const CreateTeam = (props) => {
     const {ok, msg} = props;
@@ -28,22 +29,25 @@ const CreateTeam = (props) => {
         }
     };
     return (
-        <Modal.Dialog
-                      size="s"
-                      aria-labelledby="contained-modal-title-vcenter"
-                      centered>
-            <Modal.Header>
-                <h1>Create Team</h1>
+        <>
+            <Modal.Header closeButton>
+                <h2>Create Team</h2>
             </Modal.Header>
             <Modal.Body>
-                <div className={styles.textCenter}>
+                <div className={styles.modalBody}>
                     <input type="text" className={styles.inputTeam} onChange={e => setTeam(e.target.value)} placeholder={'Team Name'}/>
-                    <input type="file" onChange={(e) => getBase64(e)}/>
+                    <input name="file" id="file" className={styles.inputfile} type="file" onChange={(e) => getBase64(e)} />
+                    <label htmlFor="file">
+                        <div className={styles.downloadButton}>
+                            <p>Download team logo</p>
+                            <Download className={styles.download}/>
+                        </div>
+                    </label>
                     <button className={styles.buttonCreate} onClick={() => create(team, img)}>CREATE</button>
                 </div>
                 <InfoMsg ok={ok} msg={msg}/>
             </Modal.Body>
-        </Modal.Dialog>
+        </>
     );
 
 };
