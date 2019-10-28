@@ -2,6 +2,7 @@ import styles from "../../newComponents/LoginPage/styleVer2.module.css";
 import {Col, Container, Row} from "react-bootstrap";
 import React from "react";
 import {NavLink} from "react-router-dom";
+import {ReactComponent as Plus} from "../img/svg/plus-box.svg";
 
 const Header = (props) => {
     const logOut = () => {
@@ -30,10 +31,10 @@ if (!loggedIn){
                 <Container>
                     <Row>
                         <NavLink to='/'><Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col></NavLink>
-                        <Col className={styles.navButtons}>
-
+                        <div className={styles.navButtons}>
+                            <button onClick={() => {}} className={styles.navBarCreate}><span className={styles.btnCreateWrapper}><Plus className={styles.plusImg}/><span>Create Team</span></span></button>
                             <NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out</button></NavLink>
-                        </Col>
+                        </div>
                     </Row>
                 </Container>
             </div>)
