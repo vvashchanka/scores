@@ -69,6 +69,7 @@
 .navButtons {
     display: flex;
     justify-content: space-between;
+    margin: 0 0 0 35em;
 }
 
 .navBarLogin {
@@ -200,7 +201,7 @@
     letter-spacing: 0.1px;
     color: white;
     padding: 15px 19px;
-    background-color: #613eea;
+    background-color: #4C31B8;
     border: 0;
     border-radius: 5px;
     transition: 0.5s;
