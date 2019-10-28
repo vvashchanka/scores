@@ -1,6 +1,5 @@
 import React from 'react';
 import jwt from "jsonwebtoken";
-import LogoutBtn from "./logoutBtn";
 import InfoMsg from "./infoMsg";
 import axios from 'axios';
 import 'react-table/react-table.css'
@@ -9,12 +8,21 @@ import {api} from '../config';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Header from "./header/Header";
+import ViewTeam from "./modal/ViewTeam/ViewTeam";
+import Modal from "react-bootstrap/Modal";
 
 export default class CaptainView extends React.Component {
     state = this.props.state;
 
     game = '';
     invite = '';
+
+    //open modal View Team
+    toggleShowViewTeam = () => {
+        this.setState({
+            showViewTeam: !this.state.showViewTeam
+        })
+    };
 //Create new game result
     createGame = () => {
         axios.post(`${api}games`,
@@ -120,7 +128,7 @@ export default class CaptainView extends React.Component {
         axios.put(`${api}teams/leave`, {
             teamName, login: this.state.myTeam.player
         })
-            .then(res => {
+            .then(() => {
                 this.setState({
                     isInTeam: ''
                 });
@@ -136,7 +144,7 @@ export default class CaptainView extends React.Component {
             {
                 team: this.state.myTeam.teamName
             })
-            .then((res) => {
+            .then(() => {
                 this.getUserData()
             })
             .catch(err => {
@@ -230,7 +238,7 @@ export default class CaptainView extends React.Component {
                     login: this.state.data.login
                 }}
         )
-            .then(res => {
+            .then(() => {
                 this.props.captain()
             })
             .catch(err => {
@@ -348,10 +356,19 @@ export default class CaptainView extends React.Component {
                     You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''}.
                     You are captain
                     <div>
-                        Your team: {this.state.myTeam.teamName} <button className="btn btn-outline-secondary mr-2" onClick={this.removeTeam}>Delete team</button>
-                        <img src={this.state.myTeam.image} alt="Team logo"/>
-                        {this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>
-                        }
+
+                        {/*MODAL VIEW TEAM*/}
+                        <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowViewTeam}>
+                            View Team
+                        </button>
+                        <Modal show={this.state.showViewTeam} onHide={this.toggleShowViewTeam}>
+                            <ViewTeam team={this.state.myTeam.teamName}
+                                      removeTeam={this.removeTeam}
+                                      logo={this.state.myTeam.image}
+                                      player={this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>}
+                                      captain={this.state.data.login}
+                            />
+                        </Modal>
 
                     </div>
                     <form className="form" onSubmit={(e) => {
