@@ -31,6 +31,7 @@ if (!loggedIn){
                     <Row>
                         <NavLink to='/'><Col className={styles.godel}>Godel<span className={styles.football}>Football</span></Col></NavLink>
                         <Col className={styles.navButtons}>
+
                             <NavLink to='/login'><button type="button" onClick={() => {logOut()}} className={styles.navBarLogin}>Log out</button></NavLink>
                         </Col>
                     </Row>

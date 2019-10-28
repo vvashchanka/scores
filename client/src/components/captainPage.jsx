@@ -11,6 +11,7 @@ import Modal from "react-bootstrap/Modal";
 import GameCreate from "./modal/GameCreate/GameCreate";
 import Header from "./header/Header";
 import ViewTeam from "./modal/ViewTeam/ViewTeam";
+import ApproveGames from "./modal/ApproveGames/ApproveGames";
 
 export default class CaptainView extends React.Component {
     state = {
@@ -31,6 +32,12 @@ export default class CaptainView extends React.Component {
     toggleShowCreateGame = () => {
         this.setState({
             showCreateGame: !this.state.showCreateGame
+        })
+    };
+    //Open ApproveGames modal
+    toggleShowApproveGames = () => {
+        this.setState({
+            showApproveGames: !this.state.showApproveGames
         })
     };
 
@@ -76,9 +83,9 @@ export default class CaptainView extends React.Component {
             });
     };
 //Confirm game results
-    confirmGame = (row) => {
+    confirmGame = id => {
         axios.put(`${api}games`, {
-            id: row.id
+            id
         })
             .then((res) => {
                 this.setState({
@@ -93,9 +100,9 @@ export default class CaptainView extends React.Component {
             });
     };
 //Decline and delete game result
-    deleteGame = (row) => {
+    deleteGame = id => {
         axios.delete(`${api}games`, {params: {
-                id: row.id
+                id
             }})
             .then(res => {
                 this.setState({
@@ -279,6 +286,7 @@ export default class CaptainView extends React.Component {
 
     render() {
         const GamesToConfirm = () => {
+            console.log(this.state.gamesToConfirm);
             const gameColumns = [{
                 Header: 'Opponent Team',
                 accessor: 'team1'
@@ -398,7 +406,14 @@ export default class CaptainView extends React.Component {
                                             setScore2={this.setScore2} createGame={this.createGame}
                                 />
                             </Modal>
-                    {this.state.gamesToConfirm.length ? <GamesToConfirm/> : null}
+
+                    <Modal show={this.state.showApproveGames} onHide={this.toggleShowApproveGames}>
+                        <ApproveGames gamesToConfirm={this.state.gamesToConfirm}
+                        confirmGame={this.confirmGame} deleteGame={this.deleteGame}/>
+                    </Modal>
+                    {this.state.gamesToConfirm.length && <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowApproveGames}>
+                        Show games to confirm
+                    </button>}
                     <ScrollGames/>
                 </div>
             </div>
