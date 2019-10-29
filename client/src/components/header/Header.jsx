@@ -53,6 +53,15 @@ const Header = (props) => {
         <ApproveGames gamesToConfirm={gamesToConfirm}
                       confirmGame={confirmGame} deleteGame={deleteGame}/>
     </Modal>;
+
+    const ModalCreateGame = () => <Modal show={modalCreateGame} onHide={() => setModalCreateGame(false)}>
+        <GameCreate game={game} teams={teams} score1={score1} score2={score2}
+                    date={date} ok={ok} msg={msg} selectTeam={selectTeam}
+                    setDate={setDate} setScore1={setScore1}
+                    setScore2={setScore2} createGame={createGame}
+        />
+    </Modal>;
+
     const logOut = () => {
         localStorage.removeItem('jwt');
     };
@@ -91,14 +100,7 @@ const Header = (props) => {
                             <Notification/>
                             <ModalViewTeam/>
                             <ModalApproveGames/>
-
-                            <Modal show={modalCreateGame} onHide={setModalCreateGame}>
-                                <GameCreate game={game} teams={teams} score1={score1} score2={score2}
-                                            date={date} ok={ok} msg={msg} selectTeam={selectTeam}
-                                            setDate={setDate} setScore1={setScore1}
-                                            setScore2={setScore2} createGame={createGame}
-                                />
-                            </Modal>
+                            <ModalCreateGame/>
 
                             <div className={styles.btnUserActionsWrapper}>
 
@@ -115,7 +117,7 @@ const Header = (props) => {
                                     </ul>
                                 </div>}
 
-                                <NavLink to='/login'><button className={styles.btnLogout}><Logout className={styles.btnLogoutIcon}/></button></NavLink>
+                                <NavLink to='/login'><button className={styles.btnLogout} onClick={logOut}><Logout className={styles.btnLogoutIcon}/></button></NavLink>
                             </div>
                         </div>
                     </div>
@@ -132,9 +134,8 @@ const Header = (props) => {
                             className={styles.football}>Football</span></div></NavLink>
                         <div className={styles.navButtons}>
                             <Notification/>
-                            {!props.state.data.teamName &&<div>
-                                <button onClick={() => {
-                                }} className={styles.navBarCreate}>
+                            {!props.state.data.teamName && <div>
+                                <button onClick={() => {}} className={styles.navBarCreate}>
                                     <span className={styles.btnCreateWrapper}><Plus className={styles.plusImg}/><span
                                         className={styles.btnCreateText}>Create Team</span></span>
                                 </button>
@@ -153,7 +154,7 @@ const Header = (props) => {
                                         <li className={styles.navItem}>View Team</li>
                                     </ul>
                                 </div>}
-                                <NavLink to='/login'><button className={styles.btnLogout}><Logout className={styles.btnLogoutIcon}/></button></NavLink>
+                                <NavLink to='/login'><button className={styles.btnLogout} onClick={logOut}><Logout className={styles.btnLogoutIcon}/></button></NavLink>
                             </div>
                         </div>
                     </div>
