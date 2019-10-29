@@ -12,9 +12,9 @@ import GameCreate from "../modal/GameCreate/GameCreate";
 import CreateTeam from "../modal/CreateTeam/createTeam";
 import JoinTeam from "../modal/JoinTeam/JoinTeam";
 import InvitePlayer from "../modal/InvitePlayer/InvitePlayer";
+import ViewTeamPlayer from "../modal/ViewTeam/ViewTeamPlayer";
 
 const Header = (props) => {
-    console.log(props);
     const {
         gamesToConfirm,
         confirmGame,
@@ -41,7 +41,13 @@ const Header = (props) => {
         joinTeam,
         freePlayers,
         sendInvite,
-        reset
+        reset,
+        declineTeam,
+        acceptTeam,
+        teamName,
+        leaveTeam,
+        approvedPlayer,
+        playerConfirm
     } = props;
 
     const [modalCreateGame, setModalCreateGame] = useState(false);
@@ -51,6 +57,7 @@ const Header = (props) => {
     const [modalJoinTeam, setModalJoinTeam] = useState(false);
     const [toggleDropDown, setToggleDropDown] = useState(false);
     const [modalInvitePlayer, setModalInvitePlayer] = useState(false);
+    const [modalViewTeamPlayer, setModalViewTeamPlayer] = useState(false);
 
     const ModalViewTeam = () => <Modal show={modalViewTeam} onHide={() => setModalViewTeam(false)}>
         <ViewTeam team={team}
@@ -75,7 +82,6 @@ const Header = (props) => {
                       sendInvite = {sendInvite}
                       freePlayers = {freePlayers}
 
-
         />
     </Modal>;
 
@@ -89,6 +95,13 @@ const Header = (props) => {
                     date={date} ok={ok} msg={msg} selectTeam={selectTeam}
                     setDate={setDate} setScore1={setScore1}
                     setScore2={setScore2} createGame={createGame}
+        />
+    </Modal>;
+
+    const ModalViewTeamPlayer = () => <Modal show={modalViewTeamPlayer} onHide={() => setModalViewTeamPlayer(false)}>
+        <ViewTeamPlayer teamName={teamName}
+                        approvedPlayer={approvedPlayer}
+                        leaveTeam={leaveTeam}
         />
     </Modal>;
 
@@ -144,7 +157,7 @@ const Header = (props) => {
                                 className={styles.football}>Football</span></div>
                         </NavLink>
                         <div className={styles.navButtons}>
-                            <Notification/>
+                            {!props.state.myTeam.captainApproved && props.state.myTeam.player && <Notification player={playerConfirm}/>}
                             <ModalViewTeam/>
                             <ModalApproveGames/>
                             <ModalCreateGame/>
@@ -194,9 +207,14 @@ const Header = (props) => {
                                 className={styles.football}>Football</span></div>
                         </NavLink>
                         <div className={styles.navButtons}>
-                            <Notification/>
+                            {props.state.hasInvites && <Notification
+                                teamsToJoin={props.state.teamsToAccept}
+                                accept={acceptTeam}
+                                refuse={declineTeam}
+                            />}
                             <ModalCreateTeam/>
                             <ModalJoinTeam/>
+                            <ModalViewTeamPlayer/>
                             {!props.state.data.teamName && <div>
                                 <button onClick={() => {
                                     setModalCreateTeam(!modalCreateTeam)
@@ -215,6 +233,7 @@ const Header = (props) => {
                                 {toggleDropDown && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
                                         {!props.state.data.teamName && <li className={styles.navItem} onClick={() => setModalJoinTeam(!modalJoinTeam)}>Join Team</li>}
+                                        <li className={styles.navItem} onClick={() => setModalViewTeamPlayer(!modalViewTeamPlayer)}>ViewTeam</li>
                                     </ul>
                                 </div>}
                                 <NavLink to='/login'>

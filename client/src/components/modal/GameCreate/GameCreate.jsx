@@ -5,7 +5,6 @@ import DatePicker from "react-datepicker";
 import InfoMsg from "../../infoMsg";
 
 const GameCreate = (props) => {
-
     const {game, teams, score1, score2, date, ok, msg, selectTeam, setDate, setScore1, setScore2, createGame} = props;
     return (
         <>

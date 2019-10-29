@@ -41,10 +41,10 @@ export default class PlayerView extends React.Component {
             });
     };
 //Accept invite
-    acceptTeam = (row) => {
+    acceptTeam = (teamName) => {
         axios.put(`${api}teams/accept`, {
             player: this.state.data.login,
-            teamName: row.teamName
+            teamName
         })
             .then(res => {
                 this.setState({
@@ -60,10 +60,10 @@ export default class PlayerView extends React.Component {
             });
     };
 //Decline invite
-    declineTeam = (row) => {
+    declineTeam = (teamName) => {
         axios.put(`${api}teams/decline`, {
             player: this.state.data.login,
-            teamName: row.teamName
+            teamName
         })
             .then(res => {
                 this.setState({
@@ -253,17 +253,24 @@ export default class PlayerView extends React.Component {
                 teamsToJoin={this.state.teamsToJoin}
                 joinTeam={this.joinTeam}
                 playerLogin={this.state.data.login}
-
+                acceptTeam={this.acceptTeam}
+                declineTeam={this.declineTeam}
+                teamName={this.state.isInTeam}
+                approvedPlayer={this.state.teamApproved ?
+                        <div>Your team is ready to play</div>
+                        : <div>You are not approved yet</div>}
+                leaveTeam={<button className="btn btn-outline-secondary mr-2"
+                                   onClick={() => this.leaveTeam(this.state.isInTeam)}>Leave team {this.state.isInTeam}</button>}
             />
             <div className="container">
-                <div className="content">
+              {/*  <div className="content">
                     {this.state.hasInvites ? <Invites/>
                         : this.state.isInTeam ? <IsInTeam/>
                             : IsNotInTeam()}
                     Your Login is {this.state.data.login}.
                     You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''
                 }.
-                </div>
+                </div>*/}
                 <ScrollGames/>
             </div>
         </>
