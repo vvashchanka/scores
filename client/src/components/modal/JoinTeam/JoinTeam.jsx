@@ -12,7 +12,7 @@ const JoinTeam = (props) => {
     return (
         <>
             <Modal.Header closeButton>
-                <Modal.Title>Games for Approve</Modal.Title>
+                <Modal.Title>Teams to Join</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
