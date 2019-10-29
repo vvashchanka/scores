@@ -21,28 +21,28 @@ const RegisterPageVer2 = (props) => {
     const formFields = [
         {
             htmlFor: 'Login',
-            title: '    Login',
+            title: 'Login',
             value: login,
             type: 'text',
             onChange: loginValue
         },
         {
             htmlFor: 'Full Name',
-            title: '    Full Name',
+            title: 'Full Name',
             value: userName,
             type: 'text',
             onChange: userNameValue
         },
         {
             htmlFor: 'Password',
-            title: '    Password',
+            title: 'Password',
             value: password,
             type: 'password',
             onChange: passwordValue
         },
         {
             htmlFor: 'Password confirm',
-            title: '    Confirm password',
+            title: 'Confirm password',
             value: confirmPassword,
             type: 'password',
             onChange: confirmPasswordValue

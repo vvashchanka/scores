@@ -178,6 +178,7 @@
     width: 16.6em;
     border: 1px solid #b1b4be;
     border-radius: 6px;
+    padding-left: 1em;
 }
 
 .formControl:focus {
