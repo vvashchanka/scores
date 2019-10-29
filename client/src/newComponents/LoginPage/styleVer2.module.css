@@ -139,14 +139,13 @@
 
 .navButtons {
     display: flex;
-    padding-left: 500px;
+    justify-content: flex-end;
 }
 
 @media (max-width: 1200px) {
     .navButtons {
         display: flex;
         justify-content: space-between;
-        margin: 0 0 0 20em;
     }
 }
 
@@ -154,7 +153,6 @@
     .navButtons {
         display: flex;
         justify-content: space-between;
-        margin: 0 0 0 5em;
     }
 }
 
@@ -162,7 +160,6 @@
     .navButtons {
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
     }
 }
 
