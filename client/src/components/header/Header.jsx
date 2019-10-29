@@ -36,7 +36,8 @@ const Header = (props) => {
         teamsToJoin,
         joinTeam,
         freePlayers,
-        sendInvite
+        sendInvite,
+        reset
     } = props;
     let {ok, msg} = props;
 
@@ -50,9 +51,10 @@ const Header = (props) => {
 
     const ModalViewTeam = () => <Modal show={modalViewTeam} onHide={() => {
         setModalViewTeam(false);
-        ok = '';
-        msg = '';
-    }}>
+        reset();
+    }
+
+    }>
         <ViewTeam team={team}
                   removeTeam={removeTeam}
                   logo={logo}
@@ -64,9 +66,7 @@ const Header = (props) => {
 
     const ModalInvitePlayer = () => <Modal show={modalInvitePlayer} onHide={() => {
         setModalInvitePlayer(false);
-        ok = '';
-        msg = '';
-        console.log(ok + ' ' + msg)
+        reset();
     }}>
         <InvitePlayer team={team}
                   removeTeam={removeTeam}
@@ -82,8 +82,7 @@ const Header = (props) => {
     </Modal>;
 
     const ModalApproveGames = () => <Modal show={modalApprove} onHide={() => {
-        ok = '';
-        msg = '';
+        reset();
         setModalApprove(false)
     }}>
         <ApproveGames gamesToConfirm={gamesToConfirm}
@@ -91,8 +90,7 @@ const Header = (props) => {
     </Modal>;
 
     const ModalCreateGame = () => <Modal show={modalCreateGame} onHide={() => {
-        ok = '';
-        msg = '';
+        reset();
         setModalCreateGame(false)
     }}>
         <GameCreate game={game} teams={teams} score1={score1} score2={score2}
@@ -103,8 +101,7 @@ const Header = (props) => {
     </Modal>;
 
     const ModalCreateTeam = () => <Modal show={modalCreateTeam} onHide={() => {
-        ok = '';
-        msg = '';
+        reset();
         setModalCreateTeam(false)
     }}>
         <CreateTeam ok={ok} msg={msg} team={createTeam}/>
@@ -114,8 +111,7 @@ const Header = (props) => {
         <Modal
             show={modalJoinTeam}
             onHide={() => {
-                ok = '';
-                msg = '';
+                reset();
                 setModalJoinTeam(false)
             }}
         >

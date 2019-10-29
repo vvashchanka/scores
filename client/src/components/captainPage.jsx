@@ -18,26 +18,9 @@ export default class CaptainView extends React.Component {
     game = '';
 
 
-    //open modal View Team
-    toggleShowViewTeam = () => {
+  //Reset alerts when modal is closed
+    resetMsg = () => {
         this.setState({
-            showViewTeam: !this.state.showViewTeam,
-            msg: null,
-            ok: null
-        })
-    };
-    //Open create team modal
-    toggleShowCreateGame = () => {
-        this.setState({
-            showCreateGame: !this.state.showCreateGame,
-            msg: null,
-            ok: null
-        })
-    };
-    //Open ApproveGames modal
-    toggleShowApproveGames = () => {
-        this.setState({
-            showApproveGames: !this.state.showApproveGames,
             msg: null,
             ok: null
         })
@@ -351,7 +334,7 @@ export default class CaptainView extends React.Component {
         const {logged} = this.props;
         return        <div>
             <Header state={this.state} isHome={logged} freePlayers={this.state.freePlayers}
-                    gamesToConfirm={this.state.gamesToConfirm}
+                    gamesToConfirm={this.state.gamesToConfirm} reset = {this.resetMsg}
                     confirmGame={this.confirmGame} deleteGame={this.deleteGame}
                     team={this.state.myTeam.teamName}
                     removeTeam={this.removeTeam} sendInvite={this.sendInvite}
