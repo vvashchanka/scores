@@ -23,6 +23,9 @@
 
 .menu-item-wrapper.active {
     background-color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .menu-item.menu-item-wrapper {
@@ -145,4 +148,9 @@ img {
 
 .menu-wrapper--inner {
     border: none;
+    height: 100%;
+}
+
+.menu-wrapper {
+    height: 100%;
 }
