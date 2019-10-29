@@ -27,19 +27,18 @@ const Header = (props) => {
         score1,
         score2,
         date,
-        msg,
         selectTeam,
         setDate,
         setScore1,
         setScore2,
         createGame,
-        ok,
         createTeam,
         teamsToJoin,
         joinTeam,
         freePlayers,
         sendInvite
     } = props;
+    let {ok, msg} = props;
 
     const [modalInvitePlayer, setModalInvitePlayer] = useState(false);
     const [modalCreateGame, setModalCreateGame] = useState(false);
@@ -49,7 +48,11 @@ const Header = (props) => {
     const [modalJoinTeam, setModalJoinTeam] = useState(false);
     const [toggleDropDown, setToggleDropDown] = useState(false);
 
-    const ModalViewTeam = () => <Modal show={modalViewTeam} onHide={() => setModalViewTeam(false)}>
+    const ModalViewTeam = () => <Modal show={modalViewTeam} onHide={() => {
+        setModalViewTeam(false);
+        ok = '';
+        msg = '';
+    }}>
         <ViewTeam team={team}
                   removeTeam={removeTeam}
                   logo={logo}
@@ -59,7 +62,12 @@ const Header = (props) => {
         />
     </Modal>;
 
-    const ModalInvitePlayer = () => <Modal show={modalInvitePlayer} onHide={() => setModalInvitePlayer(false)}>
+    const ModalInvitePlayer = () => <Modal show={modalInvitePlayer} onHide={() => {
+        setModalInvitePlayer(false);
+        ok = '';
+        msg = '';
+        console.log(ok + ' ' + msg)
+    }}>
         <InvitePlayer team={team}
                   removeTeam={removeTeam}
                   logo={logo}
@@ -73,12 +81,20 @@ const Header = (props) => {
         />
     </Modal>;
 
-    const ModalApproveGames = () => <Modal show={modalApprove} onHide={() => setModalApprove(false)}>
+    const ModalApproveGames = () => <Modal show={modalApprove} onHide={() => {
+        ok = '';
+        msg = '';
+        setModalApprove(false)
+    }}>
         <ApproveGames gamesToConfirm={gamesToConfirm}
                       confirmGame={confirmGame} deleteGame={deleteGame}/>
     </Modal>;
 
-    const ModalCreateGame = () => <Modal show={modalCreateGame} onHide={() => setModalCreateGame(false)}>
+    const ModalCreateGame = () => <Modal show={modalCreateGame} onHide={() => {
+        ok = '';
+        msg = '';
+        setModalCreateGame(false)
+    }}>
         <GameCreate game={game} teams={teams} score1={score1} score2={score2}
                     date={date} ok={ok} msg={msg} selectTeam={selectTeam}
                     setDate={setDate} setScore1={setScore1}
@@ -86,14 +102,22 @@ const Header = (props) => {
         />
     </Modal>;
 
-    const ModalCreateTeam = () => <Modal show={modalCreateTeam} onHide={() => setModalCreateTeam(false)}>
+    const ModalCreateTeam = () => <Modal show={modalCreateTeam} onHide={() => {
+        ok = '';
+        msg = '';
+        setModalCreateTeam(false)
+    }}>
         <CreateTeam ok={ok} msg={msg} team={createTeam}/>
     </Modal>;
 
     const ModalJoinTeam = () => (
         <Modal
             show={modalJoinTeam}
-            onHide={() => setModalJoinTeam(false)}
+            onHide={() => {
+                ok = '';
+                msg = '';
+                setModalJoinTeam(false)
+            }}
         >
             <ApproveGames
                 gamesToConfirm={teamsToJoin}

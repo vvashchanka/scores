@@ -7,6 +7,26 @@ const InvitePlayer = (props) => {
     let invite = '';
     const [player, setPlayer] = useState('');
     const {team, msg, ok, logo, captain, sendInvite, freePlayers} = props;
+    const PlayersList = () => {
+        return <form className="form" onSubmit={(e) => {
+            e.preventDefault();
+            sendInvite(player || invite);
+        }}>
+            <div className="form-group">
+                <select value={player} onChange={e => setPlayer(e.target.value)}>{
+                    freePlayers.map(
+                        (option, i) => {
+                            if(!i) {
+                                invite = option.userName;
+                            }
+                            return <option key={i}>{option.userName}</option>}
+                    )
+                }</select>
+                <button className="btn btn-outline-secondary mr-2">Send invite
+                </button>
+            </div>
+        </form>
+    };
     return (
         <>
             <Modal.Header closeButton>
@@ -16,24 +36,7 @@ const InvitePlayer = (props) => {
             <Modal.Body>
                 <div className={styles.modalBody}>
                     <p>Captain: {captain}</p>
-                    <form className="form" onSubmit={(e) => {
-                        e.preventDefault();
-                        sendInvite(player || invite);
-                    }}>
-                        <div className="form-group">
-                            <select value={player} onChange={e => setPlayer(e.target.value)}>{
-                                freePlayers.map(
-                                    (option, i) => {
-                                        if(!i) {
-                                            invite = option.userName;
-                                        }
-                                        return <option key={i}>{option.userName}</option>}
-                                )
-                            }</select>
-                            <button className="btn btn-outline-secondary mr-2">Send invite
-                            </button>
-                        </div>
-                    </form>
+                    {freePlayers.length ? <PlayersList/> : <div>No free players</div>}
                 </div>
                 <InfoMsg ok={ok} msg={msg}/>
             </Modal.Body>
