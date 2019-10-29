@@ -1,6 +1,5 @@
 import React from 'react';
 import jwt from "jsonwebtoken";
-import InfoMsg from "./infoMsg";
 import axios from 'axios';
 import 'react-table/react-table.css'
 import ReactTable from "react-table";
@@ -143,7 +142,6 @@ export default class CaptainView extends React.Component {
     setGame = (game) => this.game = game;
 //Get captain`s team and all other teams list
     getTeams = () => {
-
             axios.get(`${api}teams`)
                 .then((res) => {
                         const myTeamIdx = res.data.findIndex(team => {
@@ -245,6 +243,9 @@ export default class CaptainView extends React.Component {
             .then(() => this.setState({
                 ok: "Invite sent"
             }))
+            .then(() =>
+            this.getTeams()
+            )
             .catch(err => {
                 console.log(err)
             });

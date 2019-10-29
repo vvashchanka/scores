@@ -14,7 +14,6 @@ import JoinTeam from "../modal/JoinTeam/JoinTeam";
 import InvitePlayer from "../modal/InvitePlayer/InvitePlayer";
 
 const Header = (props) => {
-    console.log(props);
     const {
         gamesToConfirm,
         confirmGame,
@@ -74,7 +73,6 @@ const Header = (props) => {
                       ok={ok} msg={msg}
                       sendInvite = {sendInvite}
                       freePlayers = {freePlayers}
-
 
         />
     </Modal>;
