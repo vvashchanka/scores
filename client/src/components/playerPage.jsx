@@ -254,9 +254,6 @@ export default class PlayerView extends React.Component {
                 joinTeam={this.joinTeam}
             />
             <div className="container">
-                <div className="note">
-                    <p>Welcome, {this.state.data.userName}</p>
-                </div>
                 <div className="content">
                     {this.state.hasInvites ? <Invites/>
                         : this.state.isInTeam ? <IsInTeam/>
