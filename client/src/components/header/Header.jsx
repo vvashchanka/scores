@@ -10,6 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import ViewTeam from "../modal/ViewTeam/ViewTeam";
 import GameCreate from "../modal/GameCreate/GameCreate";
 import CreateTeam from "../modal/CreateTeam/createTeam";
+import JoinTeam from "../modal/JoinTeam/JoinTeam";
 
 const Header = (props) => {
     console.log(props);
@@ -77,9 +78,9 @@ const Header = (props) => {
             show={modalJoinTeam}
             onHide={() => setModalJoinTeam(false)}
         >
-            <ApproveGames
-                gamesToConfirm={teamsToJoin}
-                confirmGame={joinTeam}
+            <JoinTeam
+                teamsToJoin={teamsToJoin}
+                joinTeam={joinTeam}
             />
         </Modal>
     );
@@ -170,6 +171,7 @@ const Header = (props) => {
                         </NavLink>
                         <div className={styles.navButtons}>
                             <Notification/>
+                            <ModalCreateTeam/>
                             <ModalJoinTeam/>
                             {!props.state.data.teamName && <div>
                                 <button onClick={() => {
@@ -188,7 +190,7 @@ const Header = (props) => {
                                 </button>
                                 {toggleDropDown && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
-                                        <li className={styles.navItem} onClick={() => setModalJoinTeam(!modalJoinTeam)}>Join Team</li>
+                                        {!props.state.data.teamName && <li className={styles.navItem} onClick={() => setModalJoinTeam(!modalJoinTeam)}>Join Team</li>}
                                     </ul>
                                 </div>}
                                 <NavLink to='/login'>

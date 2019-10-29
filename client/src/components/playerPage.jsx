@@ -25,10 +25,10 @@ export default class PlayerView extends React.Component {
         })
     };
 //Join team
-    joinTeam = (row) => {
+    joinTeam = (teamName) => {
         axios.put(`${api}teams/join`, {
             player: this.state.data.login,
-            teamName: row.teamName
+            teamName
         })
             .then(res => {
                 this.setState({
