@@ -8,15 +8,51 @@ import Notification from "../notification/Notification";
 import ApproveGames from "../modal/ApproveGames/ApproveGames";
 import Modal from "react-bootstrap/Modal";
 import ViewTeam from "../modal/ViewTeam/ViewTeam";
+import GameCreate from "../modal/GameCreate/GameCreate";
 
 const Header = (props) => {
     console.log(props);
-    const { gamesToConfirm, confirmGame, deleteGame, team, removeTeam, logo, captain, player } = props;
+    const {
+        gamesToConfirm,
+        confirmGame,
+        deleteGame,
+        team,
+        removeTeam,
+        logo,
+        captain,
+        player,
+        game,
+        teams,
+        score1,
+        score2,
+        date,
+        msg,
+        selectTeam,
+        setDate,
+        setScore1,
+        setScore2,
+        createGame,
+        ok
+    } = props;
 
-    const [modalViewTeam, setModalViewTeam] = useState(false)
+    const [modalCreateGame, setModalCreateGame] = useState(false);
+    const [modalViewTeam, setModalViewTeam] = useState(false);
     const [modalApprove, setModalApprove] = useState(false);
-    const [toggle, setToggle] = useState(false);
+    const [toggleDropDown, setToggleDropDown] = useState(false);
 
+    const ModalViewTeam = () => <Modal show={modalViewTeam} onHide={() => setModalViewTeam(false)}>
+        <ViewTeam team={team}
+                  removeTeam={removeTeam}
+                  logo={logo}
+                  player={player}
+                  captain={captain}
+        />
+    </Modal>;
+
+    const ModalApproveGames = () => <Modal show={modalApprove} onHide={() => setModalApprove(false)}>
+        <ApproveGames gamesToConfirm={gamesToConfirm}
+                      confirmGame={confirmGame} deleteGame={deleteGame}/>
+    </Modal>;
     const logOut = () => {
         localStorage.removeItem('jwt');
     };
@@ -53,30 +89,27 @@ const Header = (props) => {
                             className={styles.football}>Football</span></div></NavLink>
                         <div className={styles.navButtons}>
                             <Notification/>
+                            <ModalViewTeam/>
+                            <ModalApproveGames/>
 
-                            <Modal show={modalViewTeam} onHide={() => setModalViewTeam(false)}>
-                                <ViewTeam team={team}
-                                          removeTeam={removeTeam}
-                                          logo={logo}
-                                          player={player}
-                                          captain={captain}
+                            <Modal show={modalCreateGame} onHide={setModalCreateGame}>
+                                <GameCreate game={game} teams={teams} score1={score1} score2={score2}
+                                            date={date} ok={ok} msg={msg} selectTeam={selectTeam}
+                                            setDate={setDate} setScore1={setScore1}
+                                            setScore2={setScore2} createGame={createGame}
                                 />
                             </Modal>
 
-                            <Modal show={modalApprove} onHide={() => setModalApprove(false)}>
-                                <ApproveGames gamesToConfirm={gamesToConfirm}
-                                              confirmGame={confirmGame} deleteGame={deleteGame}/>
-                            </Modal>
                             <div className={styles.btnUserActionsWrapper}>
 
-                                <button onClick={() => {setToggle(!toggle)
+                                <button onClick={() => {setToggleDropDown(!toggleDropDown)
                                 }} className={styles.userNameBtn}>
                                     {props.state.data.login}
                                 </button>
-                                {toggle && <div className={styles.toggleDiv}>
+                                {toggleDropDown && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
                                         <li className={styles.navItem}>Invite Player</li>
-                                        <li className={styles.navItem}>Create Game</li>
+                                        <li onClick={() => setModalCreateGame(!modalCreateGame)} className={styles.navItem}>Create Game</li>
                                         <li onClick={() => setModalApprove(!modalApprove)} className={styles.navItem}>Approve Games</li>
                                         <li onClick={() => setModalViewTeam(!modalViewTeam)} className={styles.navItem}>View Team</li>
                                     </ul>
@@ -108,11 +141,11 @@ const Header = (props) => {
                             </div>}
 
                             <div className={styles.btnUserActionsWrapper}>
-                                <button onClick={() => {setToggle(!toggle)
+                                <button onClick={() => {setToggleDropDown(!toggleDropDown)
                                 }} className={styles.userNameBtn}>
                                     {props.state.data.userName}
                                 </button>
-                                {toggle && <div className={styles.toggleDiv}>
+                                {toggleDropDown && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
                                         <li className={styles.navItem}>Invite Player</li>
                                         <li className={styles.navItem}>Create Game</li>

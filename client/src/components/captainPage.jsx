@@ -386,6 +386,10 @@ export default class CaptainView extends React.Component {
                     logo={this.state.myTeam.image}
                     player={this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>}
                     captain={this.state.data.login}
+                    game={this.setGame} teams={this.state.teams} score1={this.state.score1} score2={this.state.score2}
+                    date={this.state.date} ok={this.state.ok} msg={this.state.msg} selectTeam={this.selectTeam}
+                    setDate={this.setDate} setScore1={this.setScore1}
+                    setScore2={this.setScore2} createGame={this.createGame}
             />
             <div className="container">
                 <div className="note">
@@ -412,7 +416,7 @@ export default class CaptainView extends React.Component {
 
                     </div>
 
-                            <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowCreateGame}>
+                            {/*<button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowCreateGame}>
                                 Create score
                             </button>
                             <Modal show={this.state.showCreateGame} onHide={this.toggleShowCreateGame}>
@@ -421,7 +425,7 @@ export default class CaptainView extends React.Component {
                                             setDate={this.setDate} setScore1={this.setScore1}
                                             setScore2={this.setScore2} createGame={this.createGame}
                                 />
-                            </Modal>
+                            </Modal>*/}
 
                     {/*<Modal show={this.state.showApproveGames} onHide={this.toggleShowApproveGames}>
                         <ApproveGames gamesToConfirm={this.state.gamesToConfirm}
