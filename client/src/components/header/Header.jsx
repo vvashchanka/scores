@@ -9,6 +9,7 @@ import ApproveGames from "../modal/ApproveGames/ApproveGames";
 import Modal from "react-bootstrap/Modal";
 import ViewTeam from "../modal/ViewTeam/ViewTeam";
 import GameCreate from "../modal/GameCreate/GameCreate";
+import CreateTeam from "../modal/CreateTeam/createTeam";
 
 const Header = (props) => {
     console.log(props);
@@ -32,12 +33,14 @@ const Header = (props) => {
         setScore1,
         setScore2,
         createGame,
-        ok
+        ok,
+        createTeam
     } = props;
 
     const [modalCreateGame, setModalCreateGame] = useState(false);
     const [modalViewTeam, setModalViewTeam] = useState(false);
     const [modalApprove, setModalApprove] = useState(false);
+    const [modalCreateTeam, setModalCreateTeam] = useState(false);
     const [toggleDropDown, setToggleDropDown] = useState(false);
 
     const ModalViewTeam = () => <Modal show={modalViewTeam} onHide={() => setModalViewTeam(false)}>
@@ -60,6 +63,10 @@ const Header = (props) => {
                     setDate={setDate} setScore1={setScore1}
                     setScore2={setScore2} createGame={createGame}
         />
+    </Modal>;
+
+    const ModalCreateTeam = () => <Modal show={modalCreateTeam} onHide={setModalCreateTeam}>
+        <CreateTeam ok={ok} msg={msg} team={createTeam}/>
     </Modal>;
 
     const logOut = () => {
@@ -134,8 +141,9 @@ const Header = (props) => {
                             className={styles.football}>Football</span></div></NavLink>
                         <div className={styles.navButtons}>
                             <Notification/>
+                            <ModalCreateTeam/>
                             {!props.state.data.teamName && <div>
-                                <button onClick={() => {}} className={styles.navBarCreate}>
+                                <button onClick={() => {setModalCreateTeam(!modalCreateTeam)}} className={styles.navBarCreate}>
                                     <span className={styles.btnCreateWrapper}><Plus className={styles.plusImg}/><span
                                         className={styles.btnCreateText}>Create Team</span></span>
                                 </button>

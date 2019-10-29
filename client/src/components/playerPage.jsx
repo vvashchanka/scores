@@ -239,7 +239,7 @@ export default class PlayerView extends React.Component {
         ];
         const {logged} = this.props;
         return <div>
-        <Header state={this.state}/>
+        <Header state={this.state} createTeam={this.createTeam}/>
             <div className="container">
                 <div className="note">
                     <p>Welcome, {this.state.data.userName}</p>
