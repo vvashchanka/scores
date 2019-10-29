@@ -6,6 +6,7 @@
     top: 0;
     left: 0;
 }
+
 .headerBox {
     display: flex;
     justify-content: space-between;
@@ -54,6 +55,10 @@
     font-weight: bold;
     font-size: 40px;
     line-height: 47px;
+}
+
+.labelLink:hover {
+    text-decoration: none;
 }
 
 @media (max-width: 767px) {
