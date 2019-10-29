@@ -8,6 +8,7 @@ import {api} from '../config';
 import "react-datepicker/dist/react-datepicker.css";
 import ScrollGames from "./scrollMenu";
 import Header from "./header/Header";
+import styles from  '../components/modal/CreateTeam/test.module.css'
 
 export default class CaptainView extends React.Component {
     state = {
@@ -313,7 +314,7 @@ export default class CaptainView extends React.Component {
                 if (this.state.myTeam.captainApproved  && this.state.myTeam.playerApproved) {
                     return <div>Your team is ready to play</div>
                 } else if (this.state.myTeam.captainApproved) {
-                    return <div>Waiting for player to confirm invitation</div>
+                    return <div className={styles.waitingConfirm}>Waiting for player to confirm invitation</div>
                 } else if (this.state.myTeam.playerApproved) {
                     return <div>The player is not confirmed to join.
                         <button className="btn btn-outline-secondary mr-2" onClick={this.confirmPlayer}>Confirm player</button>
@@ -321,7 +322,7 @@ export default class CaptainView extends React.Component {
                 }
             };
 
-            return <div>Your player is {this.state.playerName}. <button className="btn btn-outline-secondary mr-2" onClick={() => this.leaveTeam(this.state.myTeam.teamName)}>Remove player</button>
+            return <div>Your player is {this.state.playerName}. <button className={styles.removePlayer} onClick={() => this.leaveTeam(this.state.myTeam.teamName)}>Remove player</button>
                 {approvement()}
             </div>
         };

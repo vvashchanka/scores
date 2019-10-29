@@ -16,7 +16,7 @@ const GameCreate = (props) => {
             <Modal.Body>
                 <div className={styles.modalWrapper}>
                     <div>
-                        Select opponent team: <br/>
+                        <span className={styles.selectOpponentTeam}>Select opponent team:</span> <br/>
                         <select className={styles.opponentSelect} onChange={e => selectTeam(e.target.value)}>{
                         teams.map((option, i) => {
                             if(!i) {
@@ -38,7 +38,7 @@ const GameCreate = (props) => {
                             value={score2}/>
                     </div>
                     <div>
-                        <h3 className={styles.selectDate}>Select date</h3>
+                        <h3 className={styles.selectDate}>Select date:</h3>
                         <DatePicker className={styles.dateInput} onChange={(date) => setDate(date)}
                                     selected={date}/>
                         <div className={styles.date}>Date: {date ? date.toString().slice(0, -41) : 'Select a date'}</div>
