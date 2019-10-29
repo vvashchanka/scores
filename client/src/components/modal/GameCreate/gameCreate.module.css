@@ -1,9 +1,9 @@
 .form__input {
-    width: 20%;
-    height: 1.5em;
-    margin-top: 1em;
+    width: 30%;
+    height: 2em;
+    margin-top: 2em;
     border-radius: 6px;
-    border: 1px solid gray;
+    border: 2px solid #4c31b8;
     outline: none;
     font-size: 24px;
     text-align: center;
@@ -29,7 +29,7 @@
     display: block;
     font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin: 3rem 0 0 0;
 }
 
 .scoreItem {
@@ -40,7 +40,6 @@
 
 .buttonCreate {
     background: #4C31B8;
-    box-shadow: 0 8px 20px rgba(97, 62, 234, 0.32);
     border-radius: 6px;
     color: white;
     width: 55%;
@@ -48,6 +47,19 @@
     border: unset;
     margin: 20px 0 20px 0;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.buttonCreate:hover {
+    background: #cfd2dc;
+    border-radius: 6px;
+    color: #4c31b8;
+    width: 55%;
+    height: 2.8em;
+    border: unset;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .buttonCreate:focus {
@@ -59,14 +71,24 @@
     text-align: center;
 }
 
+.selectOpponentTeam {
+    font-weight: bold;
+    font-size: 21px;
+}
+
 .selectDate {
     padding: 1em 0 1em 0;
+    margin: 3rem 0 0 0;
+    font-size: 21px;
+    font-weight: bold;
 }
 
 .dateInput {
-    border: 1px solid #b1b4be;
+    border: 2px solid #4c31b8;
     border-radius: 6px;
     text-align: center;
+    width: 150px;
+    height: 40px;
 }
 
 .date {
@@ -74,6 +96,10 @@
 }
 
 .opponentSelect {
-    border: 1px solid #b1b4be;
+    border: 2px solid #4c31b8;
     border-radius: 6px;
+    margin-top: 1em;
+    width: 150px;
+    height: 40px;
+    padding-left: 2.5em;
 }

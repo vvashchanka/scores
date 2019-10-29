@@ -32,8 +32,8 @@
  }
 
 .buttonDelete {
-    background: darkred;
-    box-shadow: 0 8px 20px rgba(97, 62, 234, 0.32);
+    background: #4c31b8;
+    box-shadow: 0 8px 20px rgba(177, 180, 190, 0.32);
     border-radius: 6px;
     color: white;
     width: 74%;
@@ -41,6 +41,20 @@
     border: unset;
     margin-top: 20px;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.buttonDelete:hover {
+    background: #b1b4be;
+    box-shadow: 0 8px 20px rgba(177, 180, 190, 0.32);
+    border-radius: 6px;
+    color: #4c31b8;
+    width: 74%;
+    height: 3.2em;
+    border: unset;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .inputTeam {
@@ -108,24 +122,46 @@ width: 100%;
 }
 
 .teamSelect {
-    border: 1px solid #b1b4be;
+    width: 150px;
+    height: 40px;
+    border: 2px solid #4c31b8;
     border-radius: 6px;
+    padding-left: 2.5em;
 }
 
-.sendInvite {
+.sendInvite, .removePlayer {
     font-weight: 400;
     font-size: 16px;
     align-items: center;
     text-align: center;
     letter-spacing: 0.1px;
     color: white;
-    padding: 15px 40px;
+    padding: 10px 40px;
     margin-left: 2em;
     background-color: #4c31b8;
     border: 0;
     border-radius: 6px;
     transition: 0.5s;
     cursor: pointer;
+}
+
+.sendInvite:hover, .removePlayer:hover {
+    font-weight: 400;
+    font-size: 16px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #4c31b8;
+    padding: 10px 40px;
+    margin-left: 2em;
+    background-color: #cfd2dc;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.waitingConfirm {
+    padding: 20px 0 10px 0;
+    color: red;
 }
 
 
