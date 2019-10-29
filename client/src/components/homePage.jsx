@@ -5,7 +5,7 @@ import {api} from '../config';
 import './homePage.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import save from "./img/save.png"
+import {ReactComponent as Export} from './img/svg/export-variant.svg'
 import Header from "./header/Header";
 import ScrollGames from './scrollMenu'
 
@@ -94,7 +94,9 @@ export default class App extends React.Component {
                 <div className="content">
                     <ScrollGames/>
                 </div>
-                <img onClick={() => this.exportPDF()} src={save} alt="Save game results in pdf"/>
+                <div className="footer">
+                <Export className="saveGame" onClick={() => this.exportPDF()} alt="Save game results in pdf"/>
+                </div>
             </div>
         </div>
     }

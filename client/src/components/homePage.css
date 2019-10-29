@@ -64,8 +64,8 @@
     animation-name: fadeIn;
     -webkit-animation-name: fadeIn;
 
-    animation-duration: 1s;
-    -webkit-animation-duration: 1s;
+    animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
 
     animation-timing-function: ease-in-out;
     -webkit-animation-timing-function: ease-in-out;
@@ -148,4 +148,19 @@ img {
 
 .menu-wrapper {
     height: 100%;
+}
+
+.saveGame {
+    fill: #613eea ;
+    height: 3em;
+    width: 3em;
+    cursor: pointer;
+}
+
+.footer {
+    margin-top: 20px;;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }

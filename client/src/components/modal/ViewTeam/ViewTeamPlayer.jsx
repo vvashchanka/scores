@@ -7,6 +7,7 @@ import InfoMsg from "../../infoMsg";
 const ViewTeam = (props) => {
     const {teamName, approvedPlayer, leaveTeam} = props;
 
+
     return (
         <>
             <Modal.Header closeButton>
