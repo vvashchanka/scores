@@ -116,9 +116,9 @@
 
 .unapproved {
     display: inline-block;
-    font-size: 45px;
+    font-size: 32px;
     font-weight: bold;
-    color: #ff7730;
+    color: lightgray;
     margin: 10px;
 }
 
