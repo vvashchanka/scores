@@ -106,7 +106,6 @@ const Header = (props) => {
     }}>
         <CreateTeam ok={ok} msg={msg} team={createTeam}/>
     </Modal>;
-
     const ModalJoinTeam = () => (
         <Modal
             show={modalJoinTeam}

@@ -16,7 +16,7 @@ const JoinTeam = (props) => {
             </Modal.Header>
 
             <Modal.Body>
-                {teamsToJoin.map(game => <JoinItem {...game} joinTeam={joinTeam}/>)}
+                {teamsToJoin ? teamsToJoin.map(game => <JoinItem {...game} joinTeam={joinTeam}/>) : null}
             </Modal.Body>
         </>
     )
