@@ -19,6 +19,7 @@ const ArrowLeft = Arrow({ text: '‹', className: 'arrow-prev' });
 const ArrowRight = Arrow({ text: '›', className: 'arrow-next' });
 
 export default class ScrollGames extends React.Component {
+
     state = {
         selected: 0,
         gamesList: 'Nothing to show',
@@ -26,6 +27,7 @@ export default class ScrollGames extends React.Component {
         gamesByDate: [],
         teams: []
     };
+
 
     onSelect = key => {
         this.setState({ selected: key });

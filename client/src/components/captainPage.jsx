@@ -26,23 +26,29 @@ export default class CaptainView extends React.Component {
     };
 
 //Create new game result
-    createGame = () => {
+    createGame = (team2, score1, score2, date) => {
         axios.post(`${api}games`,
             {
                 team1: this.state.myTeam.teamName,
-                team2: this.state.gameAddTeam || this.game,
-                score1: this.state.score1,
-                score2: this.state.score2,
-                date: this.state.date
+                team2,
+                score1,
+                score2,
+                date
             })
             .then(() => {
                 this.setState({
                     ok: 'Score sent to opponent',
                     msg: null
                 });
+
             })
             .then(() => {
-                this.getUserData()
+                this.getUserData();
+            })
+            .then(() => {
+                this.setState({
+                    reload: true
+                });
             })
             .catch(err => {
                 console.log(err);
@@ -162,30 +168,6 @@ export default class CaptainView extends React.Component {
                 .catch(err => {
                     console.log(err)
                 });
-    };
-//Handle team choice to create game result
-    selectTeam = (team) => {
-        this.setState({
-            gameAddTeam: team
-        })
-    };
-//Handle team1 score choice to create game result
-    setScore1 = (e) => {
-        this.setState({
-            score1: e.target.value
-        })
-    };
-//Handle game date choice to create game result
-    setDate = (date) => {
-        this.setState({
-            date
-        })
-    };
-//Handle team2 score choice to create game result
-    setScore2 = (e) => {
-        this.setState({
-            score2: e.target.value
-        })
     };
 
 
@@ -350,7 +332,7 @@ export default class CaptainView extends React.Component {
             />
             <div className="container">
                 <div className="content">
-                    <ScrollGames/>
+                    <ScrollGames />
                 </div>
             </div>
         </div>
