@@ -14,6 +14,7 @@ const fs = require('fs');
 export default class PlayerView extends React.Component {
     state = {
         showCreateTeam: false,
+        myTeamCaptain: '',
         ...this.props.state
     };
 //Open create team modal
@@ -97,12 +98,12 @@ export default class PlayerView extends React.Component {
     getTeams = () => {
         axios.get(`${api}teams`)
             .then(res => {
+                console.log(this.state);
                 const idx = res.data.findIndex(val => val.player === this.state.data.login);
                 if (idx !== -1) {
                     this.setState({
                         isInTeam: res.data[idx].teamName
                     });
-
                     if (res.data[idx].captainApproved && res.data[idx].playerApproved) {
                         this.setState({
                             teamApproved: true

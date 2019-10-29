@@ -1,5 +1,5 @@
 import styles from "../../newComponents/LoginPage/styleVer2.module.css";
-import {Col, Container, Dropdown, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import {ReactComponent as Plus} from "../img/svg/plus-box.svg";
@@ -15,7 +15,6 @@ import InvitePlayer from "../modal/InvitePlayer/InvitePlayer";
 import ViewTeamPlayer from "../modal/ViewTeam/ViewTeamPlayer";
 
 const Header = (props) => {
-    console.log(props);
     const {
         gamesToConfirm,
         confirmGame,
