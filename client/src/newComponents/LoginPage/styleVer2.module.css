@@ -61,6 +61,10 @@
     text-decoration: none;
 }
 
+.godel:hover {
+    color: #08bd9c;
+}
+
 @media (max-width: 767px) {
     .godel {
         margin: 0 0 1em 1em;
