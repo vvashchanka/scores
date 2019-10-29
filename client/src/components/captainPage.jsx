@@ -7,11 +7,7 @@ import ReactTable from "react-table";
 import {api} from '../config';
 import "react-datepicker/dist/react-datepicker.css";
 import ScrollGames from "./scrollMenu";
-import Modal from "react-bootstrap/Modal";
-import GameCreate from "./modal/GameCreate/GameCreate";
 import Header from "./header/Header";
-import ViewTeam from "./modal/ViewTeam/ViewTeam";
-import ApproveGames from "./modal/ApproveGames/ApproveGames";
 
 export default class CaptainView extends React.Component {
     state = {
@@ -392,48 +388,7 @@ export default class CaptainView extends React.Component {
                     setScore2={this.setScore2} createGame={this.createGame}
             />
             <div className="container">
-                <div className="note">
-                    <p>Welcome, {this.state.data.userName}</p>
-                </div>
                 <div className="content">
-                    Your Login is {this.state.data.login}.
-                    You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''}.
-                    You are captain
-                    <div>
-
-                        {/*MODAL VIEW TEAM*/}
-                        {/*<button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowViewTeam}>
-                            View Team
-                        </button>
-                        <Modal show={this.state.showViewTeam} onHide={this.toggleShowViewTeam}>
-                            <ViewTeam team={this.state.myTeam.teamName}
-                                      removeTeam={this.removeTeam}
-                                      logo={this.state.myTeam.image}
-                                      player={this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>}
-                                      captain={this.state.data.login}
-                            />
-                        </Modal>*/}
-
-                    </div>
-
-                            {/*<button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowCreateGame}>
-                                Create score
-                            </button>
-                            <Modal show={this.state.showCreateGame} onHide={this.toggleShowCreateGame}>
-                                <GameCreate game={this.setGame} teams={this.state.teams} score1={this.state.score1} score2={this.state.score2}
-                                            date={this.state.date} ok={this.state.ok} msg={this.state.msg} selectTeam={this.selectTeam}
-                                            setDate={this.setDate} setScore1={this.setScore1}
-                                            setScore2={this.setScore2} createGame={this.createGame}
-                                />
-                            </Modal>*/}
-
-                    {/*<Modal show={this.state.showApproveGames} onHide={this.toggleShowApproveGames}>
-                        <ApproveGames gamesToConfirm={this.state.gamesToConfirm}
-                        confirmGame={this.confirmGame} deleteGame={this.deleteGame}/>
-                    </Modal>*/}
-                    {this.state.gamesToConfirm.length ? <button className="btn btn-outline-secondary mr-2" onClick={this.toggleShowApproveGames}>
-                        Show games to confirm
-                    </button> : null}
                     <ScrollGames/>
                 </div>
             </div>
