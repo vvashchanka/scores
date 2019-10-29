@@ -132,7 +132,7 @@ const Header = (props) => {
             <div className={styles.header}>
                 <Container>
                     <Row>
-                        <NavLink to='/'><Col className={styles.godel}>Godel<span
+                        <NavLink className={styles.labelLink} to='/'><Col className={styles.godel}>Godel<span
                             className={styles.football}>Football</span></Col></NavLink>
                         <Col className={styles.navButtons}>
                             <NavLink to='/register'>
