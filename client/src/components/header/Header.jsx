@@ -92,6 +92,7 @@ const Header = (props) => {
     if (props.state) {
         loggedIn = props.state.loggedIn;
     }
+
     if (!loggedIn) {
         return (
             <div className={styles.header}>
