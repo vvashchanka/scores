@@ -17,7 +17,7 @@ const GameCreate = (props) => {
                 <div className={styles.modalWrapper}>
                     <div>
                         Select opponent team: <br/>
-                        <select onChange={e => selectTeam(e.target.value)}>{
+                        <select className={styles.opponentSelect} onChange={e => selectTeam(e.target.value)}>{
                         teams.map((option, i) => {
                             if(!i) {
                                 game(option.teamName)

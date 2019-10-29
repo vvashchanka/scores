@@ -72,3 +72,8 @@
 .date {
     padding-top: 1em;
 }
+
+.opponentSelect {
+    border: 1px solid #b1b4be;
+    border-radius: 6px;
+}

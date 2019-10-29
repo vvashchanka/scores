@@ -13,7 +13,7 @@ const InvitePlayer = (props) => {
             sendInvite(player || invite);
         }}>
             <div className="form-group">
-                <select value={player} onChange={e => setPlayer(e.target.value)}>{
+                <select className={styles.teamSelect} value={player} onChange={e => setPlayer(e.target.value)}>{
                     freePlayers.map(
                         (option, i) => {
                             if(!i) {
@@ -22,7 +22,7 @@ const InvitePlayer = (props) => {
                             return <option key={i}>{option.userName}</option>}
                     )
                 }</select>
-                <button className="btn btn-outline-secondary mr-2">Send invite
+                <button className={styles.sendInvite}>Send invite
                 </button>
             </div>
         </form>
