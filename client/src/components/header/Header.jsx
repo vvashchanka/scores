@@ -15,6 +15,7 @@ import InvitePlayer from "../modal/InvitePlayer/InvitePlayer";
 import ViewTeamPlayer from "../modal/ViewTeam/ViewTeamPlayer";
 
 const Header = (props) => {
+    console.log(props);
     const {
         gamesToConfirm,
         confirmGame,
@@ -213,7 +214,7 @@ const Header = (props) => {
                                 refuse={declineTeam}
                             />}
                             <ModalCreateTeam/>
-                            <ModalJoinTeam/>
+                            {!props.state.isInTeam && <ModalJoinTeam/>}
                             <ModalViewTeamPlayer/>
                             {!props.state.data.teamName && <div>
                                 <button onClick={() => {
