@@ -252,6 +252,8 @@ export default class PlayerView extends React.Component {
                 createTeam={this.createTeam}
                 teamsToJoin={this.state.teamsToJoin}
                 joinTeam={this.joinTeam}
+                playerLogin={this.state.data.login}
+
             />
             <div className="container">
                 <div className="content">

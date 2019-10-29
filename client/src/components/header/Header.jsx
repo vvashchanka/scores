@@ -10,9 +10,11 @@ import Modal from "react-bootstrap/Modal";
 import ViewTeam from "../modal/ViewTeam/ViewTeam";
 import GameCreate from "../modal/GameCreate/GameCreate";
 import CreateTeam from "../modal/CreateTeam/createTeam";
+import JoinTeam from "../modal/JoinTeam/JoinTeam";
 import InvitePlayer from "../modal/InvitePlayer/InvitePlayer";
 
 const Header = (props) => {
+    console.log(props);
     const {
         gamesToConfirm,
         confirmGame,
@@ -27,11 +29,13 @@ const Header = (props) => {
         score1,
         score2,
         date,
+        msg,
         selectTeam,
         setDate,
         setScore1,
         setScore2,
         createGame,
+        ok,
         createTeam,
         teamsToJoin,
         joinTeam,
@@ -39,40 +43,34 @@ const Header = (props) => {
         sendInvite,
         reset
     } = props;
-    let {ok, msg} = props;
 
-    const [modalInvitePlayer, setModalInvitePlayer] = useState(false);
     const [modalCreateGame, setModalCreateGame] = useState(false);
     const [modalViewTeam, setModalViewTeam] = useState(false);
     const [modalApprove, setModalApprove] = useState(false);
     const [modalCreateTeam, setModalCreateTeam] = useState(false);
     const [modalJoinTeam, setModalJoinTeam] = useState(false);
     const [toggleDropDown, setToggleDropDown] = useState(false);
+    const [modalInvitePlayer, setModalInvitePlayer] = useState(false);
 
-    const ModalViewTeam = () => <Modal show={modalViewTeam} onHide={() => {
-        setModalViewTeam(false);
-        reset();
-    }
-
-    }>
+    const ModalViewTeam = () => <Modal show={modalViewTeam} onHide={() => setModalViewTeam(false)}>
         <ViewTeam team={team}
                   removeTeam={removeTeam}
                   logo={logo}
                   player={player}
                   captain={captain}
-                  ok={ok} msg={msg}
         />
     </Modal>;
+
 
     const ModalInvitePlayer = () => <Modal show={modalInvitePlayer} onHide={() => {
         setModalInvitePlayer(false);
         reset();
     }}>
         <InvitePlayer team={team}
-                  removeTeam={removeTeam}
-                  logo={logo}
-                  player={player}
-                  captain={captain}
+                      removeTeam={removeTeam}
+                      logo={logo}
+                      player={player}
+                      captain={captain}
                       ok={ok} msg={msg}
                       sendInvite = {sendInvite}
                       freePlayers = {freePlayers}
@@ -81,18 +79,12 @@ const Header = (props) => {
         />
     </Modal>;
 
-    const ModalApproveGames = () => <Modal show={modalApprove} onHide={() => {
-        reset();
-        setModalApprove(false)
-    }}>
+    const ModalApproveGames = () => <Modal show={modalApprove} onHide={() => setModalApprove(false)}>
         <ApproveGames gamesToConfirm={gamesToConfirm}
                       confirmGame={confirmGame} deleteGame={deleteGame}/>
     </Modal>;
 
-    const ModalCreateGame = () => <Modal show={modalCreateGame} onHide={() => {
-        reset();
-        setModalCreateGame(false)
-    }}>
+    const ModalCreateGame = () => <Modal show={modalCreateGame} onHide={() => setModalCreateGame(false)}>
         <GameCreate game={game} teams={teams} score1={score1} score2={score2}
                     date={date} ok={ok} msg={msg} selectTeam={selectTeam}
                     setDate={setDate} setScore1={setScore1}
@@ -100,28 +92,20 @@ const Header = (props) => {
         />
     </Modal>;
 
-    const ModalCreateTeam = () => <Modal show={modalCreateTeam} onHide={() => {
-        reset();
-        setModalCreateTeam(false)
-    }}>
+    const ModalCreateTeam = () => <Modal show={modalCreateTeam} onHide={() => setModalCreateTeam(false)}>
         <CreateTeam ok={ok} msg={msg} team={createTeam}/>
     </Modal>;
     const ModalJoinTeam = () => (
         <Modal
             show={modalJoinTeam}
-            onHide={() => {
-                reset();
-                setModalJoinTeam(false)
-            }}
+            onHide={() => setModalJoinTeam(false)}
         >
-            <ApproveGames
-                gamesToConfirm={teamsToJoin}
-                confirmGame={joinTeam}
+            <JoinTeam
+                teamsToJoin={teamsToJoin}
+                joinTeam={joinTeam}
             />
         </Modal>
     );
-
-
 
     const logOut = () => {
         localStorage.removeItem('jwt');
@@ -161,10 +145,10 @@ const Header = (props) => {
                         </NavLink>
                         <div className={styles.navButtons}>
                             <Notification/>
-                            <ModalInvitePlayer/>
                             <ModalViewTeam/>
                             <ModalApproveGames/>
                             <ModalCreateGame/>
+                            <ModalInvitePlayer/>
                             <div className={styles.btnUserActionsWrapper}>
 
                                 <button onClick={() => {
@@ -175,7 +159,8 @@ const Header = (props) => {
                                 {toggleDropDown && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
                                         <li onClick={() => setModalInvitePlayer(!modalInvitePlayer)}
-                                            className={styles.navItem}>Invite Player</li>
+                                            className={styles.navItem}>Invite Player
+                                        </li>
                                         <li onClick={() => setModalCreateGame(!modalCreateGame)}
                                             className={styles.navItem}>Create Game
                                         </li>
@@ -210,6 +195,7 @@ const Header = (props) => {
                         </NavLink>
                         <div className={styles.navButtons}>
                             <Notification/>
+                            <ModalCreateTeam/>
                             <ModalJoinTeam/>
                             {!props.state.data.teamName && <div>
                                 <button onClick={() => {
@@ -228,7 +214,7 @@ const Header = (props) => {
                                 </button>
                                 {toggleDropDown && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
-                                        <li className={styles.navItem} onClick={() => setModalJoinTeam(!modalJoinTeam)}>Join Team</li>
+                                        {!props.state.data.teamName && <li className={styles.navItem} onClick={() => setModalJoinTeam(!modalJoinTeam)}>Join Team</li>}
                                     </ul>
                                 </div>}
                                 <NavLink to='/login'>

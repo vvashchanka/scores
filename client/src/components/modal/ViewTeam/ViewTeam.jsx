@@ -6,7 +6,8 @@ import InfoMsg from "../../infoMsg";
 
 const ViewTeam = (props) => {
     const {team, removeTeam, logo, player, captain, ok, msg} = props;
-    return (
+
+        return (
         <>
             <Modal.Header closeButton>
                 <img src={logo} alt="Team logo"/>
@@ -21,8 +22,7 @@ const ViewTeam = (props) => {
                 <InfoMsg ok={ok} msg={msg}/>
             </Modal.Body>
         </>
-    );
-
+        )
 };
 
 export default ViewTeam;
