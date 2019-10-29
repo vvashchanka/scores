@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Modal, Dropdown} from "react-bootstrap";
+import {Modal} from "react-bootstrap";
 import styles from "./gameCreate.module.css";
 import DatePicker from "react-datepicker";
 import InfoMsg from "../../infoMsg";

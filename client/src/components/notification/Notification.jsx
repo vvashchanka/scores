@@ -1,5 +1,5 @@
 import React from "react";
-import {Popover, OverlayTrigger, Button} from "react-bootstrap";
+import {Popover, OverlayTrigger} from "react-bootstrap";
 import {ReactComponent as Bell} from "../img/svg/bell.svg";
 import styles from "./notification.module.css"
 import InviteItem from "./TeamsToJoin/InviteItem/InviteItem";
