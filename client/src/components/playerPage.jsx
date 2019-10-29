@@ -5,6 +5,7 @@ import 'react-table/react-table.css';
 import {api} from '../config';
 import Header from "./header/Header";
 import ScrollGames from "./scrollMenu";
+import styles from './modal/CreateTeam/test.module.css';
 
 /*const fs = require('fs');*/
 
@@ -276,7 +277,7 @@ export default class PlayerView extends React.Component {
                 approvedPlayer={this.state.teamApproved ?
                         <div>Your team is ready to play</div>
                         : <div>You are not approved yet</div>}
-                leaveTeam={<button className="btn btn-outline-secondary mr-2"
+                leaveTeam={<button className={styles.notApprovedButton}
                                    onClick={() => this.leaveTeam(this.state.isInTeam)}>Leave team {this.state.isInTeam}</button>}
             />
             <div className="container">

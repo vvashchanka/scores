@@ -164,6 +164,38 @@ width: 100%;
     color: red;
 }
 
+.notApprovedButton {
+    font-weight: 400;
+    font-size: 16px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: white;
+    padding: 10px 40px;
+    margin-top: 2em;
+    background-color: #4c31b8;
+    border: 0;
+    border-radius: 6px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.notApprovedButton:hover {
+    font-weight: 400;
+    font-size: 16px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #583bb0;
+    padding: 10px 40px;
+    margin-top: 2em;
+    background-color: #b1b4be;
+    border: 0;
+    border-radius: 6px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
 
 
 
