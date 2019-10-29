@@ -4,10 +4,10 @@ import {ReactComponent as Approve} from "../../img/svg/approve.svg";
 import {ReactComponent as Decline} from "../../img/svg/decline.svg";
 import DatePicker from "react-datepicker";
 import InfoMsg from "../../infoMsg";
-import GameItem from "./GameItem/GameItem";
+import JoinItem from "./JoinItem/JoinItem";
 
-const ApproveGames = (props) => {
-    const { gamesToConfirm, confirmGame, deleteGame } = props;
+const JoinTeam = (props) => {
+    const { teamsToJoin, joinTeam } = props;
 
     return (
         <>
@@ -16,12 +16,12 @@ const ApproveGames = (props) => {
             </Modal.Header>
 
             <Modal.Body>
-                {gamesToConfirm.map(game => <GameItem {...game} confirm={confirmGame} decline={deleteGame} />)}
+                {teamsToJoin.map(game => <JoinItem {...game} joinTeam={joinTeam}/>)}
             </Modal.Body>
         </>
     )
 };
 
-export default ApproveGames;
+export default JoinTeam;
 
 

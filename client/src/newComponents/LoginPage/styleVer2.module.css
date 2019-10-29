@@ -70,21 +70,18 @@
     line-height: 47px;
 }
 
-.navButtons {
-    display: flex;
-}
-
 .navBarLogin {
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 21px;
+    margin-left: 0.5em;
     line-height: 24px;
     align-items: center;
     text-align: center;
     letter-spacing: 0.1px;
     color: white;
-    padding: 10px 40px 10px 40px;
-    background-color: #613eea;
+    padding: 15px 54px;
+    background-color: #4c31b8;
     border: 0;
     border-radius: 5px;
     transition: 0.5s;
@@ -99,14 +96,14 @@
 .navBarRegister {
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 21px;
     line-height: 24px;
     align-items: center;
     text-align: center;
     letter-spacing: 0.1px;
     color: white;
-    padding: 10px 30px 10px 30px ;
-    background-color: #613eea;
+    padding: 15px 40px;
+    background-color: #4c31b8;
     border: 0;
     border-radius: 5px;
     transition: 0.5s;
@@ -138,6 +135,11 @@
 
 .navBarLogin:active, .navBarRegister:active {
     background-color: #4d6279;
+}
+
+.navButtons {
+    display: flex;
+    padding-left: 500px;
 }
 
 @media (max-width: 1200px) {
