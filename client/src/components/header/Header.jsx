@@ -72,7 +72,6 @@ const Header = (props) => {
     const ModalCreateTeam = () => <Modal show={modalCreateTeam} onHide={() => setModalCreateTeam(false)}>
         <CreateTeam ok={ok} msg={msg} team={createTeam}/>
     </Modal>;
-
     const ModalJoinTeam = () => (
         <Modal
             show={modalJoinTeam}
