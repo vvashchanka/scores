@@ -41,10 +41,10 @@ export default class PlayerView extends React.Component {
             });
     };
 //Accept invite
-    acceptTeam = (row) => {
+    acceptTeam = (teamName) => {
         axios.put(`${api}teams/accept`, {
             player: this.state.data.login,
-            teamName: row.teamName
+            teamName
         })
             .then(res => {
                 this.setState({
@@ -60,10 +60,10 @@ export default class PlayerView extends React.Component {
             });
     };
 //Decline invite
-    declineTeam = (row) => {
+    declineTeam = (teamName) => {
         axios.put(`${api}teams/decline`, {
             player: this.state.data.login,
-            teamName: row.teamName
+            teamName
         })
             .then(res => {
                 this.setState({
@@ -253,7 +253,8 @@ export default class PlayerView extends React.Component {
                 teamsToJoin={this.state.teamsToJoin}
                 joinTeam={this.joinTeam}
                 playerLogin={this.state.data.login}
-
+                acceptTeam={this.acceptTeam}
+                declineTeam={this.declineTeam}
             />
             <div className="container">
                 <div className="content">

@@ -40,7 +40,9 @@ const Header = (props) => {
         joinTeam,
         freePlayers,
         sendInvite,
-        reset
+        reset,
+        declineTeam,
+        acceptTeam
     } = props;
 
     const [modalCreateGame, setModalCreateGame] = useState(false);
@@ -192,7 +194,11 @@ const Header = (props) => {
                                 className={styles.football}>Football</span></div>
                         </NavLink>
                         <div className={styles.navButtons}>
-                            <Notification/>
+                            {props.state.hasInvites && <Notification
+                                teamsToJoin={props.state.teamsToAccept}
+                                accept={acceptTeam}
+                                refuse={declineTeam}
+                            />}
                             <ModalCreateTeam/>
                             <ModalJoinTeam/>
                             {!props.state.data.teamName && <div>
