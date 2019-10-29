@@ -1,9 +1,11 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import styles from '../CreateTeam/test.module.css';
+import InfoMsg from "../../infoMsg";
+
 
 const ViewTeam = (props) => {
-    const {team, removeTeam, logo, player, captain} = props;
+    const {team, removeTeam, logo, player, captain, ok, msg} = props;
     return (
         <>
             <Modal.Header closeButton>
@@ -16,6 +18,7 @@ const ViewTeam = (props) => {
                     {player}
                     <button className={styles.buttonDelete} onClick={removeTeam}>DELETE TEAM</button>
                 </div>
+                <InfoMsg ok={ok} msg={msg}/>
             </Modal.Body>
         </>
     );

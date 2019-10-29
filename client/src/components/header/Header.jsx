@@ -10,9 +10,9 @@ import Modal from "react-bootstrap/Modal";
 import ViewTeam from "../modal/ViewTeam/ViewTeam";
 import GameCreate from "../modal/GameCreate/GameCreate";
 import CreateTeam from "../modal/CreateTeam/createTeam";
+import InvitePlayer from "../modal/InvitePlayer/InvitePlayer";
 
 const Header = (props) => {
-    console.log(props);
     const {
         gamesToConfirm,
         confirmGame,
@@ -36,9 +36,12 @@ const Header = (props) => {
         ok,
         createTeam,
         teamsToJoin,
-        joinTeam
+        joinTeam,
+        freePlayers,
+        sendInvite
     } = props;
 
+    const [modalInvitePlayer, setModalInvitePlayer] = useState(false);
     const [modalCreateGame, setModalCreateGame] = useState(false);
     const [modalViewTeam, setModalViewTeam] = useState(false);
     const [modalApprove, setModalApprove] = useState(false);
@@ -52,6 +55,21 @@ const Header = (props) => {
                   logo={logo}
                   player={player}
                   captain={captain}
+                  ok={ok} msg={msg}
+        />
+    </Modal>;
+
+    const ModalInvitePlayer = () => <Modal show={modalInvitePlayer} onHide={() => setModalInvitePlayer(false)}>
+        <InvitePlayer team={team}
+                  removeTeam={removeTeam}
+                  logo={logo}
+                  player={player}
+                  captain={captain}
+                      ok={ok} msg={msg}
+                      sendInvite = {sendInvite}
+                      freePlayers = {freePlayers}
+
+
         />
     </Modal>;
 
@@ -83,6 +101,8 @@ const Header = (props) => {
             />
         </Modal>
     );
+
+
 
     const logOut = () => {
         localStorage.removeItem('jwt');
@@ -122,10 +142,10 @@ const Header = (props) => {
                         </NavLink>
                         <div className={styles.navButtons}>
                             <Notification/>
+                            <ModalInvitePlayer/>
                             <ModalViewTeam/>
                             <ModalApproveGames/>
                             <ModalCreateGame/>
-
                             <div className={styles.btnUserActionsWrapper}>
 
                                 <button onClick={() => {
@@ -135,7 +155,8 @@ const Header = (props) => {
                                 </button>
                                 {toggleDropDown && <div className={styles.toggleDiv}>
                                     <ul className={styles.navList}>
-                                        <li className={styles.navItem}>Invite Player</li>
+                                        <li onClick={() => setModalInvitePlayer(!modalInvitePlayer)}
+                                            className={styles.navItem}>Invite Player</li>
                                         <li onClick={() => setModalCreateGame(!modalCreateGame)}
                                             className={styles.navItem}>Create Game
                                         </li>

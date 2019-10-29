@@ -16,7 +16,7 @@ export default class CaptainView extends React.Component {
     };
 
     game = '';
-    invite = '';
+
 
     //open modal View Team
     toggleShowViewTeam = () => {
@@ -127,27 +127,7 @@ export default class CaptainView extends React.Component {
                 })
             })
     };
-//Send invite to player
-    sendInvite = (player) => {
-        axios.post(`${api}users/invite`, {
-            userName: player || this.invite,
-            teamName: this.state.myTeam.teamName
-        })
-            .then(() => {
-                this.setState({
-                    ok: "Invite sent"
-                });
-            })
-            .catch(err => {
-                console.log(err)
-            });
-    };
-//Handle player login to send invite
-    choosePlayer = (player) => {
-        this.setState({
-            chosenPlayer: player
-        });
-    };
+
 //Remove a player from team
     leaveTeam = (teamName) => {
         axios.put(`${api}teams/leave`, {
@@ -273,6 +253,20 @@ export default class CaptainView extends React.Component {
             })
     };
 
+    //Send invite to player
+    sendInvite = (player) => {
+        axios.post(`${api}users/invite`, {
+            userName: player,
+            teamName: this.state.myTeam.teamName
+        })
+            .then(() => this.setState({
+                ok: "Invite sent"
+            }))
+            .catch(err => {
+                console.log(err)
+            });
+    };
+
     //Get player`s name by login to display on page
     getPlayerName = () => {
         axios.get(`${api}users/player`, {
@@ -350,35 +344,17 @@ export default class CaptainView extends React.Component {
         };
 
         const NoPlayer = () => {
-            return <div>You have no player yet. Invite: <form className="form" onSubmit={(e) => {
-                e.preventDefault();
-                this.sendInvite(this.state.chosenPlayer);
-            }}>
-                <div className="form-group">
-                    <select value={this.state.chosenPlayer} onChange={e => this.choosePlayer(e.target.value)}>{
-                        this.state.freePlayers.map(
-                            (option, i) => {
-                                if(!i) {
-                                    this.invite = option.userName
-                                }
-                                return <option key={i}>{option.userName}</option>}
-                        )
-                    }</select>
-                    <button className="btn btn-outline-secondary mr-2">Send invite
-                    </button>
-                    <InfoMsg ok={this.state.ok} msg={this.state.msg}/>
-                </div>
-            </form>
+            return <div>You have no player yet. You can invite one.
             </div>
         };
 
         const {logged} = this.props;
         return        <div>
-            <Header state={this.state} isHome={logged}
+            <Header state={this.state} isHome={logged} freePlayers={this.state.freePlayers}
                     gamesToConfirm={this.state.gamesToConfirm}
                     confirmGame={this.confirmGame} deleteGame={this.deleteGame}
                     team={this.state.myTeam.teamName}
-                    removeTeam={this.removeTeam}
+                    removeTeam={this.removeTeam} sendInvite={this.sendInvite}
                     logo={this.state.myTeam.image}
                     player={this.state.myTeam.player ?  <HasPlayer/> : <NoPlayer/>}
                     captain={this.state.data.login}

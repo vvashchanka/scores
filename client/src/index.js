@@ -15,7 +15,7 @@ import './index.css';
 import GameCreate from "./components/modal/GameCreate/GameCreate";
 import CreateTeam from "./components/modal/CreateTeam/createTeam";
 import ViewTeam from "./components/modal/ViewTeam/ViewTeam";
-import ChoosePlayer from "./components/modal/ChoosePlayer/ChoosePlayer";
+import InvitePlayer from "./components/modal/InvitePlayer/InvitePlayer";
 
 
 //Add token to every request header
@@ -41,7 +41,7 @@ ReactDOM.render(
                 <Route path="/test1">
                     <CreateTeam/>
                     <ViewTeam/>
-                    <ChoosePlayer/>
+                    <InvitePlayer/>
                 </Route>
                 <Route path="/">
                     <Home />

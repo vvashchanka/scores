@@ -8,7 +8,7 @@ import Login from "./components/loginPage";
 import Register from "./components/registerPage";
 import CreateTeam from "./components/modal/CreateTeam/createTeam";
 import ViewTeam from "./components/modal/ViewTeam/viewTeam";
-import ChoosePlayer from "./components/modal/ChoosePlayer/ChoosePlayer";
+import InvitePlayer from "./components/modal/InvitePlayer/ChoosePlayer";
 import Home from "./components/homePage";
 import React from "react";
 
@@ -38,7 +38,7 @@ class App extends React.Component {
                     <Route path="/test1">
                         <CreateTeam/>
                         <ViewTeam/>
-                        <ChoosePlayer/>
+                        <InvitePlayer/>
                     </Route>
                     <Route path="/">
                         <Home/>
