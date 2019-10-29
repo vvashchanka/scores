@@ -4,16 +4,18 @@ import axios from 'axios';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import {api} from '../config';
-import { Modal } from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import CreateTeam from './modal/CreateTeam/createTeam';
 import Header from "./header/Header";
 import ScrollGames from "./scrollMenu";
+
 const fs = require('fs');
 
 export default class PlayerView extends React.Component {
     state = {
         showCreateTeam: false,
-        ...this.props.state};
+        ...this.props.state
+    };
 //Open create team modal
     toggleShowCreateTeam = () => {
         this.setState({
@@ -96,16 +98,16 @@ export default class PlayerView extends React.Component {
         axios.get(`${api}teams`)
             .then(res => {
                 const idx = res.data.findIndex(val => val.player === this.state.data.login);
-                if(idx !== -1) {
+                if (idx !== -1) {
                     this.setState({
                         isInTeam: res.data[idx].teamName
                     });
 
-                    if(res.data[idx].captainApproved && res.data[idx].playerApproved) {
+                    if (res.data[idx].captainApproved && res.data[idx].playerApproved) {
                         this.setState({
                             teamApproved: true
                         })
-                    }else if (res.data[idx].captainApproved) {
+                    } else if (res.data[idx].captainApproved) {
                         this.setState({
                             hasInvites: true
                         })
@@ -140,11 +142,13 @@ export default class PlayerView extends React.Component {
                 console.log(err)
             });
     };
+
     componentDidMount() {
-        if(localStorage.jwt) {
+        if (localStorage.jwt) {
             this.getUserData();
         }
     }
+
 //Handle team name input to create a team
     teamName = (e) => {
         this.setState({
@@ -182,12 +186,16 @@ export default class PlayerView extends React.Component {
         };
 
         const IsInTeam = () => {
-            return <div>Your team is {this.state.isInTeam}. {this.state.teamApproved ? <div>Your team is ready to play</div>
+            return <div>Your team is {this.state.isInTeam}. {this.state.teamApproved ?
+                <div>Your team is ready to play</div>
                 : <div>You are not approved yet</div>}
-                <button className="btn btn-outline-secondary mr-2" onClick={() => this.leaveTeam(this.state.isInTeam)}>Leave team {this.state.isInTeam}</button></div>
+                <button className="btn btn-outline-secondary mr-2"
+                        onClick={() => this.leaveTeam(this.state.isInTeam)}>Leave team {this.state.isInTeam}</button>
+            </div>
         };
 
         const IsNotInTeam = () => {
+            console.log(this.state.teamsToJoin);
             return <div>
                 <ReactTable
                     minRows='3'
@@ -198,7 +206,7 @@ export default class PlayerView extends React.Component {
                     Create team
                 </button>
                 <Modal show={this.state.showCreateTeam} onHide={this.toggleShowCreateTeam}>
-                <CreateTeam ok={this.state.ok} msg={this.state.msg} team={this.createTeam}/>
+                    <CreateTeam ok={this.state.ok} msg={this.state.msg} team={this.createTeam}/>
                 </Modal>
             </div>
         };
@@ -238,8 +246,13 @@ export default class PlayerView extends React.Component {
             }
         ];
         const {logged} = this.props;
-        return <div>
-        <Header state={this.state} createTeam={this.createTeam}/>
+        return <>
+            <Header
+                state={this.state}
+                createTeam={this.createTeam}
+                teamsToJoin={this.state.teamsToJoin}
+                joinTeam={this.joinTeam}
+            />
             <div className="container">
                 <div className="note">
                     <p>Welcome, {this.state.data.userName}</p>
@@ -247,11 +260,13 @@ export default class PlayerView extends React.Component {
                 <div className="content">
                     {this.state.hasInvites ? <Invites/>
                         : this.state.isInTeam ? <IsInTeam/>
-                            : IsNotInTeam() }
+                            : IsNotInTeam()}
                     Your Login is {this.state.data.login}.
                     You registered {this.state.data.createdAt ? this.state.data.createdAt.slice(0, 10) : ''
                 }.
                 </div>
                 <ScrollGames/>
             </div>
-        </div>}}
+        </>
+    }
+}
