@@ -49,7 +49,6 @@ router.get('/', async (req,res) => {
             .then(teams => res.send(teams))
             .catch(err => console.log(err));
     }
-
 });
 
 //Join existing team

@@ -47,7 +47,8 @@ const Header = (props) => {
         teamName,
         leaveTeam,
         approvedPlayer,
-        playerConfirm
+        playerConfirm,
+        myCaptain
     } = props;
 
     const [modalCreateGame, setModalCreateGame] = useState(false);
@@ -102,6 +103,7 @@ const Header = (props) => {
         <ViewTeamPlayer teamName={teamName}
                         approvedPlayer={approvedPlayer}
                         leaveTeam={leaveTeam}
+                        myCaptain={myCaptain}
         />
     </Modal>;
 

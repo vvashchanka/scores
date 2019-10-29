@@ -15,8 +15,6 @@ export default class CaptainView extends React.Component {
         ...this.props.state
     };
 
-    game = '';
-
 
   //Reset alerts when modal is closed
     resetMsg = () => {
@@ -146,7 +144,6 @@ export default class CaptainView extends React.Component {
             });
     };
 
-    setGame = (game) => this.game = game;
 //Get captain`s team and all other teams list
     getTeams = () => {
             axios.get(`${api}teams`)

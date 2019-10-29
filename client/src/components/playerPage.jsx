@@ -95,10 +95,24 @@ export default class PlayerView extends React.Component {
             });
     };
 //Get teams list to join and invites
+
+    getCaptain = () => {
+        console.log(this.state.data);
+        axios.get(`${api}users/captain`, {
+            params: {teamName: this.state.data.teamName}
+        })
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                    myTeamCaptain: res.data
+                });
+            })
+            .catch(err => console.log(err))
+    };
+
     getTeams = () => {
         axios.get(`${api}teams`)
             .then(res => {
-                console.log(this.state);
                 const idx = res.data.findIndex(val => val.player === this.state.data.login);
                 if (idx !== -1) {
                     this.setState({
@@ -122,11 +136,11 @@ export default class PlayerView extends React.Component {
             })
     };
 //Decode login by token and get user`s data
-    getUserData = () => {
+    getUserData = async () => {
         const data = {
             login: jwt.decode(localStorage.jwt).login
         };
-        axios.get(`${api}users`, {
+        await axios.get(`${api}users`, {
             params: {
                 login: data.login
             }
@@ -139,9 +153,13 @@ export default class PlayerView extends React.Component {
             .then(() => {
                 this.getTeams()
             })
+            .then(() => {
+                this.getCaptain()
+            })
             .catch(err => {
                 console.log(err)
             });
+        await this.getCaptain()
     };
 
     componentDidMount() {
@@ -249,6 +267,7 @@ export default class PlayerView extends React.Component {
         const {logged} = this.props;
         return <>
             <Header
+                myCaptain={this.state.myTeamCaptain}
                 state={this.state}
                 createTeam={this.createTeam}
                 teamsToJoin={this.state.teamsToJoin}

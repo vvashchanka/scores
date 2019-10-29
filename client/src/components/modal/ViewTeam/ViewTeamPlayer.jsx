@@ -5,15 +5,14 @@ import InfoMsg from "../../infoMsg";
 
 
 const ViewTeam = (props) => {
-    const {teamName, approvedPlayer, leaveTeam} = props;
-
-
+    const {teamName, approvedPlayer, leaveTeam, myCaptain} = props;
     return (
         <>
             <Modal.Header closeButton>
                 <h1 className={styles.teamName}>{teamName}</h1>
             </Modal.Header>
             <Modal.Body>
+                Captain: {myCaptain}
                 <div className={styles.modalBody}>
                     {approvedPlayer}
                     {leaveTeam}

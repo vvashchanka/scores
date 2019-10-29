@@ -3,10 +3,21 @@ const {User, Team} = require ('../models/index');
 
 //Get user data by Login
 router.get('/', async (req, res) => {
-    const {login} = req.query;
-    const userData = await User.findOne({where: {login}});
-    userData.dataValues.password = null;
-    res.send(userData.dataValues);
+        const {login} = req.query;
+        const userData = await User.findOne({where: {login}});
+        userData.dataValues.password = null;
+        res.send(userData.dataValues);
+
+});
+//Get captain name by team name
+router.get('/captain', async (req, res) => {
+    const {teamName} = req.query;
+    console.log(teamName);
+    await User.findOne({where: {teamName, isCaptain: true}})
+        .then(captain => {
+            res.send(captain.dataValues.userName)
+        })
+        .catch(err => console.log(err))
 });
 
 //Confirm players request to join team
