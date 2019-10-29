@@ -78,18 +78,18 @@
 
 @keyframes fadeIn {
     0% {
-        transform: scale(0);
+        transform: matrix3d(0);
         opacity: 0.0;
     }
     60% {
-        transform: scale(1.1);
+        transform:matrix3d(1.1);
     }
     80% {
-        transform: scale(0.9);
+        transform: matrix3d(0.9);
         opacity: 1;
     }
     100% {
-        transform: scale(1);
+        transform: matrix3d(1);
         opacity: 1;
     }
 }
