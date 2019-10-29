@@ -346,6 +346,7 @@ export default class CaptainView extends React.Component {
                     date={this.state.date} ok={this.state.ok} msg={this.state.msg} selectTeam={this.selectTeam}
                     setDate={this.setDate} setScore1={this.setScore1}
                     setScore2={this.setScore2} createGame={this.createGame}
+                    playerConfirm={<HasPlayer/>}
             />
             <div className="container">
                 <div className="content">

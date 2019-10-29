@@ -46,7 +46,8 @@ const Header = (props) => {
         acceptTeam,
         teamName,
         leaveTeam,
-        approvedPlayer
+        approvedPlayer,
+        playerConfirm
     } = props;
 
     const [modalCreateGame, setModalCreateGame] = useState(false);
@@ -156,7 +157,7 @@ const Header = (props) => {
                                 className={styles.football}>Football</span></div>
                         </NavLink>
                         <div className={styles.navButtons}>
-                            <Notification/>
+                            {!props.state.myTeam.captainApproved && props.state.myTeam.player && <Notification player={playerConfirm}/>}
                             <ModalViewTeam/>
                             <ModalApproveGames/>
                             <ModalCreateGame/>

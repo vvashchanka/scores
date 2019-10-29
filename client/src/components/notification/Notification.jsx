@@ -6,16 +6,17 @@ import InviteItem from "./TeamsToJoin/InviteItem/InviteItem";
 
 const Notification = (props) => {
     console.log(props);
-    const {teamsToJoin, accept, refuse} = props;
+    const {teamsToJoin, accept, refuse, player} = props;
     const popover = (
         <Popover id="popover-basic">
-            <Popover.Title as="h2">Available Team Invitation:</Popover.Title>
+            <Popover.Title as="h2">{teamsToJoin && <span>Available Team Invitation:</span>}</Popover.Title>
             <Popover.Content>
-                {teamsToJoin ? teamsToJoin.map(item => <InviteItem
+                {teamsToJoin && teamsToJoin.map(item => <InviteItem
                     {...item}
                     accept={accept}
                     refuse={refuse}
-                />) : null}
+                />)}
+                {!teamsToJoin && player}
             </Popover.Content>
         </Popover>
     );
