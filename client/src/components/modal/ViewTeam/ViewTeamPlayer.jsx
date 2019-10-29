@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import styles from '../CreateTeam/test.module.css';
-import InfoMsg from "../../infoMsg";
+/*import InfoMsg from "../../infoMsg";*/
 
 
 const ViewTeam = (props) => {

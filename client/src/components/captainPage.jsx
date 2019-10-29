@@ -2,7 +2,6 @@ import React from 'react';
 import jwt from "jsonwebtoken";
 import axios from 'axios';
 import 'react-table/react-table.css'
-import ReactTable from "react-table";
 import {api} from '../config';
 import "react-datepicker/dist/react-datepicker.css";
 import ScrollGames from "./scrollMenu";
@@ -247,7 +246,7 @@ export default class CaptainView extends React.Component {
     };
 
     render() {
-        const GamesToConfirm = () => {
+        /*const GamesToConfirm = () => {
             console.log(this.state.gamesToConfirm);
             const gameColumns = [{
                 Header: 'Opponent Team',
@@ -287,7 +286,7 @@ export default class CaptainView extends React.Component {
                 data={this.state.gamesToConfirm}
                 columns={gameColumns}
             />
-        };
+        };*/
 
         const HasPlayer = () => {
             const approvement = () => {

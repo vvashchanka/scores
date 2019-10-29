@@ -1,15 +1,12 @@
 import React from 'react';
 import jwt from "jsonwebtoken";
 import axios from 'axios';
-import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import {api} from '../config';
-import {Modal} from 'react-bootstrap';
-import CreateTeam from './modal/CreateTeam/createTeam';
 import Header from "./header/Header";
 import ScrollGames from "./scrollMenu";
 
-const fs = require('fs');
+/*const fs = require('fs');*/
 
 export default class PlayerView extends React.Component {
     state = {
@@ -97,12 +94,12 @@ export default class PlayerView extends React.Component {
 //Get teams list to join and invites
 
     getCaptain = () => {
-        console.log(this.state.data);
+        /*console.log(this.state.data);*/
         axios.get(`${api}users/captain`, {
             params: {teamName: this.state.data.teamName}
         })
             .then(res => {
-                console.log(res.data)
+               /* console.log(res.data)*/
                 this.setState({
                     myTeamCaptain: res.data
                 });
@@ -194,7 +191,7 @@ export default class PlayerView extends React.Component {
     };
 
     render() {
-        const Invites = () => {
+        /*const Invites = () => {
             return <div>Invites:
                 <ReactTable
                     minRows='3'
@@ -202,18 +199,18 @@ export default class PlayerView extends React.Component {
                     columns={acceptColumns}
                 />
             </div>
-        };
+        };*/
 
-        const IsInTeam = () => {
+        /*const IsInTeam = () => {
             return <div>Your team is {this.state.isInTeam}. {this.state.teamApproved ?
                 <div>Your team is ready to play</div>
                 : <div>You are not approved yet</div>}
                 <button className="btn btn-outline-secondary mr-2"
                         onClick={() => this.leaveTeam(this.state.isInTeam)}>Leave team {this.state.isInTeam}</button>
             </div>
-        };
+        };*/
 
-        const IsNotInTeam = () => {
+      /*  const IsNotInTeam = () => {
             console.log(this.state.teamsToJoin);
             return <div>
                 <ReactTable
@@ -228,9 +225,9 @@ export default class PlayerView extends React.Component {
                     <CreateTeam ok={this.state.ok} msg={this.state.msg} team={this.createTeam}/>
                 </Modal>
             </div>
-        };
+        };*/
 
-        const joinColumns = [{
+       /* const joinColumns = [{
             Header: 'Team name',
             accessor: 'teamName'
         },
@@ -242,8 +239,8 @@ export default class PlayerView extends React.Component {
                     </div>
                 )
             }
-        ];
-        const acceptColumns = [{
+        ];*/
+      /*  const acceptColumns = [{
             Header: 'Team name',
             accessor: 'teamName'
         },
@@ -263,8 +260,8 @@ export default class PlayerView extends React.Component {
                     </div>
                 )
             }
-        ];
-        const {logged} = this.props;
+        ];*/
+       /* const {logged} = this.props;*/
         return <>
             <Header
                 myCaptain={this.state.myTeamCaptain}
