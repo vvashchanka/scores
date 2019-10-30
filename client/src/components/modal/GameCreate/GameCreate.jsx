@@ -8,14 +8,14 @@ const GameCreate = (props) => {
     const [team, setTeam] = useState('');
     const [score1, setScore1] = useState('');
     const [score2, setScore2] = useState('');
-    const [date, setDate] = useState('');
+    const [date, setDate] = useState(new Date());
     const {teams, ok, msg, createGame} = props;
     let gameTeam = '';
     const sendGame = () => {
         const teamName = team || gameTeam;
        createGame(teamName, score1, score2, date)
     };
-
+   console.log(date);
     return (
         <>
             <Modal.Header closeButton>
@@ -47,7 +47,7 @@ const GameCreate = (props) => {
                     </div>
                     <div>
                         <h3 className={styles.selectDate}>Select date</h3>
-                        <DatePicker className={styles.dateInput} onChange={(date) => setDate(date)}
+                        <DatePicker className={styles.dateInput} onChange={date => setDate(date)}
                                     selected={date}/>
                         <div className={styles.date}>Date: {date ? date.toString().slice(0, -41) : 'Select a date'}</div>
                     </div>

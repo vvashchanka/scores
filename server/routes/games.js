@@ -19,6 +19,7 @@ router.get('/', async (req,res) => {
 
 //Create a new game
 router.post('/', (req, res) => {
+    console.log(req.body.date)
     const {error} = gameSchema.validate(req.body);
     if(error) {
         console.log(error.message);
