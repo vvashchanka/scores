@@ -296,12 +296,12 @@ export default class CaptainView extends React.Component {
                     return <div className={styles.waitingConfirm}>Waiting for player to confirm invitation</div>
                 } else if (this.state.myTeam.playerApproved) {
                     return <div>The player is not confirmed to join.
-                        <button className="btn btn-outline-secondary mr-2" onClick={this.confirmPlayer}>Confirm player</button>
+                        <button className="test_removePlayer__dHNZz" onClick={this.confirmPlayer}>Confirm player</button>
                     </div>
                 }
             };
 
-            return <div>Your player is {this.state.playerName}. <button className={styles.removePlayer} onClick={() => this.leaveTeam(this.state.myTeam.teamName)}>Remove player</button>
+            return <div>Your player is {this.state.playerName}. <button className="btn btn-outline-secondary mr-2" onClick={() => this.leaveTeam(this.state.myTeam.teamName)}>Remove player</button>
                 {approvement()}
             </div>
         };

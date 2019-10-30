@@ -155,7 +155,7 @@ const Header = (props) => {
             <div className={styles.header}>
                 <Container>
                     <div className={styles.headerBox}>
-                        <NavLink to='/'>
+                        <NavLink className={styles.labelLink} to='/'>
                             <div className={styles.godel}>Godel<span
                                 className={styles.football}>Football</span></div>
                         </NavLink>
@@ -205,7 +205,7 @@ const Header = (props) => {
             <div className={styles.header}>
                 <Container>
                     <div className={styles.headerBox}>
-                        <NavLink to='/'>
+                        <NavLink to='/' className={styles.labelLink}>
                             <div className={styles.godel}>Godel<span
                                 className={styles.football}>Football</span></div>
                         </NavLink>
