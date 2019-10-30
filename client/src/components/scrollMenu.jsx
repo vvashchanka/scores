@@ -72,7 +72,7 @@ export default class ScrollGames extends React.Component {
                 <div key={game.id+1} className="team"><img className="avatar" src={imgTeam1} alt=""/></div>
                 <div key={game.id+3} className={game.approved ? "score" : "unapproved"}>{game.score1} </div>
                 <div key={game.id+4} className="score"> : </div>
-                <div key={game.id+5} className={game.approved ? "score" : "unapproved"}> {game.score2}</div>
+                <div key={game.id+5} className={game.approved ? "score" : "unapproved"}>{game.score2}</div>
                 <div key={game.id+7} className="team"><img className="avatar" src={imgTeam2} alt=""/></div>
                 <div key={game.id+6} className="team">{game.team2}</div>
             </div>
