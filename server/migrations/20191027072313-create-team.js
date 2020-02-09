@@ -9,13 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       captainId: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       teamName: {
         type: Sequelize.STRING
       },
-      player: {
-        type: Sequelize.STRING
+      playerId: {
+        type: Sequelize.INTEGER
       },
       captainApproved: {
         type: Sequelize.BOOLEAN
