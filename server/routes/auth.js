@@ -2,7 +2,6 @@ const router = require('express').Router();
 const {User} = require ('../models/index');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {registerSchema, loginSchema} = require('../helpers/validation');
 const verify = require('../helpers/verifyToken');
 
 //Check if user token is correct
@@ -12,13 +11,7 @@ router.get('/', verify, (req, res) => {
 
 //Register new user
 router.post('/register', async (req, res) => {
-    const {error} = registerSchema.validate(req.body);
     const {login, userName} = req.body;
-    if(error) {
-        console.log(error.message);
-        const msg = error.details ? error.details[0].message : error.message;
-        return res.status(400).send(msg);
-    }
     const loginExist = await User.findOne({where: {login}});
 
     if(loginExist) return res.status(400).send('Login already exists');
@@ -37,10 +30,6 @@ router.post('/register', async (req, res) => {
 
 //User login
 router.post('/login', async (req, res) => {
-    const {error} = loginSchema.validate(req.body);
-    if(error) {
-        return res.status(400).send(error.details[0].message);
-    }
     const user = await User.findOne({where: {login: req.body.login}});
 
     if(!user) return res.status(400).send('Login not found');

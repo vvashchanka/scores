@@ -1,15 +1,8 @@
 const router = require('express').Router();
 const {User, Team} = require ('../models/index');
-const {teamSchema} = require('../helpers/validation');
 
 //Create a new team
 router.post('/', async (req, res) => {
-    const {error} = teamSchema.validate(req.body);
-    if(error) {
-        console.log(error.message);
-        const msg = error.details ? error.details[0].message : error.message;
-        return res.status(400).send(msg);
-    }
     const {teamName, id, image} = req.body;
     await Team.findOne({ where: { teamName } })
         .then(async team => {

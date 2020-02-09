@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const {Games} = require ('../models/index');
-const {gameSchema} = require('../helpers/validation');
 
 //Get all games
 router.get('/', async (req,res) => {
@@ -19,13 +18,6 @@ router.get('/', async (req,res) => {
 
 //Create a new game
 router.post('/', (req, res) => {
-    console.log(req.body.date)
-    const {error} = gameSchema.validate(req.body);
-    if(error) {
-        console.log(error.message);
-        const msg = error.details ? error.details[0].message : error.message;
-        return res.status(400).send(msg);
-    }
     const {team1, team2, score1, score2, date} = req.body;
     Games.create({
         team1, team2, score1, score2, date,
