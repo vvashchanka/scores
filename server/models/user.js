@@ -3,21 +3,20 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: {
+    userName: {
       type: DataTypes.STRING,
-      unique: true,
+      unique: false,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
-    email: {
+    login: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
       validate: {
-        notEmpty: true,
-        isEmail: true,
+        notEmpty: true
       },
     },
     password: {
@@ -25,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: true,
-        len: [5, 20],
       },
     },
     teamName: DataTypes.STRING,
@@ -35,19 +33,9 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
   };
 
-  User.findByLogin = async login => {
-    let user = await User.findOne({
+  User.findByLogin = async login => await User.findOne({
       where: { username: login },
     });
-
-    if (!user) {
-      user = await User.findOne({
-        where: { email: login },
-      });
-    }
-
-    return user;
-  };
 
   User.beforeCreate(async user => {
     user.password = await user.generatePasswordHash();
