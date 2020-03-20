@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const verify = require('../helpers/verifyToken');
 
-//Check if user token is correct
+/*//Check if user token is correct
 router.get('/', verify, (req, res) => {
     res.send(req.user);
 });
@@ -40,6 +40,6 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({login: user.login}, process.env.TOKEN_SECRET);
 
     res.header('authToken', token).send(`Welcome, ${user.name}!`);
-});
+});*/
 
 module.exports = router;

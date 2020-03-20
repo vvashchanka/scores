@@ -2,15 +2,15 @@ const router = require('express').Router();
 const {User, Team} = require ('../models/index');
 
 //Get user data by Login
-router.get('/', async (req, res) => {
+/*router.get('/', async (req, res) => {
         const {login} = req.query;
         const userData = await User.findOne({where: {login}});
         userData.dataValues.password = null;
         res.send(userData.dataValues);
 
-});
+});*/
 //Get captain name by team name
-router.get('/captain', async (req, res) => {
+/*router.get('/captain', async (req, res) => {
     const {teamName} = req.query;
     console.log(teamName);
     await User.findOne({where: {teamName, isCaptain: true}})
@@ -18,7 +18,7 @@ router.get('/captain', async (req, res) => {
             res.send(captain.dataValues.userName)
         })
         .catch(err => console.log(err))
-});
+});*/
 
 //Confirm players request to join team
 router.put('/confirm', async (req,res) => {
@@ -34,21 +34,21 @@ router.put('/confirm', async (req,res) => {
 });
 
 //Get all players without team
-router.get('/free', async (req,res) => {
+/*router.get('/free', async (req,res) => {
     await User.findAll({ where: { teamName: null } })
         .then(players => res.send(players))
         .catch(err => console.log(err));
-});
+});*/
 
 
 //Get player`s name by login
-router.get('/player', async (req,res) => {
+/*router.get('/player', async (req,res) => {
     await User.findOne({where: {login: req.query.login}})
         .then(user => {
             res.send(user.userName)
         })
         .catch(err => res.send(err))
-});
+});*/
 
 //Send invite to player
 router.post('/invite', async (req,res) => {

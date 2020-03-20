@@ -1,29 +1,22 @@
 const jwt = require('jsonwebtoken');
 const combineResolvers = require('graphql-resolvers');
-const { AuthenticationError, UserInputError } = require('apollo-server');
+const {AuthenticationError, UserInputError} = require('apollo-server');
 
 const isAuthenticated = require('./authorization');
 
-const createToken = async (user, secret, expiresIn) => {
-    const { login } = user;
-    return await jwt.sign({ login }, secret, {
-        expiresIn,
-    });
-};
+const createToken = async ({login}, secret, expiresIn) => await jwt.sign({login}, secret, {
+    expiresIn,
+});
 
 module.exports = {
     Query: {
-        users: async (parent, args, { models }) => {
-            return await models.User.findAll();
-        },
-        //Get user data
-        user: async (parent, { login, userName, teamName, isCaptain }, { models }) =>
-            await models.User.findOne({where: {login, userName, teamName, isCaptain}}),
-        me: async (parent, args, { models, me }) => {
+        user: async (parent, {login, teamName, isCaptain = false}, {models}) =>
+            await models.User.findOne({where: {login, teamName, isCaptain}}),
+        me: async (parent, args, {models, me}) => {
             if (!me) {
                 return null;
             }
-            const { login } = me;
+            const {login} = me;
 
             return await models.User.findOne({where: {login}});
         },
@@ -32,22 +25,22 @@ module.exports = {
     Mutation: {
         signUp: async (
             parent,
-            { username, email, password },
-            { models, secret },
+            {username, login, password},
+            {models, secret},
         ) => {
             const user = await models.User.create({
                 username,
-                email,
+                login,
                 password,
             });
 
-            return { token: createToken(user, secret, '30m') };
+            return {token: createToken(user, secret, '30m')};
         },
 
         signIn: async (
             parent,
-            { login, password },
-            { models, secret },
+            {login, password},
+            {models, secret},
         ) => {
             const user = await models.User.findByLogin(login);
 
@@ -63,34 +56,20 @@ module.exports = {
                 throw new AuthenticationError('Invalid password.');
             }
 
-            return { token: createToken(user, secret, '30m') };
-        },
-
-        updateUser: combineResolvers(
-            isAuthenticated,
-            async (parent, { username }, { models, me }) => {
-                const user = await models.User.findById(me.id);
-                return await user.update({ username });
-            },
-        ),
-
-        deleteUser: combineResolvers(
-            isAdmin,
-            async (parent, { id }, { models }) => {
-                return await models.User.destroy({
-                    where: { id },
-                });
-            },
-        ),
+            return {token: createToken(user, secret, '30m')};
+        }
     },
 
     User: {
-        messages: async (user, args, { models }) => {
-            return await models.Message.findAll({
+        team: async (user, args, {models}) => {
+            return await models.Team.findOne({
                 where: {
                     userId: user.id,
                 },
             });
+        },
+        teams: async (user, args, {models}) => {
+            return await models.Team.findAll();
         },
     },
 };

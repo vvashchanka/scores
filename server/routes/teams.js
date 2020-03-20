@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 });
 
 //Get team by Captain Id or get all games
-router.get('/', async (req,res) => {
+/*router.get('/', async (req,res) => {
     if (req.query.id) {
         const {userId} = req.query;
         await Team.findOne({ where: { userId } })
@@ -42,7 +42,7 @@ router.get('/', async (req,res) => {
             .then(teams => res.send(teams))
             .catch(err => console.log(err));
     }
-});
+});*/
 
 //Join existing team
 router.put('/join', async (req,res) => {
