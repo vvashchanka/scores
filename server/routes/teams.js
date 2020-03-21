@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {User, Team} = require ('../models/index');
 
 //Create a new team
-router.post('/', async (req, res) => {
+/*router.post('/', async (req, res) => {
     const {teamName, id, image} = req.body;
     await Team.findOne({ where: { teamName } })
         .then(async team => {
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
         })
         .catch(err => console.log(err));
 
-});
+});*/
 
 //Get team by Captain Id or get all games
 /*router.get('/', async (req,res) => {
@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 });*/
 
 //Join existing team
-router.put('/join', async (req,res) => {
+/*router.put('/join', async (req,res) => {
     const {player, teamName} = req.body;
     await Team.findOne({ where: { teamName } })
         .then(team => team.update({
@@ -61,10 +61,10 @@ router.put('/join', async (req,res) => {
             teamName
         }))
         .catch(err => console.log(err));
-});
+});*/
 
 //Delete team
-router.delete('/', async (req,res) => {
+/*router.delete('/', async (req,res) => {
     const { teamName, login } = req.query;
     await User.findOne({ where: { login: req.query.player } })
         .then(user => user.update({
@@ -82,10 +82,10 @@ router.delete('/', async (req,res) => {
             teamName: null
         }))
         .catch(err => console.log(err));
-});
+});*/
 
 //Leave team or remove player
-router.put('/leave', async (req,res) => {
+/*router.put('/leave', async (req,res) => {
     const{teamName, login} = req.body;
     await Team.findOne({ where: { teamName } })
         .then(team => team.update({
@@ -102,10 +102,10 @@ router.put('/leave', async (req,res) => {
             teamName: null
         }))
         .catch(err => console.log(err));
-});
+});*/
 
 //Accept team invitation and decline all other invites
-router.put('/accept', async (req,res) => {
+/*router.put('/accept', async (req,res) => {
     const {player, teamName} = req.body;
     await Team.findOne({ where: { teamName } })
         .then(team => team.update({
@@ -128,7 +128,7 @@ router.put('/accept', async (req,res) => {
         .catch(err => console.log(err));
 
 
-});
+});*/
 
 //Decline invite
 router.put('/decline', async (req,res) => {

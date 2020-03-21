@@ -21,7 +21,7 @@ const {User, Team} = require ('../models/index');
 });*/
 
 //Confirm players request to join team
-router.put('/confirm', async (req,res) => {
+/*router.put('/confirm', async (req,res) => {
     await Team.findOne({ where: { teamName: req.body.team } })
         .then(team => team.update({
             captainApproved: true,
@@ -31,7 +31,7 @@ router.put('/confirm', async (req,res) => {
             res.send(team);
         })
         .catch(err => console.log(err));
-});
+});*/
 
 //Get all players without team
 /*router.get('/free', async (req,res) => {
@@ -51,7 +51,7 @@ router.put('/confirm', async (req,res) => {
 });*/
 
 //Send invite to player
-router.post('/invite', async (req,res) => {
+/*router.post('/invite', async (req,res) => {
     const {userName, teamName} = req.body;
     const user = await User.findOne({ where: { userName } })
         .then(res => res.login)
@@ -69,6 +69,6 @@ router.post('/invite', async (req,res) => {
             res.send(team.dataValues)
         })
         .catch(err => console.log(err));
-});
+});*/
 
 module.exports = router;

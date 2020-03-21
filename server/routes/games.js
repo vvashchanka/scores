@@ -8,11 +8,11 @@ router.get('/', async (req,res) => {
             .then(games => res.send(games)
             )
             .catch(err => console.log(err))
-    } else {
+    } /*else {
         await Games.findAll()
             .then(games => res.send(games))
             .catch(err => console.log(err));
-    }
+    }*/
 });
 
 

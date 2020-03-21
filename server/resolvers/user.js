@@ -1,76 +1,80 @@
-const jwt = require('jsonwebtoken');
-const combineResolvers = require('graphql-resolvers');
-const {AuthenticationError, UserInputError} = require('apollo-server');
+const jwt = require("jsonwebtoken");
+import { combineResolvers } from "graphql-resolvers";
+const { AuthenticationError, UserInputError } = require("apollo-server");
 
-const isAuthenticated = require('./authorization');
+const { isAuthenticated } = require("./authorization");
 
-const createToken = async ({login}, secret, expiresIn) => await jwt.sign({login}, secret, {
-    expiresIn,
-});
+const createToken = async ({ login }, secret, expiresIn) =>
+  await jwt.sign({ login }, secret, {
+    expiresIn
+  });
 
-module.exports = {
-    Query: {
-        user: async (parent, {login, teamName, isCaptain = false}, {models}) =>
-            await models.User.findOne({where: {login, teamName, isCaptain}}),
-        me: async (parent, args, {models, me}) => {
-            if (!me) {
-                return null;
-            }
-            const {login} = me;
+export default {
+  Query: {
+    user: async (parent, { login, teamName, isCaptain = false }, { models }) =>
+      await models.User.findOne({ where: { login, teamName, isCaptain } }),
+    me: async (parent, args, { models, me }) => {
+      if (!me) {
+        return null;
+      }
+      const { login } = me;
 
-            return await models.User.findOne({where: {login}});
-        },
+      return await models.User.findOne({ where: { login } });
+    }
+  },
+
+  Mutation: {
+    signUp: async (
+      parent,
+      { username, login, password },
+      { models, secret }
+    ) => {
+      const user = await models.User.create({
+        username,
+        login,
+        password
+      });
+
+      return { token: createToken(user, secret, "30m") };
     },
 
-    Mutation: {
-        signUp: async (
-            parent,
-            {username, login, password},
-            {models, secret},
-        ) => {
-            const user = await models.User.create({
-                username,
-                login,
-                password,
-            });
+    signIn: async (parent, { login, password }, { models, secret }) => {
+      const user = await models.User.findByLogin(login);
 
-            return {token: createToken(user, secret, '30m')};
-        },
+      if (!user) {
+        throw new UserInputError("No user found with this login credentials.");
+      }
 
-        signIn: async (
-            parent,
-            {login, password},
-            {models, secret},
-        ) => {
-            const user = await models.User.findByLogin(login);
+      const isValid = await user.validatePassword(password);
 
-            if (!user) {
-                throw new UserInputError(
-                    'No user found with this login credentials.',
-                );
-            }
+      if (!isValid) {
+        throw new AuthenticationError("Invalid password.");
+      }
 
-            const isValid = await user.validatePassword(password);
+      return { token: createToken(user, secret, "30m") };
+    },
 
-            if (!isValid) {
-                throw new AuthenticationError('Invalid password.');
-            }
+    invite: combineResolvers(
+      isAuthenticated,
+      async (parent, { userName, teamName }, { models, me }) => {
+        const user = await models.User.findOne({ where: { userName } });
+        const team = await models.Team.findOne({ where: { teamName } });
+        await team.update({
+          player: user,
+          captainApproved: true,
+          playerApproved: false
+        });
+        return "success";
+      }
+    )
+  },
 
-            return {token: createToken(user, secret, '30m')};
+  /*User: {
+    team: async (user, args, { models }) =>
+      await models.Team.findOne({
+        where: {
+          userId: user.id
         }
-    },
-
-    User: {
-        team: async (user, args, {models}) => {
-            return await models.Team.findOne({
-                where: {
-                    userId: user.id,
-                },
-            });
-        },
-        teams: async (user, args, {models}) => {
-            return await models.Team.findAll();
-        },
-    },
+      })
+  }*/
 };
-

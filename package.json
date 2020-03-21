@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install": "npm run install_server && npm run install_client",
-    "install_server": "docker-compose docker-compose.yml up && cd server && npm install",
+    "install_server": "cd server && npm install",
     "install_client": "cd client && npm install",
     "server": "cd server && npm start",
     "client": "cd client && npm start"
@@ -17,5 +17,7 @@
   "author": "Vadzim Vashchanka",
   "license": "ISC",
   "homepage": "https://bitbucket.org/Vashchanka/auth#readme",
-  "dependencies": {}
+  "dependencies": {
+    "prettier": "^1.19.1"
+  }
 }
