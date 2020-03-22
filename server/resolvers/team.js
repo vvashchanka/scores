@@ -1,8 +1,8 @@
-const { Op } = require("sequelize");
-const { combineResolvers } = require("graphql-resolvers");
-const { ValidationError } = require("apollo-server");
+import { Op } from "sequelize";
+import { combineResolvers } from "graphql-resolvers";
+import { ValidationError } from "apollo-server";
 
-const { isAuthenticated } = require("./authorization");
+import { isAuthenticated } from "./authorization";
 
 export default {
   Query: {

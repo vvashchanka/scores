@@ -1,12 +1,12 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
 const db = require("./models/");
-const config = require("config");
+import config from "config";
+import http from "http";
+import jwt from "jsonwebtoken";
+import { ApolloServer, AuthenticationError } from "apollo-server-express";
 const port = config.get("server.port");
-const http = require("http");
-const jwt = require("jsonwebtoken");
-const { ApolloServer, AuthenticationError } = require("apollo-server-express");
 
 const { User, Team, Game } = require("./models/index");
 import schema from "./schema";

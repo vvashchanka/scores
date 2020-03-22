@@ -1,5 +1,5 @@
 import userResolvers from './user';
 import teamResolvers from './team';
-const gameResolvers = require('./game');
+import gameResolvers from './game';
 
 export default [userResolvers, teamResolvers];

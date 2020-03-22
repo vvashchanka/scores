@@ -1,8 +1,8 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 import { combineResolvers } from "graphql-resolvers";
-const { AuthenticationError, UserInputError } = require("apollo-server");
+import { AuthenticationError, UserInputError } from "apollo-server";
 
-const { isAuthenticated } = require("./authorization");
+import { isAuthenticated } from "./authorization";
 
 const createToken = async ({ login }, secret, expiresIn) =>
   await jwt.sign({ login }, secret, {

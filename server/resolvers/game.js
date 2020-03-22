@@ -1,8 +1,8 @@
-const { combineResolvers } = require("graphql-resolvers");
+import { combineResolvers } from "graphql-resolvers";
 
-const { isAuthenticated } = require("./authorization");
+import { isAuthenticated } from "./authorization";
 
-module.exports = {
+export default {
   Query: {
     games: async (user, args, { models }) => await models.Game.findAll()
   },
