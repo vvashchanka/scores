@@ -10,7 +10,6 @@ export default {
   },
 
   Mutation: {
-    //Confirm players request to join team
     confirm: combineResolvers(
       isAuthenticated,
       async (parent, { team }, { models, me }) =>
@@ -127,9 +126,9 @@ export default {
         return team;
       }
     ),
-    decline: combineResolvers(
+    /*decline: combineResolvers(
       isAuthenticated,
       async (parent, { teamName, login }, { models, me }) => {}
-    )
+    )*/
   }
 };
