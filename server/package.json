@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "apollo-server": "^2.10.1",
+    "apollo-server": "^2.14.2",
     "apollo-server-express": "^2.10.1",
     "bcryptjs": "^2.4.3",
     "config": "^3.2.3",
